@@ -21,13 +21,9 @@ $stderr.print "Getting output from #{@destination}\n"
 con = Mysql.new('localhost', 'root', '', 'train_db')  
 
 def Is_Bristol(x)
-[81700 ,81116 ,81103 ,81109 ,81305 ,81403 ,81422 ,81507 ,81503 ,81501 ,81813 ,81819 ,81903 ,81905 ,81906 ,81909 ,81911 ,81422 ,81260 ,81259 ,81255 ,81240 ,81230 ,81211].include?(x)
+[81700 ,81103 ,81109 ,81305 ,81403 ,81422 ,81813 ,81819 ,81903 ,81905].include?(x)
+# 81116 ,81507 ,81503 ,81501 ,81906 ,81909 ,81911 ,81260 , 81261, 81259 ,81255 ,81240 ,81230 ,81211
 end
-
-#database = SQLite3::Database.new "train.database" 
-
-#database.execute ("create table latest (id INTEGER PRIMARY KEY,name VARCHAR(50),location VARCHAR(50),time VARCHAR(50))")
-
 
 for i in 0..1000
 #while true
@@ -36,25 +32,32 @@ for i in 0..1000
 
 
 if @msg.body != [] 
+
 json2 = @msg.body
 print "\n"
 #print json2
 rubydoc2 = JSON.parse json2
 #end
+@location = rubydoc2[0]["body"]["loc_stanox"]
+if Is_Bristol(@location.to_i)
+
+
 
 @test =  "test"
 
 #if rubydoc2[0]["header"]["msg_type"] == 0003
 print "train_id: "
-@name = rubydoc2[0]["body"]["train_id"]
+@name = rubydoc2[0]["body"]["train_id"][2..5]
 print @name
 #print @name.inspect
 print "   loc_stanox:   "
-@location = rubydoc2[0]["body"]["loc_stanox"]
+
 print @location
 #print @location.class
 print "   time:   "
-@time = rubydoc2[0]["body"]["planned_timestamp"]
+@time = (rubydoc2[0]["body"]["planned_timestamp"].to_i/1000).to_i
+@time = (Time.at(@time).to_s[11..12].to_i-1).to_s+Time.at(@time).to_s[13..19]
+
 print @time
 #print @time.class
 #print "\n"
@@ -66,8 +69,8 @@ print @time
 
 puts Is_Bristol(@location.to_i)
 
-if Is_Bristol(@location.to_i)
- con.query ("INSERT into all_trains (name,location,time) VALUES ('#{@name}','#{@location}','#{@time}') ")
+
+ con.query ("INSERT into trains (name,location,time) VALUES ('#{@name}','#{@location}','#{@time}') ")
 end
  
 end
@@ -80,7 +83,7 @@ rescue
 end
 
  
- rs = con.query('select * from all_trains')  
+rs = con.query('select * from trains')  
 
 
 rs.each_hash { |h| puts h['name'], h['location'], h['time']}  

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>National Rail - Raw data - Bristol area</title>
+  </head>
+  <body>
+    <% load './convert.rb' %>
+    <h1>National Rail - Rawadata - Bristol area</h1>
+    <p>
+      This page outputs the train data information from the Network Rail feeds for the Bristol area.</br>
+      At presents trains in the Bristol area are in the following locations.</br>
+      This page doesn't auto-refesh so remember to to this manually</br></br></br>
+      
+      <% Train.all.each do |train| %>Train name: <%=train['name']%>  Location: <%= StanoxToName(train['location'])%>  Planned time: <%=train['time']%></br><%end%>
+      </br></br></br>
+      Trains in the vicinity of Bristol Temple Meads </br>
+      <% @train.each do |train| %><%=train['name']%></br><%end%>
+                         
+    </p>
+  </body>
+</html>

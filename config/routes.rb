@@ -1,4 +1,10 @@
 Wheresmytrain::Application.routes.draw do
+
+  match "/trains/find" => "trains#find"
+  match "/trains/rawdata" => "trains#rawdata"
+  get "static/home"
+   get "trains/home"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
