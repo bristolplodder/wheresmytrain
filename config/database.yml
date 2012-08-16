@@ -7,7 +7,7 @@ development:
   adapter: mysql
   encoding: utf8
   pool: 5  
-#  host: localhost 
+  host: localhost 
   username: root 
   password:  
   database: train_db
