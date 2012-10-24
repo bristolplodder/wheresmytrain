@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: CHANGELOG.rdoc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>CHANGELOG.rdoc</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>CHANGELOG.rdoc
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 20 09:52:00 +0000 2012</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2>1.2.5 20120804</h2>
+<ul>
+<li>Issue 48 any forks with modifications will be affected!
+
+</li>
+<li>Source code restructured into individual files
+
+</li>
+<li>Common indentation used throughout the source
+
+</li>
+<li>Many method comments have been added
+
+</li>
+<li>See notes in source regarding making methods private in the next release
+
+</li>
+<li>See notes in source regarding removal of methods in the next release
+
+</li>
+<li>Include examples and tests in rdoc generated during install
+
+</li>
+<li>Issue 47 socket is open during retries
+
+</li>
+</ul>
+<h2>1.2.4 20120625</h2>
+<ul>
+<li>Add ability for client to request flush on write to the connection (Issue
+45)
+
+</li>
+<li>Add ability for client to retrieve heartbeat intervals and counters
+
+</li>
+<li>Fix I/O errors with heartbeats and multithreaded clients (Issue 46)
+
+</li>
+<li>Enhance tests for heartbeats
+
+</li>
+<li>Correct typos and clarify comments in many examples
+
+</li>
+</ul>
+<h2>1.2.3 20120616</h2>
+<ul>
+<li>Fix UnsupportedProtocol on connect to a 1.0 broker
+
+</li>
+<li>Add Client#poll method
+
+</li>
+<li>Add help to stompcat and catstomp
+
+</li>
+<li>Allow password to be set for private SSL key
+
+</li>
+<li>Update comments to reflect new repository URL
+
+</li>
+<li>Reformat changelog dates to ISO8601
+
+</li>
+<li>Fix SSL connection failures using JRuby
+
+</li>
+<li>Use symbols, not strings for all header keys
+
+</li>
+<li>Add IPV6 to IPV4 failover for dual homed systems when requested
+
+</li>
+</ul>
+<h2>1.2.2 20120324</h2>
+<ul>
+<li>Major performance improvement for read of messages without content-length
+header
+
+</li>
+<li>Correct <a href="../classes/Stomp.html">Stomp</a> 1.1 failing test
+
+</li>
+<li>Update sample code to reflect removal of &#8216;send&#8216;
+
+</li>
+<li>Add on_ssl_connectfail callback and allow clients to signal quit from the
+callback
+
+</li>
+<li>Ensure that SSL certificates and SSL related files exist and are readable
+
+</li>
+<li>Allow SSL file checks before connect using SSLParams.new(:fsck =&gt; true,
+&#8230;)
+
+</li>
+<li>Correct a test for Windows compatibility
+
+</li>
+</ul>
+<h2>1.2.1 20120313</h2>
+<ul>
+<li>Robust SSL certificate support. See examples and: <a
+href="https://github.com/stompgem/stomp/wiki/extended-ssl-overview">github.com/stompgem/stomp/wiki/extended-ssl-overview</a>
+
+</li>
+<li>Really remove the deprecated send methods
+
+</li>
+<li>Fix exception in <a href="../classes/Stomp.html">Stomp</a> 1.1 code when
+headers are frozen
+
+</li>
+<li>Revert 245e734a0. See ce8335fb2f for details. Fixes broken Connection#poll.
+
+</li>
+<li>Add reconnection attempts to callback logging.
+
+</li>
+<li>Add SSL specific connection information to callback logging.
+
+</li>
+</ul>
+<h2>1.2.0 20111214</h2>
+<ul>
+<li><a href="../classes/Stomp.html">Stomp</a> 1.1 protocol support. A
+significant change. Please test existing 1.0 code well. See the examples
+directory for 1.1 examples.
+
+</li>
+<li>Accept :reliable in a <a
+href="../classes/Stomp/Client.html">Stomp::Client</a> connection hash
+
+</li>
+<li>Add connect timeout with hashed parameters
+
+</li>
+<li>Do not allow calls after close/disconnect
+
+</li>
+<li>Enhance supported logger callbacks
+
+</li>
+<li>Fix subscription id in find_listener
+
+</li>
+<li>Start to bootstrap STOMP 1.1 support
+
+</li>
+</ul>
+<h2>1.1.10 20111107</h2>
+<ul>
+<li>Fixes for JRuby support
+
+</li>
+<li>Fix EOF error on disconnect
+
+</li>
+<li>Refactoring and additional test
+
+</li>
+<li>Set up tests for use of RabbitMQ
+
+</li>
+</ul>
+<h2>1.1.9 20110615</h2>
+<ul>
+<li>Support wildcard destinations
+
+</li>
+<li>Handle subscribe with string or symbol ID
+
+</li>
+<li>Check for duplicate subscriptions in spec tests
+
+</li>
+<li>Support AMQ and Apollo servers in uinit tests
+
+</li>
+<li>Correct UTF-8 (Unicode) content-length calcualtion in Ruby 1.9
+
+</li>
+<li>Send of a nil body causes exception
+
+</li>
+<li>Add optional callback logging. See the examples install directory, files
+logexamp.rb and slogger.rb
+
+</li>
+<li>Correct date stamps in this file
+
+</li>
+</ul>
+<h2>1.1.8 20110316</h2>
+<ul>
+<li>Set KEEPALIVE on connection socket options
+
+</li>
+<li>Attempt to support JRuby more robustly (poll remains broken)
+
+</li>
+<li>Switch to ruby supplied IO#ready?
+
+</li>
+<li>Test enhancements for suppress_content_length header
+
+</li>
+<li>Miscellaneous small documentation updates
+
+</li>
+<li>Add parse_timeout parameter for use with hashed logins
+
+</li>
+<li>Allow connection to hosts with a - (dash) in the host name
+
+</li>
+<li>Add limit parameter to thread joins
+
+</li>
+</ul>
+<h2>1.1.7 20110109</h2>
+<ul>
+<li>Binary parse of raw STOMP frame
+
+</li>
+<li>Fix broken tests on Ruby 1.9.2
+
+</li>
+</ul>
+<h2>1.1.6 20100610</h2>
+<ul>
+<li>Fixed multi-thread app hanging
+
+</li>
+</ul>
+<h2>1.1.5 20100317</h2>
+<ul>
+<li>Added publish method (send is now deprecated)
+
+</li>
+<li>Changes on Rake File
+
+</li>
+<li>Added original_destination header to unreceive
+
+</li>
+<li>suppress content length header is send on the message for future handling
+(like unreceive)
+
+</li>
+</ul>
+<h2>1.1.4 20100121</h2>
+<ul>
+<li>Added unreceive message method that sends the message back to its queue or
+to the dead letter queue, depending on the :max_redeliveries option,
+similar to a13m one.
+
+</li>
+<li>Added environment variable option for running &#8216;rake test&#8217; on
+any stomp server, using any port with any user.
+
+</li>
+<li>Added suppress_content_length header option for ActiveMQ knowing it is a
+text message (see: <a
+href="http://juretta.com/log/2009/05/24/activemq-jms-stomp">juretta.com/log/2009/05/24/activemq-jms-stomp</a>/)
+
+</li>
+<li>Fixed some bugs with Ruby 1.9 (concatenate string + exception)
+
+</li>
+<li>Major changes on message parsing feature
+
+</li>
+<li>Fixed bug with old socket not being closed when using failover
+
+</li>
+<li>Fixed broken poll method on Connection
+
+</li>
+<li>Fixed broken close method on Client
+
+</li>
+<li>Added connection_frame accessor
+
+</li>
+<li>Added disconnect receipt
+
+</li>
+</ul>
+<h2>1.1.3 20091124</h2>
+<ul>
+<li>Failover support
+
+</li>
+<li>SSL support
+
+</li>
+<li><a href="../classes/Stomp/Connection.html">Stomp::Connection</a> and <a
+href="../classes/Stomp/Client.html">Stomp::Client</a> accept a hash on
+their constructor
+
+</li>
+</ul>
+<h2>1.1 20090227</h2>
+<ul>
+<li>Ruby 1.9 Support
+
+</li>
+<li>Add support for connect_headers, to control the CONNECT command.
+
+</li>
+<li>Refactored lib dir to separate concerns.
+
+</li>
+<li>Better test coverage
+
+</li>
+<li>General code cleanup.
+
+</li>
+</ul>
+<h2>1.0.6 20080805</h2>
+<ul>
+<li>Whitespace cleanup
+
+</li>
+<li>Refactored Rakefile and added stomp.gemspec for GitHub friendliness.
+
+</li>
+<li>Added .gitignore file
+
+</li>
+<li>Refactored layout of lib dir to separate concerns
+
+</li>
+<li>Cleanup of initializers, and provide Client accessors for reading values
+(for testing)
+
+</li>
+<li>Removed test/test_url_* files as they only differed from the test_client.rb
+in their setup. Super UnDry. Added URL tests to cover stomp URL as param.
+
+</li>
+<li>Created initial RSpec specs which stub/mock objects and should not require
+a running <a href="../classes/Stomp.html">Stomp</a> server instance.
+
+</li>
+</ul>
+<h2>v1.0.5 20070201</h2>
+<ul>
+<li>better url parsing
+
+</li>
+<li>git-svn-id: <a
+href="http://svn.codehaus.org/stomp/ruby/trunk@48">svn.codehaus.org/stomp/ruby/trunk@48</a>
+fd4e7336-3dff-0310-b68a-b6615a75f13b
+
+</li>
+</ul>
+<h2>v1.0.4 20070115</h2>
+<ul>
+<li>Allow URL style connections descriptors
+
+</li>
+<li>git-svn-id: <a
+href="http://svn.codehaus.org/stomp/ruby/trunk@44">svn.codehaus.org/stomp/ruby/trunk@44</a>
+fd4e7336-3dff-0310-b68a-b6615a75f13b
+
+</li>
+</ul>
+<h2>v1.0.3 20070114</h2>
+<ul>
+<li>Additional fixes for reliable by Andrew Kuklewicz
+
+</li>
+<li>git-svn-id: <a
+href="http://svn.codehaus.org/stomp/ruby/trunk@42">svn.codehaus.org/stomp/ruby/trunk@42</a>
+fd4e7336-3dff-0310-b68a-b6615a75f13b
+
+</li>
+</ul>
+<h2>v1.0.2 20060922</h2>
+<ul>
+<li>Moving ruby so we can tag it ;-)
+
+</li>
+<li>git-svn-id: <a
+href="http://svn.codehaus.org/stomp/ruby/trunk@37">svn.codehaus.org/stomp/ruby/trunk@37</a>
+fd4e7336-3dff-0310-b68a-b6615a75f13b
+
+</li>
+</ul>
+<h2>v1.0.1 20051217</h2>
+<ul>
+<li>Increment version
+
+</li>
+<li>git-svn-id: <a
+href="http://svn.codehaus.org/stomp/trunk/ruby@24">svn.codehaus.org/stomp/trunk/ruby@24</a>
+fd4e7336-3dff-0310-b68a-b6615a75f13b
+
+</li>
+</ul>
+<h2>v1.0.0 20051015</h2>
+<ul>
+<li>works in repl, getting messages in weird order or dupes in test, but unable
+to isolate so far =(
+
+</li>
+<li>git-svn-id: <a
+href="http://svn.codehaus.org/stomp/trunk/ruby@20">svn.codehaus.org/stomp/trunk/ruby@20</a>
+fd4e7336-3dff-0310-b68a-b6615a75f13b
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

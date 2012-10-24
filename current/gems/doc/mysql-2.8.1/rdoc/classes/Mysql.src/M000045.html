@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>list_dbs (Mysql)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      list_dbs(db=nil)     */
+static VALUE list_dbs(int argc, VALUE* argv, VALUE obj)
+{
+    unsigned int i, n;
+    VALUE db, ret;
+    MYSQL* m = GetHandler(obj);
+    MYSQL_RES* res;
+
+    rb_scan_args(argc, argv, &quot;01&quot;, &amp;db);
+    res = mysql_list_dbs(m, NILorSTRING(db));
+    if (res == NULL)
+        mysql_raise(m);
+
+    n = mysql_num_rows(res);
+    ret = rb_ary_new2(n);
+    for (i=0; i&lt;n; i++)
+        rb_ary_store(ret, i, rb_tainted_str_new2(mysql_fetch_row(res)[0]));
+    mysql_free_result(res);
+    return ret;
+}</pre>
+</body>
+</html>

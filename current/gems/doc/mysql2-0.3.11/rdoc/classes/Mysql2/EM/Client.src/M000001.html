@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>query (Mysql2::EM::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/mysql2/em.rb, line 25</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>={})
+        <span class="ruby-keyword kw">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">EM</span>.<span class="ruby-identifier">reactor_running?</span>
+          <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:async</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>))
+          <span class="ruby-identifier">deferable</span> = <span class="ruby-operator">::</span><span class="ruby-constant">EM</span><span class="ruby-operator">::</span><span class="ruby-constant">DefaultDeferrable</span>.<span class="ruby-identifier">new</span>
+          <span class="ruby-operator">::</span><span class="ruby-constant">EM</span>.<span class="ruby-identifier">watch</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">socket</span>, <span class="ruby-constant">Watcher</span>, <span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">deferable</span>).<span class="ruby-identifier">notify_readable</span> = <span class="ruby-keyword kw">true</span>
+          <span class="ruby-identifier">deferable</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

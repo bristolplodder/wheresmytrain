@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: affected_rows()
+full_name: Mysql::Stmt#affected_rows
+is_singleton: false
+name: affected_rows
+params: ()
+visibility: public

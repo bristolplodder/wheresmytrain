@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README.txt</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README.txt</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README.txt
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 20 09:52:21 +0000 2012</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>MySQL/Ruby Interface</h1>
+<ul>
+<li><a href="http://mysql-win.rubyforge.org">mysql-win.rubyforge.org</a>
+
+</li>
+<li><a
+href="http://rubyforge.org/projects/mysql-win">rubyforge.org/projects/mysql-win</a>
+
+</li>
+<li><a
+href="http://github.com/luislaven/mysql-gem">github.com/luislaven/mysql-gem</a>
+
+</li>
+</ul>
+<h2>DESCRIPTION</h2>
+<p>
+This is the MySQL API module for Ruby. It provides the same functions for
+Ruby programs that the MySQL C API provides for C programs.
+</p>
+<p>
+This is a conversion of tmtm&#8216;s original extension into a proper
+RubyGems.
+</p>
+<h3>Warning about incompatible MySQL versions</h3>
+<p>
+Mixing MySQL versions will generate segmentation faults.
+</p>
+<p>
+Running the binary version of this gem against a different version of MySQL
+shared library <tt>libMySQL.dll</tt> will generate segmentation faults and
+terminate your application.
+</p>
+<p>
+Please use the exact same MAJOR.MINOR version of MySQL, see History.txt for
+specific version of MySQL used to build the binaries.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

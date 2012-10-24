@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test polling with a single thread.
+full_name: TestConnection#test_thread_poll_one
+is_singleton: false
+name: test_thread_poll_one
+params: ()
+visibility: public

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>refine_params (Stomp::Connection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/stomp/connection.rb, line 191</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">refine_params</span>(<span class="ruby-identifier">params</span>)
+      <span class="ruby-identifier">params</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">uncamelize_and_symbolize_keys</span>
+      <span class="ruby-identifier">default_params</span> = {
+        <span class="ruby-identifier">:connect_headers</span> =<span class="ruby-operator">&gt;</span> {},
+        <span class="ruby-identifier">:reliable</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+        <span class="ruby-comment cmt"># Failover parameters</span>
+        <span class="ruby-identifier">:initial_reconnect_delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.01</span>,
+        <span class="ruby-identifier">:max_reconnect_delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">30.0</span>,
+        <span class="ruby-identifier">:use_exponential_back_off</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+        <span class="ruby-identifier">:back_off_multiplier</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>,
+        <span class="ruby-identifier">:max_reconnect_attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>,
+        <span class="ruby-identifier">:randomize</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+        <span class="ruby-identifier">:backup</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+        <span class="ruby-identifier">:connect_timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>,
+        <span class="ruby-comment cmt"># Parse Timeout</span>
+        <span class="ruby-identifier">:parse_timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>,
+        <span class="ruby-identifier">:dmh</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+      }
+
+      <span class="ruby-identifier">res_params</span> = <span class="ruby-identifier">default_params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">params</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">res_params</span>[<span class="ruby-identifier">:dmh</span>]
+        <span class="ruby-identifier">res_params</span> = <span class="ruby-identifier">_expand_hosts</span>(<span class="ruby-identifier">res_params</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">res_params</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

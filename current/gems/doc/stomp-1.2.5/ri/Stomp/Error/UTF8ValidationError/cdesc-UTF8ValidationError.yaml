@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "UTF8ValidationError is raised if:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Stomp 1.1 headers are not valid UTF8.
+  type: :BULLET
+constants: []
+
+full_name: Stomp::Error::UTF8ValidationError
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: message
+- !ruby/object:RI::MethodSummary 
+  name: message
+name: UTF8ValidationError
+superclass: RuntimeError

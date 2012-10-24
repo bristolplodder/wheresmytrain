@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_conn_1p_0040 (TestConnection1P)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_connection1p.rb, line 69</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_conn_1p_0040</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">cha</span> = {<span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;localhost&quot;</span>, <span class="ruby-value str">&quot;accept-version&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.1&quot;</span>}
+    <span class="ruby-identifier">cha</span>[<span class="ruby-identifier">:host</span>] = <span class="ruby-value str">&quot;/&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_RABBIT'</span>]
+    <span class="ruby-identifier">cha</span>[<span class="ruby-value str">&quot;heart-beat&quot;</span>] = <span class="ruby-value str">&quot;0,0&quot;</span> <span class="ruby-comment cmt"># No heartbeats</span>
+    <span class="ruby-identifier">conn</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">assert_nothing_raised</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">conn</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">passcode</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-value">5</span>, <span class="ruby-identifier">cha</span>)
+      <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">disconnect</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">protocol</span>, <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">SPL_11</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

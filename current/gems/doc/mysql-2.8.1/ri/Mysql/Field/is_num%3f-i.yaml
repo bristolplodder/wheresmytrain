@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: is_num?
+full_name: Mysql::Field#is_num?
+is_singleton: false
+name: is_num?
+params: ()
+visibility: public

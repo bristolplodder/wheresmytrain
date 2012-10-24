@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Stomp 1.1 Send/Receive Example - Repeated Headers
+- !ruby/struct:SM::Flow::P 
+  body: "Purpose: to demonstrate sending and receiving using Stomp 1.1, and an unusual aspect of the specification. What is demonstrated here is the use of 'repeated headers'. Note that brokers MAY support repeated headers as demonstrated, but are not required to provide this support. This example should run against the Apollo broker. It will <b>not</b> currently run against RabbitMQ. YMMV depending on your broker."
+- !ruby/struct:SM::Flow::P 
+  body: "See: http://stomp.github.com/stomp-specification-1.1.html#Repeated_Header_Entries"
+constants: []
+
+full_name: RepeatedHeadersExample
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: RepeatedHeadersExample
+superclass: Object

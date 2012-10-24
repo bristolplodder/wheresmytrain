@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>change_host (Stomp::Connection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/stomp/connection.rb, line 219</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">change_host</span>
+      <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:hosts</span>] = <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:hosts</span>].<span class="ruby-identifier">sort_by</span> { <span class="ruby-identifier">rand</span> } <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:randomize</span>]
+
+      <span class="ruby-comment cmt"># Set first as master and send it to the end of array</span>
+      <span class="ruby-identifier">current_host</span> = <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:hosts</span>].<span class="ruby-identifier">shift</span>
+      <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:hosts</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">current_host</span>
+
+      <span class="ruby-ivar">@ssl</span> = <span class="ruby-identifier">current_host</span>[<span class="ruby-identifier">:ssl</span>]
+      <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">current_host</span>[<span class="ruby-identifier">:host</span>]
+      <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">current_host</span>[<span class="ruby-identifier">:port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Connection</span><span class="ruby-operator">::</span><span class="ruby-identifier">default_port</span>(<span class="ruby-ivar">@ssl</span>)
+      <span class="ruby-ivar">@login</span> = <span class="ruby-identifier">current_host</span>[<span class="ruby-identifier">:login</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-ivar">@passcode</span> = <span class="ruby-identifier">current_host</span>[<span class="ruby-identifier">:passcode</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;&quot;</span>
+
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

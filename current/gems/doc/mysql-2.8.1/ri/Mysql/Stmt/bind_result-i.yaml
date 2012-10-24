@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: bind_result(bind,...)
+full_name: Mysql::Stmt#bind_result
+is_singleton: false
+name: bind_result
+params: (...)
+visibility: public

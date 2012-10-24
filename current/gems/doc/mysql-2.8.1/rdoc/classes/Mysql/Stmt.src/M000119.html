@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>send_long_data (Mysql::Stmt)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      send_long_data(col, data)    */
+static VALUE stmt_send_long_data(VALUE obj, VALUE col, VALUE data)
+{
+    struct mysql_stmt* s = DATA_PTR(obj);
+    int c;
+    check_stmt_closed(obj);
+    c = NUM2INT(col);
+    if (0 &lt;= c &amp;&amp; c &lt; s-&gt;param.n) {
+        s-&gt;param.bind[c].buffer_type = MYSQL_TYPE_STRING;
+        if (mysql_stmt_bind_param(s-&gt;stmt, s-&gt;param.bind))
+            mysql_stmt_raise(s-&gt;stmt);
+    }
+    if (mysql_stmt_send_long_data(s-&gt;stmt, c, RSTRING_PTR(data), RSTRING_LEN(data)))
+        mysql_stmt_raise(s-&gt;stmt);
+    return obj;
+}</pre>
+</body>
+</html>

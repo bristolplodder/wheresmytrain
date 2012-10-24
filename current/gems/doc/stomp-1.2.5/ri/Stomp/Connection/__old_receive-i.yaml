@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: __old_receive receives a frame, blocks until the frame is received. <b>NOTE</b> This method will be made private in the next release.
+full_name: Stomp::Connection#__old_receive
+is_singleton: false
+name: __old_receive
+params: ()
+visibility: public

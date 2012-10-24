@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>uuid (Stomp::Connection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/stomp/connection.rb, line 515</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uuid</span>()
+      <span class="ruby-identifier">b</span> = []
+      <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-value">15</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">b</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">rand</span>(<span class="ruby-value">255</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">b</span>[<span class="ruby-value">6</span>] = (<span class="ruby-identifier">b</span>[<span class="ruby-value">6</span>] <span class="ruby-operator">&amp;</span> <span class="ruby-value">0x0</span><span class="ruby-constant">F</span>) <span class="ruby-operator">|</span> <span class="ruby-value">0x40</span>
+      <span class="ruby-identifier">b</span>[<span class="ruby-value">8</span>] = (<span class="ruby-identifier">b</span>[<span class="ruby-value">8</span>] <span class="ruby-operator">&amp;</span> <span class="ruby-value">0xbf</span>) <span class="ruby-operator">|</span> <span class="ruby-value">0x80</span>
+      <span class="ruby-comment cmt">#             0  1  2  3   4   5  6  7   8  9  10 11 12 13 14 15</span>
+      <span class="ruby-identifier">rs</span> = <span class="ruby-identifier">sprintf</span>(<span class="ruby-value str">&quot;%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x%02x%02x&quot;</span>,
+      <span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">2</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">3</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">4</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">5</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">6</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">7</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">8</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">9</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">10</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">11</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">12</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">13</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">14</span>], <span class="ruby-identifier">b</span>[<span class="ruby-value">15</span>])
+      <span class="ruby-identifier">rs</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

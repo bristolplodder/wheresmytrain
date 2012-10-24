@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: open is syntactic sugar for 'Connection.new' See 'initialize' for usage.
+full_name: Stomp::Connection::open
+is_singleton: true
+name: open
+params: (login = '', passcode = '', host = 'localhost', port = 61613, reliable = false, reconnect_delay = 5, connect_headers = {})
+visibility: public

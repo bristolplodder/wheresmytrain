@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test valid UTF8 data.
+full_name: TestConnection1P#test_conn_1p_0110
+is_singleton: false
+name: test_conn_1p_0110
+params: ()
+visibility: public

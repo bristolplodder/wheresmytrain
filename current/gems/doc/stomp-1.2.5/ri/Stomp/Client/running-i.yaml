@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: running checks if the thread was created and is not dead.
+full_name: Stomp::Client#running
+is_singleton: false
+name: running
+params: ()
+visibility: public

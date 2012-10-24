@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Begin starts a transaction, and requires a name for the transaction
+full_name: Stomp::Connection#begin
+is_singleton: false
+name: begin
+params: (name, headers = {})
+visibility: public

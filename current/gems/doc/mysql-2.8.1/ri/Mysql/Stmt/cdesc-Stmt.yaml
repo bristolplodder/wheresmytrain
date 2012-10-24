@@ -1,0 +1,63 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::RULE 
+  width: 10
+- !ruby/struct:SM::Flow::VERB 
+  body: "      Initialize\n"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: ATTR_UPDATE_MAX_LENGTH
+  value: INT2NUM(STMT_ATTR_UPDATE_MAX_LENGTH)
+full_name: Mysql::Stmt
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: affected_rows
+- !ruby/object:RI::MethodSummary 
+  name: attr_get
+- !ruby/object:RI::MethodSummary 
+  name: attr_set
+- !ruby/object:RI::MethodSummary 
+  name: bind_result
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: data_seek
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: execute
+- !ruby/object:RI::MethodSummary 
+  name: fetch
+- !ruby/object:RI::MethodSummary 
+  name: field_count
+- !ruby/object:RI::MethodSummary 
+  name: free_result
+- !ruby/object:RI::MethodSummary 
+  name: insert_id
+- !ruby/object:RI::MethodSummary 
+  name: num_rows
+- !ruby/object:RI::MethodSummary 
+  name: param_count
+- !ruby/object:RI::MethodSummary 
+  name: prepare
+- !ruby/object:RI::MethodSummary 
+  name: reset
+- !ruby/object:RI::MethodSummary 
+  name: result_metadata
+- !ruby/object:RI::MethodSummary 
+  name: row_seek
+- !ruby/object:RI::MethodSummary 
+  name: row_tell
+- !ruby/object:RI::MethodSummary 
+  name: send_long_data
+- !ruby/object:RI::MethodSummary 
+  name: sqlstate
+name: Stmt
+superclass: Object

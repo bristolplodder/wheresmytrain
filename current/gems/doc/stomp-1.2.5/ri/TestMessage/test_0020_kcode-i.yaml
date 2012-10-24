@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: All possible byte values
+full_name: TestMessage#test_0020_kcode
+is_singleton: false
+name: test_0020_kcode
+params: ()
+visibility: public

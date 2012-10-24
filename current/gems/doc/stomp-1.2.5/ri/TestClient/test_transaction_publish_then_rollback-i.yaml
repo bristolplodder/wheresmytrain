@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test transaction publish and abort.
+full_name: TestClient#test_transaction_publish_then_rollback
+is_singleton: false
+name: test_transaction_publish_then_rollback
+params: ()
+visibility: public

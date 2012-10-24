@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: ssl_set(key=nil, cert=nil, ca=nil, capath=nil, cipher=nil)
+full_name: Mysql#ssl_set
+is_singleton: false
+name: ssl_set
+params: (...)
+visibility: public

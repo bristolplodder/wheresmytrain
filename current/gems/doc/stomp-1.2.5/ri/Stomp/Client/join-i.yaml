@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: join the listener thread for this client, generally used to wait for a quit signal.
+full_name: Stomp::Client#join
+is_singleton: false
+name: join
+params: (limit = nil)
+visibility: public

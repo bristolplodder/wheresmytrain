@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: default_port returns the default port used by the gem for TCP or SSL.
+full_name: Stomp::Connection::default_port
+is_singleton: true
+name: default_port
+params: (ssl)
+visibility: public

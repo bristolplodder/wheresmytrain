@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Abort aborts work in a transaction by name.
+full_name: Stomp::Client#abort
+is_singleton: false
+name: abort
+params: (name, headers = {})
+visibility: public

@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: SSL Use Case 1 - server does <b>not</b> authenticate client, client does <b>not</b> authenticate server
+- !ruby/struct:SM::Flow::P 
+  body: Subcase 1.A - Message broker configuration does <b>not</b> require client authentication
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: Expect connection success
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: Expect a verify result of 20 becuase the client did not authenticate the server's certificate.
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: Subcase 1.B - Message broker configuration <b>does</b> require client authentication
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: Expect connection failure (broker must be sent a valid client certificate)
+  type: :BULLET
+constants: []
+
+full_name: ExampleSSL1
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: ExampleSSL1
+superclass: Object

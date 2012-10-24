@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: valid_utf8? returns an indicator if the given string is a valid UTF8 string.
+full_name: Stomp::Connection#valid_utf8?
+is_singleton: false
+name: valid_utf8?
+params: (s)
+visibility: public

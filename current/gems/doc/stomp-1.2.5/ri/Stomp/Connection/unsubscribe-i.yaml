@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Unsubscribe from a destination. A subscription name is required. For Stomp 1.1 a session unique subscription ID is required.
+full_name: Stomp::Connection#unsubscribe
+is_singleton: false
+name: unsubscribe
+params: (dest, headers = {}, subId = nil)
+visibility: public

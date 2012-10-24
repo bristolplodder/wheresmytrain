@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: disconnect closes this connection. If requested, a disconnect RECEIPT is received.
+full_name: Stomp::Connection#disconnect
+is_singleton: false
+name: disconnect
+params: (headers = {})
+visibility: public

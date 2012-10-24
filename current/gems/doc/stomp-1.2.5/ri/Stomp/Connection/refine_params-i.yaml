@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: refine_params sets up defaults for a Hash initialize. <b>NOTE</b> This method will be made private in the next release.
+full_name: Stomp::Connection#refine_params
+is_singleton: false
+name: refine_params
+params: (params)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test that subscription IDs must be unique for a Client.
+full_name: TestClient#test_raise_on_multiple_subscriptions_to_same_id
+is_singleton: false
+name: test_raise_on_multiple_subscriptions_to_same_id
+params: ()
+visibility: public

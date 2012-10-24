@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (HeartBeatExample1)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/conn11_hb1.rb, line 27</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-comment cmt"># Create connection headers</span>
+    <span class="ruby-comment cmt"># =========================</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn_hdrs</span> = {<span class="ruby-value str">&quot;accept-version&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.1&quot;</span>, <span class="ruby-comment cmt"># 1.1</span>
+      <span class="ruby-value str">&quot;host&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">virt_host</span>,                  <span class="ruby-comment cmt"># vhost</span>
+      <span class="ruby-value str">&quot;heart-beat&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;5000,10000&quot;</span>,         <span class="ruby-comment cmt"># heartbeats</span>
+    }
+    <span class="ruby-comment cmt"># Create a logger for demonstration purposes</span>
+    <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Slogger</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-comment cmt"># Connect - a paramaterized request.</span>
+    <span class="ruby-identifier">conn</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">login</span>, <span class="ruby-identifier">passcode</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>,   <span class="ruby-comment cmt"># Normal connect parms</span>
+      <span class="ruby-keyword kw">false</span>,      <span class="ruby-comment cmt"># Not reliable, the default for a paramaterized connection</span>
+      <span class="ruby-value">5</span>,          <span class="ruby-comment cmt"># Connect redelay, the default for a paramaterized connection</span>
+      <span class="ruby-identifier">conn_hdrs</span>)  <span class="ruby-comment cmt"># The 1.1 connection parameters / headers</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Connection connect complete&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unexpected protocol level&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">protocol</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">SPL_11</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">set_logger</span>(<span class="ruby-identifier">logger</span>) <span class="ruby-comment cmt"># Connection uses a logger</span>
+    <span class="ruby-identifier">sleep</span> <span class="ruby-value">65</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">set_logger</span>(<span class="ruby-keyword kw">nil</span>)    <span class="ruby-comment cmt"># No logging</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">disconnect</span>   <span class="ruby-comment cmt"># Get out</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Connection disconnect complete&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

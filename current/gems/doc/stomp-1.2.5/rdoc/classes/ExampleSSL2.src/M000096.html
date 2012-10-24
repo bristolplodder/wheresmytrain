@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (ExampleSSL2)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/ssl_uc2.rb, line 26</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">ts_flist</span> = []
+    <span class="ruby-identifier">ts_flist</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;/home/gmallard/sslwork/twocas_tj/serverCA/ServerTJCA.crt&quot;</span>
+    <span class="ruby-identifier">ssl_opts</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLParams</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:ts_files</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ts_flist</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>))
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">hash</span> = { <span class="ruby-identifier">:hosts</span> =<span class="ruby-operator">&gt;</span> [
+        {<span class="ruby-identifier">:login</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'guest'</span>, <span class="ruby-identifier">:passcode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'guest'</span>, <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'localhost'</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">61612</span>, <span class="ruby-identifier">:ssl</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ssl_opts</span>},
+      ],
+      <span class="ruby-identifier">:reliable</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-comment cmt"># YMMV, to test this in a sane manner</span>
+    }
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Connect starts, SSL Use Case 2&quot;</span>
+    <span class="ruby-identifier">c</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Connect completed&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;SSL Verify Result: #{ssl_opts.verify_result}&quot;</span>
+    <span class="ruby-comment cmt"># puts &quot;SSL Peer Certificate:\n#{ssl_opts.peer_cert}&quot;</span>
+    <span class="ruby-identifier">c</span>.<span class="ruby-identifier">disconnect</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

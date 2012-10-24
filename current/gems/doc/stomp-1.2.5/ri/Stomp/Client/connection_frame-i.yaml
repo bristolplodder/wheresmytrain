@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return the broker's CONNECTED frame to the client. Misnamed.
+full_name: Stomp::Client#connection_frame
+is_singleton: false
+name: connection_frame
+params: ()
+visibility: public

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_1000_check_notneeded (TestCodec)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_codec.rb, line 27</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_1000_check_notneeded</span>
+    <span class="ruby-identifier">test_data</span> = [
+      <span class="ruby-value str">&quot;a&quot;</span>,
+      <span class="ruby-value str">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span>,
+      <span class="ruby-value str">&quot;ªºÀÁ&quot;</span>,
+      <span class="ruby-value str">&quot;AÇBØCꞇDẼ&quot;</span>,
+      <span class="ruby-value str">&quot;ªºÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ&quot;</span> <span class="ruby-operator">+</span> 
+                <span class="ruby-value str">&quot;ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġǄǅǆǇǈǼǽǾǿȀȁȂȃȌȍȒɰɵɲɮᴘᴤᴭᴥᵻᶅ&quot;</span> <span class="ruby-operator">+</span>
+                <span class="ruby-value str">&quot;ᶑṆṌṕṽẄẂỚỘⅱⅲꜨꝐꞂ&quot;</span>,
+      ]
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">test_data</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-identifier">s_decoded</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">HeaderCodec</span><span class="ruby-operator">::</span><span class="ruby-identifier">decode</span>(<span class="ruby-identifier">s</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">s_decoded</span>, <span class="ruby-node">&quot;Sanity check decode: #{s} | #{s_decoded}&quot;</span>
+      <span class="ruby-identifier">s_reencoded</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">HeaderCodec</span><span class="ruby-operator">::</span><span class="ruby-identifier">encode</span>(<span class="ruby-identifier">s_decoded</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">s_decoded</span>, <span class="ruby-identifier">s_reencoded</span>, <span class="ruby-node">&quot;Sanity check reencode: #{s_decoded} | #{s_reencoded}&quot;</span>
+      <span class="ruby-comment cmt">#</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

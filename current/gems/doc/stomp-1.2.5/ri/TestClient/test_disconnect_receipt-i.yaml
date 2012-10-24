@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test requesting a receipt on disconnect.
+full_name: TestClient#test_disconnect_receipt
+is_singleton: false
+name: test_disconnect_receipt
+params: ()
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: prepare(query)
+full_name: Mysql#prepare
+is_singleton: false
+name: prepare
+params: (p1)
+visibility: public

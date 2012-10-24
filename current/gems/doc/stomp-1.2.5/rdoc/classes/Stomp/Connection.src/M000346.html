@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>hashed_initialize (Stomp::Connection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/stomp/connection.rb, line 120</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hashed_initialize</span>(<span class="ruby-identifier">params</span>)
+
+      <span class="ruby-ivar">@parameters</span> = <span class="ruby-identifier">refine_params</span>(<span class="ruby-identifier">params</span>)
+      <span class="ruby-ivar">@reliable</span> =  <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:reliable</span>]
+      <span class="ruby-ivar">@reconnect_delay</span> = <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:initial_reconnect_delay</span>]
+      <span class="ruby-ivar">@connect_headers</span> = <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:connect_headers</span>]
+      <span class="ruby-ivar">@parse_timeout</span> =  <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:parse_timeout</span>]
+      <span class="ruby-ivar">@connect_timeout</span> =  <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:connect_timeout</span>]
+      <span class="ruby-ivar">@logger</span> =  <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:logger</span>]
+      <span class="ruby-ivar">@autoflush</span> = <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:autoflush</span>]
+      <span class="ruby-comment cmt">#sets the first host to connect</span>
+      <span class="ruby-identifier">change_host</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: close frees resources in use by this client. The listener thread is terminated, and disconnect on the connection is called.
+full_name: Stomp::Client#close
+is_singleton: false
+name: close
+params: (headers={})
+visibility: public

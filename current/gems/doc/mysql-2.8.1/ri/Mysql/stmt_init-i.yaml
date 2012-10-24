@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: stmt_init()
+full_name: Mysql#stmt_init
+is_singleton: false
+name: stmt_init
+params: ()
+visibility: public

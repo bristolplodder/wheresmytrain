@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: sha1 returns a SHA1 digest for arbitrary string data.
+full_name: Stomp::Connection#sha1
+is_singleton: false
+name: sha1
+params: (data)
+visibility: public

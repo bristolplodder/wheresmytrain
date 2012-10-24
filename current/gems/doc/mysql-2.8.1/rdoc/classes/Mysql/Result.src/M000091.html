@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>row_tell (Mysql::Result)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      row_tell()   */
+static VALUE row_tell(VALUE obj)
+{
+    MYSQL_ROW_OFFSET offset;
+    check_free(obj);
+    offset = mysql_row_tell(GetMysqlRes(obj));
+    return Data_Wrap_Struct(cMysqlRowOffset, 0, NULL, offset);
+}</pre>
+</body>
+</html>

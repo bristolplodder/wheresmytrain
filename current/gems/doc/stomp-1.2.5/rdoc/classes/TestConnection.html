@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: TestConnection</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">TestConnection</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/test/test_connection_rb.html">
+                test/test_connection.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Test::Unit::TestCase
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000129">setup</a>&nbsp;&nbsp;
+      <a href="#M000130">teardown</a>&nbsp;&nbsp;
+      <a href="#M000137">test_client_ack_with_symbol</a>&nbsp;&nbsp;
+      <a href="#M000141">test_closed_checks_conn</a>&nbsp;&nbsp;
+      <a href="#M000156">test_conn10_simple</a>&nbsp;&nbsp;
+      <a href="#M000140">test_connection_closed?</a>&nbsp;&nbsp;
+      <a href="#M000131">test_connection_exists</a>&nbsp;&nbsp;
+      <a href="#M000144">test_connection_frame</a>&nbsp;&nbsp;
+      <a href="#M000139">test_connection_open?</a>&nbsp;&nbsp;
+      <a href="#M000136">test_disconnect_receipt</a>&nbsp;&nbsp;
+      <a href="#M000153">test_duplicate_subscription</a>&nbsp;&nbsp;
+      <a href="#M000138">test_embedded_null</a>&nbsp;&nbsp;
+      <a href="#M000134">test_explicit_receive</a>&nbsp;&nbsp;
+      <a href="#M000143">test_message_to_s</a>&nbsp;&nbsp;
+      <a href="#M000145">test_messages_with_multipleLine_ends</a>&nbsp;&nbsp;
+      <a href="#M000150">test_multi_thread_poll</a>&nbsp;&nbsp;
+      <a href="#M000149">test_multi_thread_receive</a>&nbsp;&nbsp;
+      <a href="#M000155">test_nack11p_0010</a>&nbsp;&nbsp;
+      <a href="#M000151">test_nil_body</a>&nbsp;&nbsp;
+      <a href="#M000154">test_nil_connparms</a>&nbsp;&nbsp;
+      <a href="#M000133">test_no_length</a>&nbsp;&nbsp;
+      <a href="#M000132">test_poll_async</a>&nbsp;&nbsp;
+      <a href="#M000146">test_publish_two_messages</a>&nbsp;&nbsp;
+      <a href="#M000135">test_receipt</a>&nbsp;&nbsp;
+      <a href="#M000142">test_response_is_instance_of_message_class</a>&nbsp;&nbsp;
+      <a href="#M000147">test_thread_hang_one</a>&nbsp;&nbsp;
+      <a href="#M000148">test_thread_poll_one</a>&nbsp;&nbsp;
+      <a href="#M000152">test_transaction</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="TestBase.html">TestBase</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000129" class="method-detail">
+        <a name="M000129"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000129.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000129.html');return false;">
+          <span class="method-name">setup</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000130" class="method-detail">
+        <a name="M000130"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000130.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000130.html');return false;">
+          <span class="method-name">teardown</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000137" class="method-detail">
+        <a name="M000137"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000137.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000137.html');return false;">
+          <span class="method-name">test_client_ack_with_symbol</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test ACKs using symbols for header keys.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000141" class="method-detail">
+        <a name="M000141"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000141.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000141.html');return false;">
+          <span class="method-name">test_closed_checks_conn</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that methods detect a closed connection.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000156" class="method-detail">
+        <a name="M000156"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000156.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000156.html');return false;">
+          <span class="method-name">test_conn10_simple</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test to illustrate Issue 44. Prior to a fix for 44, these tests would fail
+only when connecting to a pure STOMP 1.0 server that does not return a
+&#8216;version&#8217; header at all.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000140" class="method-detail">
+        <a name="M000140"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000140.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000140.html');return false;">
+          <span class="method-name">test_connection_closed?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test connection closed checking.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000131" class="method-detail">
+        <a name="M000131"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000131.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000131.html');return false;">
+          <span class="method-name">test_connection_exists</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test basic connection creation.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000144" class="method-detail">
+        <a name="M000144"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000144.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000144.html');return false;">
+          <span class="method-name">test_connection_frame</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that a connection frame is present.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000139" class="method-detail">
+        <a name="M000139"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000139.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000139.html');return false;">
+          <span class="method-name">test_connection_open?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test connection open checking.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000136" class="method-detail">
+        <a name="M000136"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000136.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000136.html');return false;">
+          <span class="method-name">test_disconnect_receipt</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test asking for a receipt on disconnect.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000153" class="method-detail">
+        <a name="M000153"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000153.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000153.html');return false;">
+          <span class="method-name">test_duplicate_subscription</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test duplicate subscriptions.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000138" class="method-detail">
+        <a name="M000138"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000138.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000138.html');return false;">
+          <span class="method-name">test_embedded_null</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test a message with 0x00 embedded in the body.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000134" class="method-detail">
+        <a name="M000134"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000134.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000134.html');return false;">
+          <span class="method-name">test_explicit_receive</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test direct / explicit receive.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000143" class="method-detail">
+        <a name="M000143"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000143.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000143.html');return false;">
+          <span class="method-name">test_message_to_s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test converting a Message to a string.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000145" class="method-detail">
+        <a name="M000145"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000145.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000145.html');return false;">
+          <span class="method-name">test_messages_with_multipleLine_ends</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test messages with multiple line ends.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000150" class="method-detail">
+        <a name="M000150"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000150.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000150.html');return false;">
+          <span class="method-name">test_multi_thread_poll</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test polling with multiple threads.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000149" class="method-detail">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000149.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000149.html');return false;">
+          <span class="method-name">test_multi_thread_receive</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test receiving with multiple threads.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000155" class="method-detail">
+        <a name="M000155"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000155.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000155.html');return false;">
+          <span class="method-name">test_nack11p_0010</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Basic NAK test.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000151" class="method-detail">
+        <a name="M000151"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000151.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000151.html');return false;">
+          <span class="method-name">test_nil_body</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test using a nil body.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000154" class="method-detail">
+        <a name="M000154"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000154.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000154.html');return false;">
+          <span class="method-name">test_nil_connparms</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test nil 1.1 connection parameters.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000133" class="method-detail">
+        <a name="M000133"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000133.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000133.html');return false;">
+          <span class="method-name">test_no_length</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test suppression of content length header.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000132" class="method-detail">
+        <a name="M000132"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000132.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000132.html');return false;">
+          <span class="method-name">test_poll_async</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test asynchronous polling.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000146" class="method-detail">
+        <a name="M000146"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000146.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000146.html');return false;">
+          <span class="method-name">test_publish_two_messages</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test publishing multiple messages.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000135" class="method-detail">
+        <a name="M000135"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000135.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000135.html');return false;">
+          <span class="method-name">test_receipt</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test asking for a receipt.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000142" class="method-detail">
+        <a name="M000142"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000142.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000142.html');return false;">
+          <span class="method-name">test_response_is_instance_of_message_class</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that we receive a <a href="Stomp/Message.html">Stomp::Message</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000147" class="method-detail">
+        <a name="M000147"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000147.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000147.html');return false;">
+          <span class="method-name">test_thread_hang_one</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000148" class="method-detail">
+        <a name="M000148"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000148.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000148.html');return false;">
+          <span class="method-name">test_thread_poll_one</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test polling with a single thread.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000152" class="method-detail">
+        <a name="M000152"></a>
+
+        <div class="method-heading">
+          <a href="TestConnection.src/M000152.html" target="Code" class="method-signature"
+            onclick="popupCode('TestConnection.src/M000152.html');return false;">
+          <span class="method-name">test_transaction</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test transaction message sequencing.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

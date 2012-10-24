@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: change_host selects the next host for retires. <b>NOTE</b> This method will be made private in the next release.
+full_name: Stomp::Connection#change_host
+is_singleton: false
+name: change_host
+params: ()
+visibility: public

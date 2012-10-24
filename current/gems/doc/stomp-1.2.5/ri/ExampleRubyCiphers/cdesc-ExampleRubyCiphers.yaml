@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: "Example: Use Ruby Supplied Ciphers"
+- !ruby/struct:SM::Flow::P 
+  body: If you use SSLParams, and need the <em>default</em> Ruby ciphers, this is how.
+- !ruby/struct:SM::Flow::P 
+  body: "NOTE: JRuby users may find that this is a <b>required</b> action. YMMV."
+constants: []
+
+full_name: ExampleRubyCiphers
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: ExampleRubyCiphers
+superclass: Object

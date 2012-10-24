@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: autoflush= sets the current connection's autoflush setting.
+full_name: Stomp::Client#autoflush=
+is_singleton: false
+name: autoflush=
+params: (af)
+visibility: public

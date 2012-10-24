@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test that the codec does nothing to strings that do not need encoding.
+full_name: TestCodec#test_1000_check_notneeded
+is_singleton: false
+name: test_1000_check_notneeded
+params: ()
+visibility: public

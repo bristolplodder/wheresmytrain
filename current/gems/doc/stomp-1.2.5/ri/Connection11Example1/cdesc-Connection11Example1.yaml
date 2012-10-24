@@ -1,0 +1,77 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Stomp 1.1 Connection Example 1
+- !ruby/struct:SM::Flow::P 
+  body: "Purpose: to demonstrate a connect and disconnect sequence using Stomp 1.1."
+- !ruby/struct:SM::Flow::P 
+  body: "Note: this example assumes that you have at least the 1.2.0 gem release installed."
+- !ruby/struct:SM::Flow::P 
+  body: "When you:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Use a Stomp 1.1 compliant broker
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Want a Stomp 1.1 level connection and functionality
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: then your code <b>must</b> specifically request that environment.
+- !ruby/struct:SM::Flow::P 
+  body: "You need to supply all of the normal values expected of course:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: login - the user name
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: passcode - the password
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: host - the host to connect to
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: port - the port to connect to
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: "Additionaly you are required to supply the 1.1 connection data as documented in the Stomp 1.1 specification: http://stomp.github.com/stomp-specification-1.1.html You are urged to become familiar with the spec. It is a short document."
+- !ruby/struct:SM::Flow::P 
+  body: "This includes:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: The Stomp version(s) you wish the broker to consider
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: The broker vhost to connect to
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: "You may optionally specify other 1.1 data:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: heartbeat request
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: Using the stomp gem, you can specify this data in the &quot;connect_headers&quot; Hash parameter or a paramaterized connection request. This example uses a parameterized request.
+constants: []
+
+full_name: Connection11Example1
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: Connection11Example1
+superclass: Object

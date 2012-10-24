@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Mysql::Time)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*-------------------------------
+ * Mysql::Time object method
+ */
+
+static VALUE time_initialize(int argc, VALUE* argv, VALUE obj)
+{
+    VALUE year, month, day, hour, minute, second, neg, second_part;
+    rb_scan_args(argc, argv, &quot;08&quot;, &amp;year, &amp;month, &amp;day, &amp;hour, &amp;minute, &amp;second, &amp;neg, &amp;second_part);
+#define NILorFIXvalue(o)        (NIL_P(o) ? INT2FIX(0) : (Check_Type(o, T_FIXNUM), o))
+    rb_iv_set(obj, &quot;year&quot;, NILorFIXvalue(year));
+    rb_iv_set(obj, &quot;month&quot;, NILorFIXvalue(month));
+    rb_iv_set(obj, &quot;day&quot;, NILorFIXvalue(day));
+    rb_iv_set(obj, &quot;hour&quot;, NILorFIXvalue(hour));
+    rb_iv_set(obj, &quot;minute&quot;, NILorFIXvalue(minute));
+    rb_iv_set(obj, &quot;second&quot;, NILorFIXvalue(second));
+    rb_iv_set(obj, &quot;neg&quot;, (neg == Qnil || neg == Qfalse) ? Qfalse : Qtrue);
+    rb_iv_set(obj, &quot;second_part&quot;, NILorFIXvalue(second_part));
+    return obj;
+}</pre>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>change_user (Mysql)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      change_user(user=nil, passwd=nil, db=nil)    */
+static VALUE change_user(int argc, VALUE* argv, VALUE obj)
+{
+    VALUE user, passwd, db;
+    char *u, *p, *d;
+    MYSQL* m = GetHandler(obj);
+    rb_scan_args(argc, argv, &quot;03&quot;, &amp;user, &amp;passwd, &amp;db);
+    u = NILorSTRING(user);
+    p = NILorSTRING(passwd);
+    d = NILorSTRING(db);
+    if (mysql_change_user(m, u, p, d) != 0)
+        mysql_raise(m);
+    return obj;
+}</pre>
+</body>
+</html>

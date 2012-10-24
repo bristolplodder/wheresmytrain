@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Mysql2::EM::Client::Watcher#notify_readable
+is_singleton: false
+name: notify_readable
+params: ()
+visibility: public

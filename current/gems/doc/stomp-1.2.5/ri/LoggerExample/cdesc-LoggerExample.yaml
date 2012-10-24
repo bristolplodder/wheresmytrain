@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: A STOMP::Connection program which uses the callback logging facility.
+constants: []
+
+full_name: LoggerExample
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: LoggerExample
+superclass: Object

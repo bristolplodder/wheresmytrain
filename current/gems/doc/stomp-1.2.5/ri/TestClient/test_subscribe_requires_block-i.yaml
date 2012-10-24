@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test that Client subscribe requires a block.
+full_name: TestClient#test_subscribe_requires_block
+is_singleton: false
+name: test_subscribe_requires_block
+params: ()
+visibility: public

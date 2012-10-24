@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: hbsend_count returns the current connection's heartbeat send count.
+full_name: Stomp::Connection#hbsend_count
+is_singleton: false
+name: hbsend_count
+params: ()
+visibility: public

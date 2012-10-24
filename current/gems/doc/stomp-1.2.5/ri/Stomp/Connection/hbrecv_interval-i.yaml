@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: hbrecv_interval returns the connection's heartbeat receive interval.
+full_name: Stomp::Connection#hbrecv_interval
+is_singleton: false
+name: hbrecv_interval
+params: ()
+visibility: public

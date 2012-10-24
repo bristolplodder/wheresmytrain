@@ -1,0 +1,114 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Example STOMP call back logger class.
+- !ruby/struct:SM::Flow::P 
+  body: "Optional callback methods:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_connecting: connection starting"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_connected: successful connect"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_connectfail: unsuccessful connect (will usually be retried)"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_disconnect: successful disconnect"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_miscerr: on miscellaneous xmit/recv errors"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_publish: publish called"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_subscribe: subscribe called"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_receive: receive called and successful"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_ssl_connecting: SSL connection starting"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_ssl_connected: successful SSL connect"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_ssl_connectfail: unsuccessful SSL connect (will usually be retried)"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_hbread_fail: unsuccessful Heartbeat read"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_hbwrite_fail: unsuccessful Heartbeat write"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "on_hbfire: on any send or receive heartbeat"
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: All methods are optional, at the user's requirements.
+- !ruby/struct:SM::Flow::P 
+  body: If a method is not provided, it is not called (of course.)
+- !ruby/struct:SM::Flow::P 
+  body: "IMPORTANT NOTE: in general, call back logging methods <b>SHOULD</b> not raise exceptions, otherwise the underlying STOMP connection may fail in mysterious ways."
+- !ruby/struct:SM::Flow::P 
+  body: "There are two useful exceptions to this rule for:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: on_connectfail
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: on_ssl_connectfail
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: These two methods can raise a Stomp::Errors::LoggerConnectionError. If this exception is raised, it is passed up the chain to the caller.
+- !ruby/struct:SM::Flow::P 
+  body: "Callback parameters: are a copy of the @parameters instance variable for the Stomp::Connection."
+constants: []
+
+full_name: Slogger
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: on_connected
+- !ruby/object:RI::MethodSummary 
+  name: on_connectfail
+- !ruby/object:RI::MethodSummary 
+  name: on_connecting
+- !ruby/object:RI::MethodSummary 
+  name: on_disconnect
+- !ruby/object:RI::MethodSummary 
+  name: on_hbfire
+- !ruby/object:RI::MethodSummary 
+  name: on_hbread_fail
+- !ruby/object:RI::MethodSummary 
+  name: on_hbwrite_fail
+- !ruby/object:RI::MethodSummary 
+  name: on_miscerr
+- !ruby/object:RI::MethodSummary 
+  name: on_publish
+- !ruby/object:RI::MethodSummary 
+  name: on_receive
+- !ruby/object:RI::MethodSummary 
+  name: on_ssl_connected
+- !ruby/object:RI::MethodSummary 
+  name: on_ssl_connectfail
+- !ruby/object:RI::MethodSummary 
+  name: on_ssl_connecting
+- !ruby/object:RI::MethodSummary 
+  name: on_subscribe
+name: Slogger
+superclass: Object

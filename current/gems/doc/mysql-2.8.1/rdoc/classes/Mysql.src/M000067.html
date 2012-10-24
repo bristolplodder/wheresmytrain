@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>stmt_init (Mysql)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      stmt_init()  */
+static VALUE stmt_init(VALUE obj)
+{
+    MYSQL *m = GetHandler(obj);
+    MYSQL_STMT *s;
+    struct mysql_stmt* stmt;
+    my_bool true = 1;
+    VALUE st_obj;
+
+    if ((s = mysql_stmt_init(m)) == NULL)
+        mysql_raise(m);
+    if (mysql_stmt_attr_set(s, STMT_ATTR_UPDATE_MAX_LENGTH, &amp;true))
+        rb_raise(rb_eArgError, &quot;mysql_stmt_attr_set() failed&quot;);
+    st_obj = Data_Make_Struct(cMysqlStmt, struct mysql_stmt, 0, free_mysqlstmt, stmt);
+    memset(stmt, 0, sizeof(*stmt));
+    stmt-&gt;stmt = s;
+    stmt-&gt;closed = Qfalse;
+    return st_obj;
+}</pre>
+</body>
+</html>

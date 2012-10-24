@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (ExampleConsumer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/consumer.rb, line 13</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+  <span class="ruby-identifier">client</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;failover://(stomp://:@localhost:61613,stomp://:@remotehost:61613)?initialReconnectDelay=5000&amp;randomize=false&amp;useExponentialBackOff=false&quot;</span>)
+  <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Subscribing ronaldo&quot;</span>
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value str">&quot;/queue/ronaldo&quot;</span>, {<span class="ruby-identifier">:ack</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;client&quot;</span>, <span class="ruby-value str">&quot;activemq.prefetchSize&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-value str">&quot;activemq.exclusive&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-value str">&quot;file&quot;</span>, <span class="ruby-value str">&quot;a&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">msg</span>.<span class="ruby-identifier">body</span>)
+      <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-value str">&quot;\n----------------\n&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">acknowledge</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword kw">end</span>
+
+  <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;.&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README.rdoc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README.rdoc</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README.rdoc
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 20 09:52:00 +0000 2012</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2>README</h2>
+<ul>
+<li>(<a
+href="https://github.com/stompgem/stomp">github.com/stompgem/stomp</a>/)
+
+</li>
+</ul>
+<h3>Overview</h3>
+<p>
+An implementation of the <a href="../classes/Stomp.html">Stomp</a> protocol
+for Ruby. See:
+</p>
+<ul>
+<li>[STOMP 1.0 and 1.1] (<a
+href="http://stomp.github.com/index.html">stomp.github.com/index.html</a>)
+
+</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Gem version 1.2.5. Restructure. Forks with modifcations will be affected.
+See _CHANGELOG.rdoc_ for details.
+
+</li>
+<li>Gem version 1.2.4. <a href="../classes/Stomp.html">Stomp</a> 1.1 heartbeat
+fix, autoflush capability, miscellaneous fixes.
+
+</li>
+<li>Gem version 1.2.3. Miscellaneous fixes, see changelog for details.
+
+</li>
+<li>Gem version 1.2.2. Performance and more SSL enhancements.
+
+</li>
+<li>Full support of SSL certificates is announced as of gem version 1.2.1.
+
+</li>
+<li>Support of <a href="../classes/Stomp.html">Stomp</a> protocol level 1.1 is
+announced as of gem version 1.2.0.
+
+</li>
+</ul>
+<p>
+See _CHANGELOG.rdoc_ for details.
+</p>
+<h3><a href="../classes/Hash.html">Hash</a> Login Example Usage (this is the recommended login technique)</h3>
+<pre>
+  hash = {
+      :hosts =&gt; [
+        {:login =&gt; &quot;login1&quot;, :passcode =&gt; &quot;passcode1&quot;, :host =&gt; &quot;remotehost1&quot;, :port =&gt; 61612, :ssl =&gt; true},
+        {:login =&gt; &quot;login2&quot;, :passcode =&gt; &quot;passcode2&quot;, :host =&gt; &quot;remotehost2&quot;, :port =&gt; 61613, :ssl =&gt; false},
+
+      ],
+      # These are the default parameters, don't need to be set
+      :reliable =&gt; true, # true for hash login
+      :initial_reconnect_delay =&gt; 0.01,
+      :max_reconnect_delay =&gt; 30.0,
+      :use_exponential_back_off =&gt; true,
+      :back_off_multiplier =&gt; 2,
+      :max_reconnect_attempts =&gt; 0,
+      :randomize =&gt; false,
+      :backup =&gt; false,
+      :timeout =&gt; -1,
+      :connect_headers =&gt; {},
+      :parse_timeout =&gt; 5,
+      :logger =&gt; nil,
+    }
+
+    # for client
+    client = Stomp::Client.new(hash)
+
+    # for connection
+    connection = Stomp::Connection.new(hash)
+</pre>
+<h3>Positional Parameter Usage</h3>
+<pre>
+    client = Stomp::Client.new(&quot;test&quot;, &quot;user&quot;, &quot;localhost&quot;, 61613)
+    client.send(&quot;/queue/mine&quot;, &quot;hello world!&quot;)
+    client.subscribe(&quot;/queue/mine&quot;) do |msg|
+      p msg
+    end
+</pre>
+<h3><a href="../classes/Stomp.html">Stomp</a> URL Usage</h3>
+<pre>
+    # Stomp URL :
+    A Stomp URL must begin with 'stomp://' and can be in one of the following forms:
+
+    stomp://host:port
+    stomp://host.domain.tld:port
+    stomp://login:passcode@host:port
+    stomp://login:passcode@host.domain.tld:port
+
+    e.g. c = Stomp::Client.new(urlstring)
+</pre>
+<h3>Failover + SSL Example URL Usage</h3>
+<pre>
+    options = &quot;initialReconnectDelay=5000&amp;randomize=false&amp;useExponentialBackOff=false&quot;
+
+    # remotehost1 uses SSL, remotehost2 doesn't
+    client = Stomp::Client.new(&quot;failover:(stomp+ssl://login1:passcode1@remotehost1:61612,stomp://login2:passcode2@remotehost2:61613)?#{options}&quot;)
+
+    client.publish(&quot;/queue/mine&quot;, &quot;hello world!&quot;)
+    client.subscribe(&quot;/queue/mine&quot;) do |msg|
+      p msg
+    end
+</pre>
+<h3>Historical Information</h3>
+<p>
+Up until March 2009 the project was maintained and primarily developed by
+Brian McCallister.
+</p>
+<h3>Source Code and Project URLs</h3>
+<pre>
+  https://github.com/stompgem/stomp/
+</pre>
+<h3><a href="../classes/Stomp.html">Stomp</a> Protocol Information :</h3>
+<pre>
+  http://stomp.github.com/index.html
+</pre>
+<h1>Contributors</h1>
+<p>
+The following people have contributed to <a
+href="../classes/Stomp.html">Stomp</a>:
+</p>
+<ul>
+<li>Brian McCallister
+
+</li>
+<li>Glenn Rempe &lt;glenn@rempe.us&gt;
+
+</li>
+<li>jstrachan
+
+</li>
+<li>Marius Mathiesen &lt;marius.mathiesen@gmail.com&gt;
+
+</li>
+<li>Johan S√∏rensen &lt;johan@johansorensen.com&gt;
+
+</li>
+<li>Thiago Morello &lt;stompgem@gmail.com&gt;
+
+</li>
+<li>Guy M. Allard
+
+</li>
+<li>kookster
+
+</li>
+<li>Tony Garnock-Jones &lt;tonyg@lshift.net&gt;
+
+</li>
+<li>chirino
+
+</li>
+<li>Stefan Saasen
+
+</li>
+<li>Neil Wilson
+
+</li>
+<li>Dinesh Majrekar
+
+</li>
+<li>Kiall Mac Innes
+
+</li>
+<li>Rob Skaggs
+
+</li>
+<li>Tom May
+
+</li>
+<li>Lucas Hills
+
+</li>
+<li>Chris Needham
+
+</li>
+<li>R.I. Pienaar
+
+</li>
+<li>tworker
+
+</li>
+<li>James Pearson
+
+</li>
+<li>Craig
+
+</li>
+<li>Tommy Bishop
+
+</li>
+<li>Jeremy Gailor
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

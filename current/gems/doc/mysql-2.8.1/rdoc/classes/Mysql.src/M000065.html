@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>autocommit (Mysql)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      autocommit() */
+static VALUE autocommit(VALUE obj, VALUE mode)
+{
+    MYSQL* m = GetHandler(obj);
+    int f;
+    f = (mode == Qnil || mode == Qfalse || (rb_type(mode) == T_FIXNUM &amp;&amp; NUM2INT(mode) == 0)) ? 0 : 1;
+    if (mysql_autocommit(m, f) != 0)
+        mysql_raise(m);
+    return obj;
+}</pre>
+</body>
+</html>

@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: TestMessage
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: TestBase
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: setup
+- !ruby/object:RI::MethodSummary 
+  name: teardown
+- !ruby/object:RI::MethodSummary 
+  name: test_0010_kcode
+- !ruby/object:RI::MethodSummary 
+  name: test_0020_kcode
+- !ruby/object:RI::MethodSummary 
+  name: test_0030_kcode
+- !ruby/object:RI::MethodSummary 
+  name: test_0040_msg_create
+- !ruby/object:RI::MethodSummary 
+  name: test_0050_mh_msg_create
+name: TestMessage
+superclass: Test::Unit::TestCase

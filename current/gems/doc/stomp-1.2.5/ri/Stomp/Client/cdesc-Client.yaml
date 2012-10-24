@@ -1,0 +1,212 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The Stomp host specified by the client.
+  name: host
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The Stomp host specified by the client.
+  name: host
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The login ID used by the client.
+  name: login
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The login ID used by the client.
+  name: login
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Parameters Hash, possibly nil for a non-hashed connect.
+  name: parameters
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Parameters Hash, possibly nil for a non-hashed connect.
+  name: parameters
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The login credentials used by the client.
+  name: passcode
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The login credentials used by the client.
+  name: passcode
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The Stomp host's listening port.
+  name: port
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The Stomp host's listening port.
+  name: port
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Is this connection reliable?
+  name: reliable
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Is this connection reliable?
+  name: reliable
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: open
+- !ruby/object:RI::MethodSummary 
+  name: open
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Typical Stomp client class. Uses a listener thread to receive frames from the server, any thread can send.
+- !ruby/struct:SM::Flow::P 
+  body: Receives all happen in one thread, so consider not doing much processing in that thread if you have much message volume.
+constants: []
+
+full_name: Stomp::Client
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: abort
+- !ruby/object:RI::MethodSummary 
+  name: abort
+- !ruby/object:RI::MethodSummary 
+  name: acknowledge
+- !ruby/object:RI::MethodSummary 
+  name: acknowledge
+- !ruby/object:RI::MethodSummary 
+  name: autoflush
+- !ruby/object:RI::MethodSummary 
+  name: autoflush
+- !ruby/object:RI::MethodSummary 
+  name: autoflush=
+- !ruby/object:RI::MethodSummary 
+  name: autoflush=
+- !ruby/object:RI::MethodSummary 
+  name: begin
+- !ruby/object:RI::MethodSummary 
+  name: begin
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: closed?
+- !ruby/object:RI::MethodSummary 
+  name: closed?
+- !ruby/object:RI::MethodSummary 
+  name: commit
+- !ruby/object:RI::MethodSummary 
+  name: commit
+- !ruby/object:RI::MethodSummary 
+  name: connection_frame
+- !ruby/object:RI::MethodSummary 
+  name: connection_frame
+- !ruby/object:RI::MethodSummary 
+  name: disconnect_receipt
+- !ruby/object:RI::MethodSummary 
+  name: disconnect_receipt
+- !ruby/object:RI::MethodSummary 
+  name: hbrecv_count
+- !ruby/object:RI::MethodSummary 
+  name: hbrecv_count
+- !ruby/object:RI::MethodSummary 
+  name: hbrecv_interval
+- !ruby/object:RI::MethodSummary 
+  name: hbrecv_interval
+- !ruby/object:RI::MethodSummary 
+  name: hbsend_count
+- !ruby/object:RI::MethodSummary 
+  name: hbsend_count
+- !ruby/object:RI::MethodSummary 
+  name: hbsend_interval
+- !ruby/object:RI::MethodSummary 
+  name: hbsend_interval
+- !ruby/object:RI::MethodSummary 
+  name: join
+- !ruby/object:RI::MethodSummary 
+  name: join
+- !ruby/object:RI::MethodSummary 
+  name: nack
+- !ruby/object:RI::MethodSummary 
+  name: nack
+- !ruby/object:RI::MethodSummary 
+  name: obj_send
+- !ruby/object:RI::MethodSummary 
+  name: obj_send
+- !ruby/object:RI::MethodSummary 
+  name: open?
+- !ruby/object:RI::MethodSummary 
+  name: open?
+- !ruby/object:RI::MethodSummary 
+  name: poll
+- !ruby/object:RI::MethodSummary 
+  name: poll
+- !ruby/object:RI::MethodSummary 
+  name: protocol
+- !ruby/object:RI::MethodSummary 
+  name: protocol
+- !ruby/object:RI::MethodSummary 
+  name: publish
+- !ruby/object:RI::MethodSummary 
+  name: publish
+- !ruby/object:RI::MethodSummary 
+  name: running
+- !ruby/object:RI::MethodSummary 
+  name: running
+- !ruby/object:RI::MethodSummary 
+  name: set_logger
+- !ruby/object:RI::MethodSummary 
+  name: set_logger
+- !ruby/object:RI::MethodSummary 
+  name: sha1
+- !ruby/object:RI::MethodSummary 
+  name: sha1
+- !ruby/object:RI::MethodSummary 
+  name: subscribe
+- !ruby/object:RI::MethodSummary 
+  name: subscribe
+- !ruby/object:RI::MethodSummary 
+  name: unreceive
+- !ruby/object:RI::MethodSummary 
+  name: unreceive
+- !ruby/object:RI::MethodSummary 
+  name: unsubscribe
+- !ruby/object:RI::MethodSummary 
+  name: unsubscribe
+- !ruby/object:RI::MethodSummary 
+  name: uuid
+- !ruby/object:RI::MethodSummary 
+  name: uuid
+- !ruby/object:RI::MethodSummary 
+  name: valid_utf8?
+- !ruby/object:RI::MethodSummary 
+  name: valid_utf8?
+name: Client
+superclass: Object

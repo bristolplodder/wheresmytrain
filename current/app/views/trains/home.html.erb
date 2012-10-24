@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ruby on Rails Tutorial Sample App | Home</title>
+  </head>
+  <body>
+    <h1>Sample App</h1>
+    <p>
+      This is the home page for the
+      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+      sample application.
+      This is where the main text is </br>
+      <% @rs = ActiveRecord::Base.connection.execute("SELECT * from all_trains") %>
+      <%= "    " %>
+      <% x=0 %><% @rs.each do |user| %> <td><%=h user[0]+"   "+user[1]+"   "+ user[2]+"   "+user[3]+"   "%><%=x%></td></br> <%x=x+1 end %>
+      <%= @rs.fetch_row %>
+      <%=x%>
+      <%=puts y%>
+             
+    </p>
+  </body>
+</html>

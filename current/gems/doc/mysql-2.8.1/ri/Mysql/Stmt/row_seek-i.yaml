@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: row_seek(offset)
+full_name: Mysql::Stmt#row_seek
+is_singleton: false
+name: row_seek
+params: (p1)
+visibility: public

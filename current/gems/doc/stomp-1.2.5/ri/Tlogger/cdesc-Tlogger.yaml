@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Tlogger
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: on_connected
+- !ruby/object:RI::MethodSummary 
+  name: on_connectfail
+- !ruby/object:RI::MethodSummary 
+  name: on_connecting
+- !ruby/object:RI::MethodSummary 
+  name: on_disconnect
+- !ruby/object:RI::MethodSummary 
+  name: on_hbfire
+- !ruby/object:RI::MethodSummary 
+  name: on_hbread_fail
+- !ruby/object:RI::MethodSummary 
+  name: on_hbread_fail
+- !ruby/object:RI::MethodSummary 
+  name: on_hbwrite_fail
+- !ruby/object:RI::MethodSummary 
+  name: on_miscerr
+- !ruby/object:RI::MethodSummary 
+  name: on_publish
+- !ruby/object:RI::MethodSummary 
+  name: on_receive
+- !ruby/object:RI::MethodSummary 
+  name: on_subscribe
+name: Tlogger
+superclass: Object

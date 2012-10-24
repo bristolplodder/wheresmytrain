@@ -1,0 +1,334 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: client_info
+- !ruby/object:RI::MethodSummary 
+  name: client_version
+- !ruby/object:RI::MethodSummary 
+  name: connect
+- !ruby/object:RI::MethodSummary 
+  name: debug
+- !ruby/object:RI::MethodSummary 
+  name: escape_string
+- !ruby/object:RI::MethodSummary 
+  name: get_client_info
+- !ruby/object:RI::MethodSummary 
+  name: get_client_version
+- !ruby/object:RI::MethodSummary 
+  name: init
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: quote
+- !ruby/object:RI::MethodSummary 
+  name: real_connect
+comment: 
+- !ruby/struct:SM::Flow::RULE 
+  width: 10
+- !ruby/struct:SM::Flow::VERB 
+  body: "      Initialize\n"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Mysql constant
+  name: VERSION
+  value: INT2FIX(MYSQL_RUBY_VERSION)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_CONNECT_TIMEOUT
+  value: INT2NUM(MYSQL_OPT_CONNECT_TIMEOUT)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_COMPRESS
+  value: INT2NUM(MYSQL_OPT_COMPRESS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_NAMED_PIPE
+  value: INT2NUM(MYSQL_OPT_NAMED_PIPE)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: INIT_COMMAND
+  value: INT2NUM(MYSQL_INIT_COMMAND)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: READ_DEFAULT_FILE
+  value: INT2NUM(MYSQL_READ_DEFAULT_FILE)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: READ_DEFAULT_GROUP
+  value: INT2NUM(MYSQL_READ_DEFAULT_GROUP)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SET_CHARSET_DIR
+  value: INT2NUM(MYSQL_SET_CHARSET_DIR)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SET_CHARSET_NAME
+  value: INT2NUM(MYSQL_SET_CHARSET_NAME)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_LOCAL_INFILE
+  value: INT2NUM(MYSQL_OPT_LOCAL_INFILE)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_PROTOCOL
+  value: INT2NUM(MYSQL_OPT_PROTOCOL)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SHARED_MEMORY_BASE_NAME
+  value: INT2NUM(MYSQL_SHARED_MEMORY_BASE_NAME)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_READ_TIMEOUT
+  value: INT2NUM(MYSQL_OPT_READ_TIMEOUT)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_WRITE_TIMEOUT
+  value: INT2NUM(MYSQL_OPT_WRITE_TIMEOUT)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SECURE_AUTH
+  value: INT2NUM(MYSQL_SECURE_AUTH)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_GUESS_CONNECTION
+  value: INT2NUM(MYSQL_OPT_GUESS_CONNECTION)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_USE_EMBEDDED_CONNECTION
+  value: INT2NUM(MYSQL_OPT_USE_EMBEDDED_CONNECTION)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPT_USE_REMOTE_CONNECTION
+  value: INT2NUM(MYSQL_OPT_USE_REMOTE_CONNECTION)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SET_CLIENT_IP
+  value: INT2NUM(MYSQL_SET_CLIENT_IP)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REFRESH_GRANT
+  value: INT2NUM(REFRESH_GRANT)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REFRESH_LOG
+  value: INT2NUM(REFRESH_LOG)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REFRESH_TABLES
+  value: INT2NUM(REFRESH_TABLES)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REFRESH_HOSTS
+  value: INT2NUM(REFRESH_HOSTS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REFRESH_STATUS
+  value: INT2NUM(REFRESH_STATUS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REFRESH_THREADS
+  value: INT2NUM(REFRESH_THREADS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REFRESH_SLAVE
+  value: INT2NUM(REFRESH_SLAVE)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REFRESH_MASTER
+  value: INT2NUM(REFRESH_MASTER)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_FOUND_ROWS
+  value: INT2NUM(CLIENT_FOUND_ROWS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_NO_SCHEMA
+  value: INT2NUM(CLIENT_NO_SCHEMA)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_COMPRESS
+  value: INT2NUM(CLIENT_COMPRESS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_ODBC
+  value: INT2NUM(CLIENT_ODBC)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_LOCAL_FILES
+  value: INT2NUM(CLIENT_LOCAL_FILES)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_IGNORE_SPACE
+  value: INT2NUM(CLIENT_IGNORE_SPACE)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_CHANGE_USER
+  value: INT2NUM(CLIENT_CHANGE_USER)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_INTERACTIVE
+  value: INT2NUM(CLIENT_INTERACTIVE)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_SSL
+  value: INT2NUM(CLIENT_SSL)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_IGNORE_SIGPIPE
+  value: INT2NUM(CLIENT_IGNORE_SIGPIPE)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_TRANSACTIONS
+  value: INT2NUM(CLIENT_TRANSACTIONS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_MULTI_STATEMENTS
+  value: INT2NUM(CLIENT_MULTI_STATEMENTS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CLIENT_MULTI_RESULTS
+  value: INT2NUM(CLIENT_MULTI_RESULTS)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPTION_MULTI_STATEMENTS_ON
+  value: INT2NUM(MYSQL_OPTION_MULTI_STATEMENTS_ON)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPTION_MULTI_STATEMENTS_OFF
+  value: INT2NUM(MYSQL_OPTION_MULTI_STATEMENTS_OFF)
+full_name: Mysql
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: affected_rows
+- !ruby/object:RI::MethodSummary 
+  name: autocommit
+- !ruby/object:RI::MethodSummary 
+  name: change_user
+- !ruby/object:RI::MethodSummary 
+  name: character_set_name
+- !ruby/object:RI::MethodSummary 
+  name: client_info
+- !ruby/object:RI::MethodSummary 
+  name: client_version
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: commit
+- !ruby/object:RI::MethodSummary 
+  name: connect
+- !ruby/object:RI::MethodSummary 
+  name: create_db
+- !ruby/object:RI::MethodSummary 
+  name: drop_db
+- !ruby/object:RI::MethodSummary 
+  name: dump_debug_info
+- !ruby/object:RI::MethodSummary 
+  name: errno
+- !ruby/object:RI::MethodSummary 
+  name: error
+- !ruby/object:RI::MethodSummary 
+  name: escape_string
+- !ruby/object:RI::MethodSummary 
+  name: escape_string
+- !ruby/object:RI::MethodSummary 
+  name: field_count
+- !ruby/object:RI::MethodSummary 
+  name: get_client_info
+- !ruby/object:RI::MethodSummary 
+  name: get_client_version
+- !ruby/object:RI::MethodSummary 
+  name: get_host_info
+- !ruby/object:RI::MethodSummary 
+  name: get_proto_info
+- !ruby/object:RI::MethodSummary 
+  name: get_server_info
+- !ruby/object:RI::MethodSummary 
+  name: get_server_version
+- !ruby/object:RI::MethodSummary 
+  name: host_info
+- !ruby/object:RI::MethodSummary 
+  name: info
+- !ruby/object:RI::MethodSummary 
+  name: insert_id
+- !ruby/object:RI::MethodSummary 
+  name: kill
+- !ruby/object:RI::MethodSummary 
+  name: list_dbs
+- !ruby/object:RI::MethodSummary 
+  name: list_fields
+- !ruby/object:RI::MethodSummary 
+  name: list_processes
+- !ruby/object:RI::MethodSummary 
+  name: list_tables
+- !ruby/object:RI::MethodSummary 
+  name: more_results
+- !ruby/object:RI::MethodSummary 
+  name: more_results?
+- !ruby/object:RI::MethodSummary 
+  name: options
+- !ruby/object:RI::MethodSummary 
+  name: ping
+- !ruby/object:RI::MethodSummary 
+  name: prepare
+- !ruby/object:RI::MethodSummary 
+  name: proto_info
+- !ruby/object:RI::MethodSummary 
+  name: query
+- !ruby/object:RI::MethodSummary 
+  name: query_with_result
+- !ruby/object:RI::MethodSummary 
+  name: query_with_result=
+- !ruby/object:RI::MethodSummary 
+  name: quote
+- !ruby/object:RI::MethodSummary 
+  name: quote
+- !ruby/object:RI::MethodSummary 
+  name: real_connect
+- !ruby/object:RI::MethodSummary 
+  name: real_query
+- !ruby/object:RI::MethodSummary 
+  name: reconnect
+- !ruby/object:RI::MethodSummary 
+  name: reconnect=
+- !ruby/object:RI::MethodSummary 
+  name: refresh
+- !ruby/object:RI::MethodSummary 
+  name: reload
+- !ruby/object:RI::MethodSummary 
+  name: rollback
+- !ruby/object:RI::MethodSummary 
+  name: select_db
+- !ruby/object:RI::MethodSummary 
+  name: server_info
+- !ruby/object:RI::MethodSummary 
+  name: server_version
+- !ruby/object:RI::MethodSummary 
+  name: set_server_option
+- !ruby/object:RI::MethodSummary 
+  name: shutdown
+- !ruby/object:RI::MethodSummary 
+  name: sqlstate
+- !ruby/object:RI::MethodSummary 
+  name: ssl_set
+- !ruby/object:RI::MethodSummary 
+  name: stat
+- !ruby/object:RI::MethodSummary 
+  name: stmt_init
+- !ruby/object:RI::MethodSummary 
+  name: store_result
+- !ruby/object:RI::MethodSummary 
+  name: thread_id
+- !ruby/object:RI::MethodSummary 
+  name: use_result
+- !ruby/object:RI::MethodSummary 
+  name: warning_count
+name: Mysql
+superclass: Object

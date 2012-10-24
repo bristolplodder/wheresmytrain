@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>init (Mysql)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      init()       */
+static VALUE init(VALUE klass)
+{
+    struct mysql* myp;
+    VALUE obj;
+
+    obj = Data_Make_Struct(klass, struct mysql, 0, free_mysql, myp);
+    mysql_init(&amp;myp-&gt;handler);
+    myp-&gt;connection = Qfalse;
+    myp-&gt;query_with_result = Qtrue;
+    rb_obj_call_init(obj, 0, NULL);
+    return obj;
+}</pre>
+</body>
+</html>

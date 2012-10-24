@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Commit commits work in a transaction by name.
+full_name: Stomp::Client#commit
+is_singleton: false
+name: commit
+params: (name, headers = {})
+visibility: public

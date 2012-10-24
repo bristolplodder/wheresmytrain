@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>inspect (Mysql::Field)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      inspect      */
+static VALUE field_inspect(VALUE obj)
+{
+    VALUE n = rb_iv_get(obj, &quot;name&quot;);
+    VALUE s = rb_str_new(0, RSTRING_LEN(n) + 16);
+    sprintf(RSTRING_PTR(s), &quot;#&lt;Mysql::Field:%s&gt;&quot;, RSTRING_PTR(n));
+    return s;
+}</pre>
+</body>
+</html>

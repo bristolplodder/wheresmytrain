@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Connection11Example1)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/conn11_ex1.rb, line 59</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Create connection headers</span>
+    <span class="ruby-comment cmt"># =========================</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># The two headers used here are _required_ by the specification.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn_hdrs</span> = {<span class="ruby-value str">&quot;accept-version&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.1&quot;</span>,    <span class="ruby-comment cmt"># Demand a 1.1 connection (use a CSV list if you will consider multiple versions)</span>
+      <span class="ruby-value str">&quot;host&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">virt_host</span>,                 <span class="ruby-comment cmt"># The 1.1 vhost (could be different than connection host)</span>
+    }                                      <span class="ruby-comment cmt"># No heartbeats here:  there will be none for this connection</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Get a connection</span>
+    <span class="ruby-comment cmt"># ================</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">login</span>, <span class="ruby-identifier">passcode</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>,   <span class="ruby-comment cmt"># Normal connect parms</span>
+      <span class="ruby-keyword kw">false</span>,      <span class="ruby-comment cmt"># Not reliable, the default for a parameter connection</span>
+      <span class="ruby-value">5</span>,          <span class="ruby-comment cmt"># Connect redelay, the default</span>
+      <span class="ruby-identifier">conn_hdrs</span>)  <span class="ruby-comment cmt"># The 1.1 connection parameters</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Connection connect complete&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Let's just do some sanity checks, and look around.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Connection failed!!&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">open?</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Is this really a 1.1 conection? ('protocol' is a read only connection</span>
+    <span class="ruby-comment cmt"># instance variable. The value will be '1.0' for those types of connections.)</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unexpected protocol level&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">protocol</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">SPL_11</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># The broker _could_ have returned an ERROR frame (unlikely).</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Connect error: #{conn.connection_frame.body}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">connection_frame</span>.<span class="ruby-identifier">command</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">CMD_ERROR</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Examine the CONNECT response (the connection_frame).</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Connected Headers required to be present:&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Connect version - \t#{conn.connection_frame.headers['version']}&quot;</span>
+    <span class="ruby-identifier">puts</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Connected Headers that are optional:&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Connect server - \t\t#{conn.connection_frame.headers['server']}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Session ID - \t\t\t#{conn.connection_frame.headers['session']}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Server requested heartbeats - \t#{conn.connection_frame.headers['heart-beat']}&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Finally disconnect</span>
+    <span class="ruby-comment cmt"># ==================</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">disconnect</span>   <span class="ruby-comment cmt"># Business as usual, just like 1.0</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Connection disconnect complete&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

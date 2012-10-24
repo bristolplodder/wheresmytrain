@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (LoggerExample)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/logexamp.rb, line 21</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">llog</span> =        <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>(<span class="ruby-constant">STDOUT</span>)
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">level</span> =  <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;LE Starting&quot;</span>
+
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-identifier">mylog</span> = <span class="ruby-constant">Slogger</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>  <span class="ruby-comment cmt"># The client provided STOMP callback logger</span>
+
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-identifier">user</span> =      <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_USER'</span>] <span class="ruby-operator">?</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_USER'</span>] <span class="ruby-operator">:</span> <span class="ruby-value str">'guest'</span>
+    <span class="ruby-identifier">password</span> =  <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_PASSWORD'</span>] <span class="ruby-operator">?</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_PASSWORD'</span>] <span class="ruby-operator">:</span> <span class="ruby-value str">'guest'</span>
+    <span class="ruby-identifier">host</span> =      <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_HOST'</span>] <span class="ruby-operator">?</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_HOST'</span>] <span class="ruby-operator">:</span> <span class="ruby-value str">'localhost'</span>
+    <span class="ruby-identifier">port</span> =      <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_PORT'</span>] <span class="ruby-operator">?</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_PORT'</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-value">61613</span>
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-comment cmt"># A hash type connect *MUST* be used to enable callback logging.</span>
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-identifier">hash</span> = { <span class="ruby-identifier">:hosts</span> =<span class="ruby-operator">&gt;</span> [
+        {<span class="ruby-identifier">:login</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">:passcode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">password</span>, <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'noonehome'</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2525</span>},
+        {<span class="ruby-identifier">:login</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">:passcode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">password</span>, <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">host</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">port</span>},
+      ],
+      <span class="ruby-identifier">:logger</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">mylog</span>, <span class="ruby-comment cmt"># This enables callback logging!</span>
+      <span class="ruby-identifier">:max_reconnect_attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>,
+    }
+
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-comment cmt"># For a Connection:</span>
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;LE Connection processing starts&quot;</span>
+    <span class="ruby-identifier">conn</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">disconnect</span>
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;LE Connection processing complete&quot;</span>
+
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-comment cmt"># For a Client:</span>
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;LE Client processing starts&quot;</span>
+    <span class="ruby-identifier">conn</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;LE Client processing complete&quot;</span>
+
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-comment cmt"># For a Connection with other calls:</span>
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;LE Connection Enhanced processing starts&quot;</span>
+    <span class="ruby-identifier">conn</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">dest</span> = <span class="ruby-value str">&quot;/queue/loggerq1&quot;</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">publish</span> <span class="ruby-identifier">dest</span>, <span class="ruby-value str">&quot;a logger message&quot;</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">subscribe</span> <span class="ruby-identifier">dest</span>
+    <span class="ruby-identifier">msg</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">receive</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">disconnect</span>
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;LE Connection Enhanced processing complete&quot;</span>
+
+    <span class="ruby-comment cmt"># //////////////////////////////////////////////////////////////////////////////</span>
+    <span class="ruby-identifier">llog</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;LE Ending&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

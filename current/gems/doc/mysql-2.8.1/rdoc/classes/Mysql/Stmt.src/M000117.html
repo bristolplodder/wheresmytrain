@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>row_seek (Mysql::Stmt)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      row_seek(offset)     */
+static VALUE stmt_row_seek(VALUE obj, VALUE offset)
+{
+    struct mysql_stmt* s = DATA_PTR(obj);
+    MYSQL_ROW_OFFSET prev_offset;
+    if (CLASS_OF(offset) != cMysqlRowOffset)
+        rb_raise(rb_eTypeError, &quot;wrong argument type %s (expected Mysql::RowOffset)&quot;, rb_obj_classname(offset));
+    check_stmt_closed(obj);
+    prev_offset = mysql_stmt_row_seek(s-&gt;stmt, DATA_PTR(offset));
+    return Data_Wrap_Struct(cMysqlRowOffset, 0, NULL, prev_offset);
+}</pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Log an unsuccessful SSL connect.
+full_name: Slogger#on_ssl_connectfail
+is_singleton: false
+name: on_ssl_connectfail
+params: (parms)
+visibility: public

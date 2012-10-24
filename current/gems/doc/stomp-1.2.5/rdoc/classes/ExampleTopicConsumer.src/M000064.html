@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (ExampleTopicConsumer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/topic_consumer.rb, line 13</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">client</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;failover://(stomp://:@localhost:61613,stomp://:@remotehost:61613)?initialReconnectDelay=5000&amp;randomize=false&amp;useExponentialBackOff=false&quot;</span>)
+
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Subscribing to /topic/ronaldo&quot;</span>
+
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value str">&quot;/topic/ronaldo&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;----------------&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;.&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Mysql2::Client::encoding_from_charset
+is_singleton: true
+name: encoding_from_charset
+params: (charset)
+visibility: public

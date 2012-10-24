@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: TestClient</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">TestClient</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/test/test_client_rb.html">
+                test/test_client.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Test::Unit::TestCase
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000005">setup</a>&nbsp;&nbsp;
+      <a href="#M000006">teardown</a>&nbsp;&nbsp;
+      <a href="#M000008">test_ack_api_works</a>&nbsp;&nbsp;
+      <a href="#M000021">test_asterisk_wildcard_subscribe</a>&nbsp;&nbsp;
+      <a href="#M000009">test_asynch_subscribe</a>&nbsp;&nbsp;
+      <a href="#M000028">test_closed_checks_client</a>&nbsp;&nbsp;
+      <a href="#M000024">test_connection_frame</a>&nbsp;&nbsp;
+      <a href="#M000012">test_disconnect_receipt</a>&nbsp;&nbsp;
+      <a href="#M000022">test_greater_than_wildcard_subscribe</a>&nbsp;&nbsp;
+      <a href="#M000010">test_noack</a>&nbsp;&nbsp;
+      <a href="#M000007">test_poll_async</a>&nbsp;&nbsp;
+      <a href="#M000013">test_publish_then_sub</a>&nbsp;&nbsp;
+      <a href="#M000019">test_raise_on_multiple_subscriptions_to_same_id</a>&nbsp;&nbsp;
+      <a href="#M000020">test_raise_on_multiple_subscriptions_to_same_id_mixed</a>&nbsp;&nbsp;
+      <a href="#M000018">test_raise_on_multiple_subscriptions_to_same_make_destination</a>&nbsp;&nbsp;
+      <a href="#M000011">test_receipts</a>&nbsp;&nbsp;
+      <a href="#M000014">test_subscribe_requires_block</a>&nbsp;&nbsp;
+      <a href="#M000027">test_thread_multi_subscribe</a>&nbsp;&nbsp;
+      <a href="#M000026">test_thread_one_subscribe</a>&nbsp;&nbsp;
+      <a href="#M000017">test_transaction_ack_rollback_with_new_client</a>&nbsp;&nbsp;
+      <a href="#M000016">test_transaction_publish_then_rollback</a>&nbsp;&nbsp;
+      <a href="#M000023">test_transaction_with_client_side_redelivery</a>&nbsp;&nbsp;
+      <a href="#M000015">test_transactional_publish</a>&nbsp;&nbsp;
+      <a href="#M000025">test_unsubscribe</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="TestBase.html">TestBase</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000005.html');return false;">
+          <span class="method-name">setup</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000006.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000006.html');return false;">
+          <span class="method-name">teardown</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000008.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000008.html');return false;">
+          <span class="method-name">test_ack_api_works</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test ACKs.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000021.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000021.html');return false;">
+          <span class="method-name">test_asterisk_wildcard_subscribe</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test wildcard subscribe. Primarily for AMQ.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000009.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000009.html');return false;">
+          <span class="method-name">test_asynch_subscribe</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test Client subscribe
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000028.html');return false;">
+          <span class="method-name">test_closed_checks_client</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that methods detect no client connection is present.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000024.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000024.html');return false;">
+          <span class="method-name">test_connection_frame</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that a connection frame is received.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000012.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000012.html');return false;">
+          <span class="method-name">test_disconnect_receipt</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test requesting a receipt on disconnect.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000022.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000022.html');return false;">
+          <span class="method-name">test_greater_than_wildcard_subscribe</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test wildcard subscribe with &gt;. Primarily for AMQ.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000010.html');return false;">
+          <span class="method-name">test_noack</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test not ACKing messages.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000007.html');return false;">
+          <span class="method-name">test_poll_async</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test poll works.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000013.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000013.html');return false;">
+          <span class="method-name">test_publish_then_sub</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test publish and immediate subscribe.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000019.html');return false;">
+          <span class="method-name">test_raise_on_multiple_subscriptions_to_same_id</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that subscription IDs must be unique for a Client.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000020.html');return false;">
+          <span class="method-name">test_raise_on_multiple_subscriptions_to_same_id_mixed</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that subscription IDs must be unique for a Client, mixed id
+specification.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000018.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000018.html');return false;">
+          <span class="method-name">test_raise_on_multiple_subscriptions_to_same_make_destination</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that subscription destinations must be unique for a Client.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000011.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000011.html');return false;">
+          <span class="method-name">test_receipts</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test obtaining a RECEIPT via a listener.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000014.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000014.html');return false;">
+          <span class="method-name">test_subscribe_requires_block</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test that Client subscribe requires a block.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000027.html');return false;">
+          <span class="method-name">test_thread_multi_subscribe</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test subscribe from multiple worker threads.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000026.html');return false;">
+          <span class="method-name">test_thread_one_subscribe</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test subscribe from a worker thread.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000017.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000017.html');return false;">
+          <span class="method-name">test_transaction_ack_rollback_with_new_client</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test transaction publish and abort, receive with new client.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000016.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000016.html');return false;">
+          <span class="method-name">test_transaction_publish_then_rollback</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test transaction publish and abort.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000023.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000023.html');return false;">
+          <span class="method-name">test_transaction_with_client_side_redelivery</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test transaction with client side redilivery.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000015.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000015.html');return false;">
+          <span class="method-name">test_transactional_publish</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test transaction publish.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="TestClient.src/M000025.html" target="Code" class="method-signature"
+            onclick="popupCode('TestClient.src/M000025.html');return false;">
+          <span class="method-name">test_unsubscribe</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Test basic unsubscribe.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

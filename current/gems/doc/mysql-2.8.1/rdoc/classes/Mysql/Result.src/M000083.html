@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>fetch_row (Mysql::Result)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      fetch_row()  */
+static VALUE fetch_row(VALUE obj)
+{
+    MYSQL_RES* res;
+    unsigned int n;
+    MYSQL_ROW row;
+    unsigned long* lengths;
+    VALUE ary;
+    unsigned int i;
+    check_free(obj);
+    res = GetMysqlRes(obj);
+    n = mysql_num_fields(res);
+    row = mysql_fetch_row(res);
+    lengths = mysql_fetch_lengths(res);
+    if (row == NULL)
+        return Qnil;
+    ary = rb_ary_new2(n);
+    for (i=0; i&lt;n; i++)
+        rb_ary_store(ary, i, row[i]? rb_tainted_str_new(row[i], lengths[i]): Qnil);
+    return ary;
+}</pre>
+</body>
+</html>

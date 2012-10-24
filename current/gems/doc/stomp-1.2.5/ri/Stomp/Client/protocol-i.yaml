@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: protocol returns the current client's protocol level.
+full_name: Stomp::Client#protocol
+is_singleton: false
+name: protocol
+params: ()
+visibility: public

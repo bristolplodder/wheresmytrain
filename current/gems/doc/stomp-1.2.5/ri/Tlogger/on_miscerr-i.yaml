@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Log miscellaneous errors.
+full_name: Tlogger#on_miscerr
+is_singleton: false
+name: on_miscerr
+params: (parms, errstr)
+visibility: public

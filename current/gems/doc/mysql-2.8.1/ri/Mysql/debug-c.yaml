@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: my_debug(string)
+full_name: Mysql::debug
+is_singleton: true
+name: debug
+params: (p1)
+visibility: public

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>unreceive (Stomp::Connection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/stomp/connection.rb, line 382</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unreceive</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">options</span> = {})
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">NoCurrentConnection</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">closed?</span>
+      <span class="ruby-identifier">options</span> = { <span class="ruby-identifier">:dead_letter_queue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;/queue/DLQ&quot;</span>, <span class="ruby-identifier">:max_redeliveries</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span> }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-comment cmt"># Lets make sure all keys are symbols</span>
+      <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span> = <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">symbolize_keys</span>
+
+      <span class="ruby-identifier">retry_count</span> = <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-identifier">:retry_count</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-identifier">:retry_count</span>] = <span class="ruby-identifier">retry_count</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">transaction_id</span> = <span class="ruby-node">&quot;transaction-#{message.headers[:'message-id']}-#{retry_count}&quot;</span>
+      <span class="ruby-identifier">message_id</span> = <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'message-id'</span><span class="ruby-value str">'message-id'</span>)
+
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">begin</span> <span class="ruby-identifier">transaction_id</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">client_ack?</span>(<span class="ruby-identifier">message</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:force_client_ack</span>]
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">ack</span>(<span class="ruby-identifier">message_id</span>, <span class="ruby-identifier">:transaction</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">transaction_id</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">retry_count</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:max_redeliveries</span>]
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">publish</span>(<span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-identifier">:destination</span>], <span class="ruby-identifier">message</span>.<span class="ruby-identifier">body</span>, 
+            <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:transaction</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">transaction_id</span>))
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-comment cmt"># Poison ack, sending the message to the DLQ</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">publish</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dead_letter_queue</span>], <span class="ruby-identifier">message</span>.<span class="ruby-identifier">body</span>, 
+            <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:transaction</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">transaction_id</span>, 
+            <span class="ruby-identifier">:original_destination</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-identifier">:destination</span>], 
+            <span class="ruby-identifier">:persistent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>))
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">commit</span> <span class="ruby-identifier">transaction_id</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">abort</span> <span class="ruby-identifier">transaction_id</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-identifier">exception</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Stomp::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/stomp/client.rb, line 79</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">login</span> = <span class="ruby-value str">''</span>, <span class="ruby-identifier">passcode</span> = <span class="ruby-value str">''</span>, <span class="ruby-identifier">host</span> = <span class="ruby-value str">'localhost'</span>, <span class="ruby-identifier">port</span> = <span class="ruby-value">61613</span>, <span class="ruby-identifier">reliable</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">autoflush</span> = <span class="ruby-keyword kw">false</span>)
+
+      <span class="ruby-comment cmt"># Parse stomp:// URL's or set params</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">login</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+        <span class="ruby-ivar">@parameters</span> = <span class="ruby-identifier">login</span>
+
+        <span class="ruby-identifier">first_host</span> = <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:hosts</span>][<span class="ruby-value">0</span>]
+
+        <span class="ruby-ivar">@login</span> = <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:login</span>]
+        <span class="ruby-ivar">@passcode</span> = <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:passcode</span>]
+        <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:host</span>]
+        <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Connection</span><span class="ruby-operator">::</span><span class="ruby-identifier">default_port</span>(<span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:ssl</span>])
+
+        <span class="ruby-ivar">@reliable</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">login</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/^stomp:\/\/#{url_regex}/</span> <span class="ruby-comment cmt"># e.g. stomp://login:passcode@host:port or stomp://host:port</span>
+        <span class="ruby-ivar">@login</span> = <span class="ruby-identifier">$2</span> <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-ivar">@passcode</span> = <span class="ruby-identifier">$3</span> <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">$4</span>
+        <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">$5</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@reliable</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">login</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/^failover:(\/\/)?\(stomp(\+ssl)?:\/\/#{url_regex}(,stomp(\+ssl)?:\/\/#{url_regex}\))+(\?(.*))?$/</span> 
+        <span class="ruby-comment cmt"># e.g. failover://(stomp://login1:passcode1@localhost:61616,stomp://login2:passcode2@remotehost:61617)?option1=param</span>
+        <span class="ruby-identifier">first_host</span> = {}
+        <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:ssl</span>] = <span class="ruby-operator">!</span><span class="ruby-identifier">$2</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-ivar">@login</span> = <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:login</span>] = <span class="ruby-identifier">$4</span> <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-ivar">@passcode</span> = <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:passcode</span>] = <span class="ruby-identifier">$5</span> <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:host</span>] = <span class="ruby-identifier">$6</span>
+        <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:port</span>] = <span class="ruby-identifier">$7</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Connection</span><span class="ruby-operator">::</span><span class="ruby-identifier">default_port</span>(<span class="ruby-identifier">first_host</span>[<span class="ruby-identifier">:ssl</span>])
+
+        <span class="ruby-identifier">options</span> = <span class="ruby-identifier">$16</span> <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-identifier">parts</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/&amp;|=/</span>)
+        <span class="ruby-identifier">options</span> = <span class="ruby-constant">Hash</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">parts</span>]
+
+        <span class="ruby-identifier">hosts</span> = [<span class="ruby-identifier">first_host</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">parse_hosts</span>(<span class="ruby-identifier">login</span>)
+
+        <span class="ruby-ivar">@parameters</span> = {}
+        <span class="ruby-ivar">@parameters</span>[<span class="ruby-identifier">:hosts</span>] = <span class="ruby-identifier">hosts</span>
+
+        <span class="ruby-ivar">@parameters</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">filter_options</span>(<span class="ruby-identifier">options</span>)
+
+        <span class="ruby-ivar">@reliable</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@login</span> = <span class="ruby-identifier">login</span>
+        <span class="ruby-ivar">@passcode</span> = <span class="ruby-identifier">passcode</span>
+        <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">host</span>
+        <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@reliable</span> = <span class="ruby-identifier">reliable</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">check_arguments!</span>()
+
+      <span class="ruby-ivar">@id_mutex</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>()
+      <span class="ruby-ivar">@ids</span> = <span class="ruby-value">1</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@parameters</span>
+        <span class="ruby-ivar">@connection</span> = <span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@parameters</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@connection</span> = <span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@login</span>, <span class="ruby-ivar">@passcode</span>, <span class="ruby-ivar">@host</span>, <span class="ruby-ivar">@port</span>, <span class="ruby-ivar">@reliable</span>)
+        <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">autoflush</span> = <span class="ruby-identifier">autoflush</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">start_listeners</span>()
+
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

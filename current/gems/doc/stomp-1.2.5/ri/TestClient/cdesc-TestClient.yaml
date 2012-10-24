@@ -1,0 +1,63 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: TestClient
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: TestBase
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: setup
+- !ruby/object:RI::MethodSummary 
+  name: teardown
+- !ruby/object:RI::MethodSummary 
+  name: test_ack_api_works
+- !ruby/object:RI::MethodSummary 
+  name: test_asterisk_wildcard_subscribe
+- !ruby/object:RI::MethodSummary 
+  name: test_asynch_subscribe
+- !ruby/object:RI::MethodSummary 
+  name: test_closed_checks_client
+- !ruby/object:RI::MethodSummary 
+  name: test_connection_frame
+- !ruby/object:RI::MethodSummary 
+  name: test_disconnect_receipt
+- !ruby/object:RI::MethodSummary 
+  name: test_greater_than_wildcard_subscribe
+- !ruby/object:RI::MethodSummary 
+  name: test_noack
+- !ruby/object:RI::MethodSummary 
+  name: test_poll_async
+- !ruby/object:RI::MethodSummary 
+  name: test_publish_then_sub
+- !ruby/object:RI::MethodSummary 
+  name: test_raise_on_multiple_subscriptions_to_same_id
+- !ruby/object:RI::MethodSummary 
+  name: test_raise_on_multiple_subscriptions_to_same_id_mixed
+- !ruby/object:RI::MethodSummary 
+  name: test_raise_on_multiple_subscriptions_to_same_make_destination
+- !ruby/object:RI::MethodSummary 
+  name: test_receipts
+- !ruby/object:RI::MethodSummary 
+  name: test_subscribe_requires_block
+- !ruby/object:RI::MethodSummary 
+  name: test_thread_multi_subscribe
+- !ruby/object:RI::MethodSummary 
+  name: test_thread_one_subscribe
+- !ruby/object:RI::MethodSummary 
+  name: test_transaction_ack_rollback_with_new_client
+- !ruby/object:RI::MethodSummary 
+  name: test_transaction_publish_then_rollback
+- !ruby/object:RI::MethodSummary 
+  name: test_transaction_with_client_side_redelivery
+- !ruby/object:RI::MethodSummary 
+  name: test_transactional_publish
+- !ruby/object:RI::MethodSummary 
+  name: test_unsubscribe
+name: TestClient
+superclass: Test::Unit::TestCase

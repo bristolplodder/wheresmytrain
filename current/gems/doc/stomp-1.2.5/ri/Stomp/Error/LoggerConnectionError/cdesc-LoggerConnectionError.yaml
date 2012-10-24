@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: LoggerConnectionError is not raised by the gem. It may be raised by client logic in callback logger methods to signal that a connection should not proceed.
+constants: []
+
+full_name: Stomp::Error::LoggerConnectionError
+includes: []
+
+instance_methods: []
+
+name: LoggerConnectionError
+superclass: RuntimeError

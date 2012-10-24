@@ -1,0 +1,23 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: error_number
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: sql_state
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Mysql2::Error
+includes: []
+
+instance_methods: []
+
+name: Error
+superclass: StandardError

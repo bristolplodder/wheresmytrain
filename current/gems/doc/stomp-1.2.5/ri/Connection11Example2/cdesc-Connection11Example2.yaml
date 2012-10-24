@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Stomp 1.1 Connection Example 2
+- !ruby/struct:SM::Flow::P 
+  body: "Purpose: to demonstrate a connect and disconnect sequence using Stomp 1.1."
+- !ruby/struct:SM::Flow::P 
+  body: This example is like the 'conn11_ex1.rb' example except that a 'hashed' connect request is made.
+constants: []
+
+full_name: Connection11Example2
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: Connection11Example2
+superclass: Object

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_multi_thread_poll (TestConnection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_connection.rb, line 295</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_multi_thread_poll</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">lock</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">msg_ctr</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">dest</span> = <span class="ruby-identifier">make_destination</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-value">1</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@max_threads</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tnum</span><span class="ruby-operator">|</span>
+      <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@conn</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">amq</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">while</span> <span class="ruby-keyword kw">true</span>
+          <span class="ruby-identifier">received</span> = <span class="ruby-identifier">amq</span>.<span class="ruby-identifier">poll</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">received</span>
+            <span class="ruby-identifier">lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
+              <span class="ruby-identifier">msg_ctr</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-comment cmt"># Simulate message processing</span>
+            <span class="ruby-identifier">sleep</span> <span class="ruby-value">0</span><span class="ruby-value">.05</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-comment cmt"># Wait a bit for more work</span>
+            <span class="ruby-identifier">sleep</span> <span class="ruby-value">0</span><span class="ruby-value">.05</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn_subscribe</span>( <span class="ruby-identifier">dest</span> )
+    <span class="ruby-value">1</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@max_msgs</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">mnum</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{mnum}&quot;</span>
+      <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">publish</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">msg</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">max_sleep</span> = (<span class="ruby-constant">RUBY_VERSION</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/1\.8\.6/</span>) <span class="ruby-operator">?</span> <span class="ruby-value">30</span> <span class="ruby-operator">:</span> <span class="ruby-value">5</span>
+    <span class="ruby-identifier">max_sleep</span> = <span class="ruby-value">30</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">RUBY_ENGINE</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/mingw/</span>
+    <span class="ruby-identifier">sleep_incr</span> = <span class="ruby-value">0</span><span class="ruby-value">.10</span>
+    <span class="ruby-identifier">total_slept</span> = <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@max_msgs</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">msg_ctr</span>
+      <span class="ruby-identifier">total_slept</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">sleep_incr</span>
+      <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">total_slept</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max_sleep</span>
+      <span class="ruby-identifier">sleep</span> <span class="ruby-identifier">sleep_incr</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-ivar">@max_msgs</span>, <span class="ruby-identifier">msg_ctr</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

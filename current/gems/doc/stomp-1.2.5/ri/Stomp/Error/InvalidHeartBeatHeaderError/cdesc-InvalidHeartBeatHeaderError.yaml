@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "InvalidHeartBeatHeaderError is raised if:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: A &quot;heart-beat&quot; header is present, but the values are malformed.
+  type: :BULLET
+constants: []
+
+full_name: Stomp::Error::InvalidHeartBeatHeaderError
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: message
+- !ruby/object:RI::MethodSummary 
+  name: message
+name: InvalidHeartBeatHeaderError
+superclass: RuntimeError

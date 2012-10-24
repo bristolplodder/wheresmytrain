@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>fetch_field_direct (Mysql::Result)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      fetch_field_direct(nr)       */
+static VALUE fetch_field_direct(VALUE obj, VALUE nr)
+{
+    MYSQL_RES* res;
+    unsigned int max;
+    unsigned int n;
+    check_free(obj);
+    res = GetMysqlRes(obj);
+    max = mysql_num_fields(res);
+    n = NUM2INT(nr);
+    if (n &gt;= max)
+        rb_raise(eMysql, &quot;%d: out of range (max: %d)&quot;, n, max-1);
+#if MYSQL_VERSION_ID &gt;= 32226
+    return make_field_obj(mysql_fetch_field_direct(res, n));
+#else
+    return make_field_obj(&amp;mysql_fetch_field_direct(res, n));
+#endif
+}</pre>
+</body>
+</html>

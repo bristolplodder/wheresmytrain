@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Slogger</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Slogger</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/examples/slogger_rb.html">
+                examples/slogger.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2>Example STOMP call back logger class.</h2>
+<p>
+Optional callback methods:
+</p>
+<ul>
+<li><a href="Slogger.html#M000040">on_connecting</a>: connection starting
+
+</li>
+<li><a href="Slogger.html#M000041">on_connected</a>: successful connect
+
+</li>
+<li><a href="Slogger.html#M000042">on_connectfail</a>: unsuccessful connect
+(will usually be retried)
+
+</li>
+<li><a href="Slogger.html#M000043">on_disconnect</a>: successful disconnect
+
+</li>
+<li><a href="Slogger.html#M000044">on_miscerr</a>: on miscellaneous xmit/recv
+errors
+
+</li>
+<li><a href="Slogger.html#M000046">on_publish</a>: publish called
+
+</li>
+<li><a href="Slogger.html#M000045">on_subscribe</a>: subscribe called
+
+</li>
+<li><a href="Slogger.html#M000047">on_receive</a>: receive called and
+successful
+
+</li>
+<li><a href="Slogger.html#M000050">on_ssl_connecting</a>: SSL connection
+starting
+
+</li>
+<li><a href="Slogger.html#M000051">on_ssl_connected</a>: successful SSL connect
+
+</li>
+<li><a href="Slogger.html#M000052">on_ssl_connectfail</a>: unsuccessful SSL
+connect (will usually be retried)
+
+</li>
+<li><a href="Slogger.html#M000048">on_hbread_fail</a>: unsuccessful Heartbeat
+read
+
+</li>
+<li><a href="Slogger.html#M000049">on_hbwrite_fail</a>: unsuccessful Heartbeat
+write
+
+</li>
+<li><a href="Slogger.html#M000053">on_hbfire</a>: on any send or receive
+heartbeat
+
+</li>
+</ul>
+<p>
+All methods are optional, at the user&#8216;s requirements.
+</p>
+<p>
+If a method is not provided, it is not called (of course.)
+</p>
+<p>
+IMPORTANT NOTE: in general, call back logging methods <b>SHOULD</b> not
+raise exceptions, otherwise the underlying STOMP connection may fail in
+mysterious ways.
+</p>
+<p>
+There are two useful exceptions to this rule for:
+</p>
+<ul>
+<li><a href="Slogger.html#M000042">on_connectfail</a>
+
+</li>
+<li><a href="Slogger.html#M000052">on_ssl_connectfail</a>
+
+</li>
+</ul>
+<p>
+These two methods can raise a Stomp::Errors::LoggerConnectionError. If this
+exception is raised, it is passed up the chain to the caller.
+</p>
+<p>
+Callback parameters: are a copy of the @parameters instance variable for
+the <a href="Stomp/Connection.html">Stomp::Connection</a>.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000039">new</a>&nbsp;&nbsp;
+      <a href="#M000041">on_connected</a>&nbsp;&nbsp;
+      <a href="#M000042">on_connectfail</a>&nbsp;&nbsp;
+      <a href="#M000040">on_connecting</a>&nbsp;&nbsp;
+      <a href="#M000043">on_disconnect</a>&nbsp;&nbsp;
+      <a href="#M000053">on_hbfire</a>&nbsp;&nbsp;
+      <a href="#M000048">on_hbread_fail</a>&nbsp;&nbsp;
+      <a href="#M000049">on_hbwrite_fail</a>&nbsp;&nbsp;
+      <a href="#M000044">on_miscerr</a>&nbsp;&nbsp;
+      <a href="#M000046">on_publish</a>&nbsp;&nbsp;
+      <a href="#M000047">on_receive</a>&nbsp;&nbsp;
+      <a href="#M000051">on_ssl_connected</a>&nbsp;&nbsp;
+      <a href="#M000052">on_ssl_connectfail</a>&nbsp;&nbsp;
+      <a href="#M000050">on_ssl_connecting</a>&nbsp;&nbsp;
+      <a href="#M000045">on_subscribe</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000039.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000039.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(init_parms = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initialize a <a href="Slogger.html#M000039">new</a> callback logger
+instance.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000041.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000041.html');return false;">
+          <span class="method-name">on_connected</span><span class="method-args">(parms)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log connected events
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000042.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000042.html');return false;">
+          <span class="method-name">on_connectfail</span><span class="method-args">(parms)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log connectfail events
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000040.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000040.html');return false;">
+          <span class="method-name">on_connecting</span><span class="method-args">(parms)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log connecting events
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000043.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000043.html');return false;">
+          <span class="method-name">on_disconnect</span><span class="method-args">(parms)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log disconnect events
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000053.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000053.html');return false;">
+          <span class="method-name">on_hbfire</span><span class="method-args">(parms, srind, curt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log heart beat fires
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000048.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000048.html');return false;">
+          <span class="method-name">on_hbread_fail</span><span class="method-args">(parms, ticker_data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Stomp.html">Stomp</a> 1.1+ - heart beat read (receive) failed.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000049.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000049.html');return false;">
+          <span class="method-name">on_hbwrite_fail</span><span class="method-args">(parms, ticker_data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Stomp.html">Stomp</a> 1.1+ - heart beat send (transmit) failed.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000044.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000044.html');return false;">
+          <span class="method-name">on_miscerr</span><span class="method-args">(parms, errstr)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log miscellaneous errors
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000046.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000046.html');return false;">
+          <span class="method-name">on_publish</span><span class="method-args">(parms, message, headers)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log Publish
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000047.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000047.html');return false;">
+          <span class="method-name">on_receive</span><span class="method-args">(parms, result)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log Receive
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000051.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000051.html');return false;">
+          <span class="method-name">on_ssl_connected</span><span class="method-args">(parms)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log a successful SSL connect.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000052.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000052.html');return false;">
+          <span class="method-name">on_ssl_connectfail</span><span class="method-args">(parms)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log an unsuccessful SSL connect.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000050.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000050.html');return false;">
+          <span class="method-name">on_ssl_connecting</span><span class="method-args">(parms)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log SSL connection start.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="Slogger.src/M000045.html" target="Code" class="method-signature"
+            onclick="popupCode('Slogger.src/M000045.html');return false;">
+          <span class="method-name">on_subscribe</span><span class="method-args">(parms, headers)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Log Subscribe
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

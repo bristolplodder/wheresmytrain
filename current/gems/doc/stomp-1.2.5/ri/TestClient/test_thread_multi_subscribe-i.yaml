@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test subscribe from multiple worker threads.
+full_name: TestClient#test_thread_multi_subscribe
+is_singleton: false
+name: test_thread_multi_subscribe
+params: ()
+visibility: public

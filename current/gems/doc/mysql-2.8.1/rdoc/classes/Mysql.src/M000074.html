@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>query_with_result= (Mysql)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      query_with_result=(flag)     */
+static VALUE query_with_result_set(VALUE obj, VALUE flag)
+{
+    if (TYPE(flag) != T_TRUE &amp;&amp; TYPE(flag) != T_FALSE)
+        rb_raise(rb_eTypeError, &quot;invalid type, required true or false.&quot;);
+    GetMysqlStruct(obj)-&gt;query_with_result = flag;
+    return flag;
+}</pre>
+</body>
+</html>

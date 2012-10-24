@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test malformed heartbeat header.
+full_name: TestConnection1P#test_conn_1p_0050
+is_singleton: false
+name: test_conn_1p_0050
+params: ()
+visibility: public

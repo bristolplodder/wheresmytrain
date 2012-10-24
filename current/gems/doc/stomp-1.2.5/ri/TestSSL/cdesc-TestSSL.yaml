@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: TestSSL
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: TestBase
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: setup
+- !ruby/object:RI::MethodSummary 
+  name: teardown
+- !ruby/object:RI::MethodSummary 
+  name: test_ssl_0000
+- !ruby/object:RI::MethodSummary 
+  name: test_ssl_0010_parms
+- !ruby/object:RI::MethodSummary 
+  name: test_ssl_0020_noraise
+- !ruby/object:RI::MethodSummary 
+  name: test_ssl_0030_raise
+- !ruby/object:RI::MethodSummary 
+  name: test_ssl_0040_fsck
+name: TestSSL
+superclass: Test::Unit::TestCase

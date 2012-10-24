@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "A new Client object can be initialized using three forms:"
+- !ruby/struct:SM::Flow::P 
+  body: "Hash (this is the recommended Client initialization method):"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  hash = {\n    :hosts =&gt; [\n      {:login =&gt; &quot;login1&quot;, :passcode =&gt; &quot;passcode1&quot;, :host =&gt; &quot;localhost&quot;, :port =&gt; 61616, :ssl =&gt; false},\n      {:login =&gt; &quot;login2&quot;, :passcode =&gt; &quot;passcode2&quot;, :host =&gt; &quot;remotehost&quot;, :port =&gt; 61617, :ssl =&gt; false}\n    ],\n    :reliable =&gt; true,\n    :initial_reconnect_delay =&gt; 0.01,\n    :max_reconnect_delay =&gt; 30.0,\n    :use_exponential_back_off =&gt; true,\n    :back_off_multiplier =&gt; 2,\n    :max_reconnect_attempts =&gt; 0,\n    :randomize =&gt; false,\n    :backup =&gt; false,\n    :connect_timeout =&gt; 0,\n    :connect_headers =&gt; {},\n    :parse_timeout =&gt; 5,\n    :logger =&gt; nil,\n  }\n\n  e.g. c = Stomp::Client.new(hash)\n"
+- !ruby/struct:SM::Flow::P 
+  body: "Positional parameters:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  login     (String,  default : '')\n  passcode  (String,  default : '')\n  host      (String,  default : 'localhost')\n  port      (Integer, default : 61613)\n  reliable  (Boolean, default : false)\n\n  e.g. c = Stomp::Client.new('login', 'passcode', 'localhost', 61613, true)\n"
+- !ruby/struct:SM::Flow::P 
+  body: "Stomp URL :"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  A Stomp URL must begin with 'stomp://' and can be in one of the following forms:\n\n  stomp://host:port\n  stomp://host.domain.tld:port\n  stomp://login:passcode@host:port\n  stomp://login:passcode@host.domain.tld:port\n\n  e.g. c = Stomp::Client.new(urlstring)\n"
+full_name: Stomp::Client::new
+is_singleton: true
+name: new
+params: (login = '', passcode = '', host = 'localhost', port = 61613, reliable = false, autoflush = false)
+visibility: public

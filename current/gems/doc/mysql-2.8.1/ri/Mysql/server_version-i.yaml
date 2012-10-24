@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: server_version()
+full_name: Mysql#server_version
+is_singleton: false
+name: server_version
+params: ()
+visibility: public

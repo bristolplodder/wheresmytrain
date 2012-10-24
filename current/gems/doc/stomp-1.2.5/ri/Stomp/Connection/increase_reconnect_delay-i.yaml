@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: increase_reconnect_delay increases the reconnect delay for the next connection attempt. <b>NOTE</b> This method will be made private in the next release.
+full_name: Stomp::Connection#increase_reconnect_delay
+is_singleton: false
+name: increase_reconnect_delay
+params: ()
+visibility: public

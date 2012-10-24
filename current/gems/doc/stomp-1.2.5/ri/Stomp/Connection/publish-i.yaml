@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Publish message to destination. To disable content length header use header ( :suppress_content_length =&gt; true ). Accepts a transaction header ( :transaction =&gt; 'some_transaction_id' ).
+full_name: Stomp::Connection#publish
+is_singleton: false
+name: publish
+params: (destination, message, headers = {})
+visibility: public

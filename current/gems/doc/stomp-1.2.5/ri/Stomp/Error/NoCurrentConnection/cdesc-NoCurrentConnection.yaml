@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "NoCurrentConnection is raised if:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Any method is called when a current connection does not exist.
+  type: :BULLET
+constants: []
+
+full_name: Stomp::Error::NoCurrentConnection
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: message
+- !ruby/object:RI::MethodSummary 
+  name: message
+name: NoCurrentConnection
+superclass: RuntimeError

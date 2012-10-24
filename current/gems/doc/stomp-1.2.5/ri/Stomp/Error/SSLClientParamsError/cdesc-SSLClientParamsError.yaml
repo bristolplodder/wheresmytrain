@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "SSLClientParamsError is raised if:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Incomplete SSLParams are specified for an SSL connect.
+  type: :BULLET
+constants: []
+
+full_name: Stomp::Error::SSLClientParamsError
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: message
+- !ruby/object:RI::MethodSummary 
+  name: message
+name: SSLClientParamsError
+superclass: RuntimeError

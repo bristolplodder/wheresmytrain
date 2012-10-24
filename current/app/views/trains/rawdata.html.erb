@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Network Rail Live Feed - Raw data - Bristol area</title>
+  </head>
+  <body>
+    <% load './convert.rb' %>
+    <h1>Network Rail Live Feed - Rawdata - Bristol area</h1>
+    <p>
+      This page outputs the train data information from the Network Rail feeds for the Bristol area.<br>
+      At present trains in the Bristol area are in the following locations.<br>
+      This page doesn't auto-refesh so remember to to this manually<br><br><br>
+      
+<br>
+<table border="1">
+<tr>
+<th>Train Name </th>
+<th>Latest report</th>
+<th>Latest time</th>
+<th>Previous report</th>
+<th>Previous time</th>
+</tr>
+      <% @out2.each do |recent|%>
+      <tr>
+      <td><%=recent[0]%></td><td> <%=StanoxToName(recent[1])%></td><td> <%=recent[2]%></td>
+      <td> <%=StanoxToName(recent[4])%></td><td> <%=recent[5]%></td>
+
+</tr>
+      <%end%>                      
+</table>
+ </p>
+  </body>
+</html>

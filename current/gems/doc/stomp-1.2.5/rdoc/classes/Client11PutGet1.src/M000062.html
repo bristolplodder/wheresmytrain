@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Client11PutGet1)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/client11_putget1.rb, line 25</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">client_hdrs</span> = {<span class="ruby-value str">&quot;accept-version&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.1&quot;</span>,    <span class="ruby-comment cmt"># Demand a 1.1 connection (use a CSV list if you will consider multiple versions)</span>
+      <span class="ruby-value str">&quot;host&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">virt_host</span>,                 <span class="ruby-comment cmt"># The 1.1 vhost (could be different than connection host)</span>
+    }                                      <span class="ruby-comment cmt"># No heartbeats here:  there will be none for this connection</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">client_hash</span> = { <span class="ruby-identifier">:hosts</span> =<span class="ruby-operator">&gt;</span> [
+        {<span class="ruby-identifier">:login</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">login</span>, <span class="ruby-identifier">:passcode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">passcode</span>, <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">host</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">port</span>},
+      ],
+      <span class="ruby-identifier">:connect_headers</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">client_hdrs</span>,
+    }
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">client</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">client_hash</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Client Connect complete&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unexpected protocol level&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">client</span>.<span class="ruby-identifier">protocol</span>() <span class="ruby-operator">!=</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">SPL_11</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">qname</span> = <span class="ruby-value str">&quot;/queue/client.nodea.nodeb.nodec&quot;</span>
+    <span class="ruby-identifier">data</span> = <span class="ruby-node">&quot;message payload: #{Time.now.to_f}&quot;</span>
+    <span class="ruby-identifier">headers</span> = {}
+    <span class="ruby-comment cmt"># Send it</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">publish</span> <span class="ruby-identifier">qname</span>, <span class="ruby-identifier">data</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Publish complete&quot;</span>
+    <span class="ruby-comment cmt"># Receive</span>
+    <span class="ruby-identifier">uuid</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">uuid</span>() <span class="ruby-comment cmt"># uuid for Stomp::Client is a public method</span>
+    <span class="ruby-identifier">message</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-comment cmt"># Clients must pass a receive block.  This is business as usual, required for 1.0.</span>
+    <span class="ruby-comment cmt"># For 1.1, a unique subscription id is required.</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-identifier">qname</span>, {<span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uuid</span>}) {<span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">message</span> = <span class="ruby-identifier">m</span>
+    }
+    <span class="ruby-identifier">sleep</span> <span class="ruby-value">0</span><span class="ruby-value">.1</span> <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">message</span> <span class="ruby-comment cmt"># Wait for completion</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Subscribe and receive complete&quot;</span>
+    <span class="ruby-comment cmt"># Unsubscribe, with the unique id</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">unsubscribe</span> <span class="ruby-identifier">qname</span>,  {<span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uuid</span>}
+    <span class="ruby-comment cmt"># Sanity checks for this example ....</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unexpected data&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">data</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">body</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Bad subscription header&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uuid</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-value str">'subscription'</span>]
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">close</span>   <span class="ruby-comment cmt"># Business as usual, just like 1.0</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Client close complete&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

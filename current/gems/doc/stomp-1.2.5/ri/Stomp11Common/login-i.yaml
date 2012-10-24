@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: User id
+full_name: Stomp11Common#login
+is_singleton: false
+name: login
+params: ()
+visibility: public

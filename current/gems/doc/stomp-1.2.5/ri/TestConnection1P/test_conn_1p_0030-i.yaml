@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test requesting only a 1.1 connection.
+full_name: TestConnection1P#test_conn_1p_0030
+is_singleton: false
+name: test_conn_1p_0030
+params: ()
+visibility: public

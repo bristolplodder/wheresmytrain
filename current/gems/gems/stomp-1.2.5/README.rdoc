@@ -1,0 +1,123 @@
+==README
+
+* (https://github.com/stompgem/stomp/)
+
+===Overview
+
+An implementation of the Stomp protocol for Ruby. See:
+
+* [STOMP 1.0 and 1.1] (http://stomp.github.com/index.html)
+
+===New
+
+* Gem version 1.2.5. Restructure. Forks with modifcations will be affected. See _CHANGELOG.rdoc_ for details.
+* Gem version 1.2.4. Stomp 1.1 heartbeat fix, autoflush capability, miscellaneous fixes.
+* Gem version 1.2.3. Miscellaneous fixes, see changelog for details.
+* Gem version 1.2.2. Performance and more SSL enhancements.
+* Full support of SSL certificates is announced as of gem version 1.2.1.
+* Support of Stomp protocol level 1.1 is announced as of gem version 1.2.0.
+
+See _CHANGELOG.rdoc_ for details.
+
+===Hash Login Example Usage (this is the recommended login technique)
+
+  hash = {
+      :hosts => [
+        {:login => "login1", :passcode => "passcode1", :host => "remotehost1", :port => 61612, :ssl => true},
+        {:login => "login2", :passcode => "passcode2", :host => "remotehost2", :port => 61613, :ssl => false},
+        
+      ],
+      # These are the default parameters, don't need to be set
+      :reliable => true, # true for hash login
+      :initial_reconnect_delay => 0.01,
+      :max_reconnect_delay => 30.0,
+      :use_exponential_back_off => true,
+      :back_off_multiplier => 2,
+      :max_reconnect_attempts => 0,
+      :randomize => false,
+      :backup => false,
+      :timeout => -1,
+      :connect_headers => {},
+      :parse_timeout => 5,
+      :logger => nil,
+    }
+    
+    # for client
+    client = Stomp::Client.new(hash)
+    
+    # for connection
+    connection = Stomp::Connection.new(hash)
+    
+===Positional Parameter Usage
+
+    client = Stomp::Client.new("test", "user", "localhost", 61613)
+    client.send("/queue/mine", "hello world!")
+    client.subscribe("/queue/mine") do |msg|
+      p msg
+    end
+
+===Stomp URL Usage
+
+    # Stomp URL :
+    A Stomp URL must begin with 'stomp://' and can be in one of the following forms:
+
+    stomp://host:port
+    stomp://host.domain.tld:port
+    stomp://login:passcode@host:port
+    stomp://login:passcode@host.domain.tld:port
+   
+    e.g. c = Stomp::Client.new(urlstring)
+
+===Failover + SSL Example URL Usage
+
+    options = "initialReconnectDelay=5000&randomize=false&useExponentialBackOff=false"
+    
+    # remotehost1 uses SSL, remotehost2 doesn't
+    client = Stomp::Client.new("failover:(stomp+ssl://login1:passcode1@remotehost1:61612,stomp://login2:passcode2@remotehost2:61613)?#{options}")
+    
+    client.publish("/queue/mine", "hello world!")
+    client.subscribe("/queue/mine") do |msg|
+      p msg
+    end
+
+===Historical Information
+
+Up until March 2009 the project was maintained and primarily developed by Brian McCallister. 
+
+===Source Code and Project URLs
+
+  https://github.com/stompgem/stomp/
+
+===Stomp Protocol Information :
+
+  http://stomp.github.com/index.html
+
+= Contributors
+
+The following people have contributed to Stomp:
+
+* Brian McCallister
+* Glenn Rempe <glenn@rempe.us>
+* jstrachan 
+* Marius Mathiesen <marius.mathiesen@gmail.com>
+* Johan S√∏rensen <johan@johansorensen.com>
+* Thiago Morello <stompgem@gmail.com>
+* Guy M. Allard
+* kookster
+* Tony Garnock-Jones <tonyg@lshift.net>
+* chirino
+* Stefan Saasen
+* Neil Wilson
+* Dinesh Majrekar
+* Kiall Mac Innes
+* Rob Skaggs
+* Tom May
+* Lucas Hills
+* Chris Needham
+* R.I. Pienaar
+* tworker
+* James Pearson
+* Craig
+* Tommy Bishop
+* Jeremy Gailor
+

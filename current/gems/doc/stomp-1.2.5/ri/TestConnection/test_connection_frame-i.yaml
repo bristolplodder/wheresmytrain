@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test that a connection frame is present.
+full_name: TestConnection#test_connection_frame
+is_singleton: false
+name: test_connection_frame
+params: ()
+visibility: public

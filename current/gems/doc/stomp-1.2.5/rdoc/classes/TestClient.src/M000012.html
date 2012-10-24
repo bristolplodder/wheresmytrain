@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_disconnect_receipt (TestClient)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_client.rb, line 96</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_disconnect_receipt</span>
+    <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">close</span> <span class="ruby-identifier">:receipt</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;xyz789&quot;</span>
+    <span class="ruby-identifier">assert_nothing_raised</span> {
+      <span class="ruby-identifier">assert_not_nil</span>(<span class="ruby-ivar">@client</span>.<span class="ruby-identifier">disconnect_receipt</span>, <span class="ruby-value str">&quot;should have a receipt&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span>(<span class="ruby-ivar">@client</span>.<span class="ruby-identifier">disconnect_receipt</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-value str">'receipt-id'</span>],
+        <span class="ruby-value str">&quot;xyz789&quot;</span>, <span class="ruby-value str">&quot;receipt sent and received should match&quot;</span>)
+    }
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

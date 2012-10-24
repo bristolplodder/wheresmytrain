@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: client_ack? determines if headers contain :ack =&gt; &quot;client&quot;.
+full_name: Stomp::Connection#client_ack?
+is_singleton: false
+name: client_ack?
+params: (message)
+visibility: public

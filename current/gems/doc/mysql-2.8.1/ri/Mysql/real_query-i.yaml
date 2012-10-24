@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: query(sql)
+full_name: Mysql#real_query
+is_singleton: false
+name: real_query
+params: (p1)
+visibility: public

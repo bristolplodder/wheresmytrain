@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "InvalidMessageLength is raised if:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: An invalid message length is detected during a frame read.
+  type: :BULLET
+constants: []
+
+full_name: Stomp::Error::InvalidMessageLength
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: message
+- !ruby/object:RI::MethodSummary 
+  name: message
+name: InvalidMessageLength
+superclass: RuntimeError

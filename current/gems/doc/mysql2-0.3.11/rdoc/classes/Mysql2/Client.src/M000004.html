@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Mysql2::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/mysql2/client.rb, line 16</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">opts</span> = {})
+      <span class="ruby-ivar">@query_options</span> = <span class="ruby-ivar">@@default_query_options</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-ivar">@query_options</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">opts</span>
+
+      <span class="ruby-identifier">init_connection</span>
+
+      [<span class="ruby-identifier">:reconnect</span>, <span class="ruby-identifier">:connect_timeout</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+        <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{key}=&quot;</span><span class="ruby-node">&quot;#{key}=&quot;</span>, <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">key</span>])
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt"># force the encoding to utf8</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">charset_name</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:encoding</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">'utf8'</span>
+
+      <span class="ruby-ivar">@read_timeout</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:read_timeout</span>]
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@read_timeout</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@read_timeout</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Mysql2</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;read_timeout must be a positive integer, you passed #{@read_timeout}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">ssl_set</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-identifier">:sslkey</span>, <span class="ruby-identifier">:sslcert</span>, <span class="ruby-identifier">:sslca</span>, <span class="ruby-identifier">:sslcapath</span>, <span class="ruby-identifier">:sslcipher</span>))
+
+      <span class="ruby-identifier">user</span>     = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:username</span>]
+      <span class="ruby-identifier">pass</span>     = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:password</span>]
+      <span class="ruby-identifier">host</span>     = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:host</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">'localhost'</span>
+      <span class="ruby-identifier">port</span>     = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:port</span>] <span class="ruby-operator">||</span> <span class="ruby-value">3306</span>
+      <span class="ruby-identifier">database</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:database</span>]
+      <span class="ruby-identifier">socket</span>   = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:socket</span>]
+      <span class="ruby-identifier">flags</span>    = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:flags</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:flags</span>] <span class="ruby-operator">|</span> <span class="ruby-ivar">@query_options</span>[<span class="ruby-identifier">:connect_flags</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@query_options</span>[<span class="ruby-identifier">:connect_flags</span>]
+
+      <span class="ruby-identifier">connect</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>, <span class="ruby-identifier">database</span>, <span class="ruby-identifier">socket</span>, <span class="ruby-identifier">flags</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

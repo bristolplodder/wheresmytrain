@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: SSL Use Case 1 - User Supplied Ciphers
+- !ruby/struct:SM::Flow::P 
+  body: If you need your own ciphers list, this is how. Stomp's default list will work in many cases. If you need to use this, you will know it because SSL connect will fail. In that case, determining <em>what</em> should be in the list is your responsibility.
+constants: []
+
+full_name: ExampleSSL1C
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: ExampleSSL1C
+superclass: Object

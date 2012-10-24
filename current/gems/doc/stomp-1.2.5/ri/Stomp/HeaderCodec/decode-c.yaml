@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: decode decodes header data per the STOMP 1.1 specification.
+full_name: Stomp::HeaderCodec::decode
+is_singleton: true
+name: decode
+params: (in_string = nil)
+visibility: public

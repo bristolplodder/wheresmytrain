@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Stomp 1.1 Client Putter/Getter Example 1
+- !ruby/struct:SM::Flow::P 
+  body: This is much like sending and receiving with a Stomp::Connection.
+constants: []
+
+full_name: Client11PutGet1
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: Client11PutGet1
+superclass: Object

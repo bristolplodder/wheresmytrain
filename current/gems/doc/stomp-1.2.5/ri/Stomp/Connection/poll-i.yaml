@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: poll returns a pending message if one is available, otherwise returns nil.
+full_name: Stomp::Connection#poll
+is_singleton: false
+name: poll
+params: ()
+visibility: public

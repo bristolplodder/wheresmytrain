@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Receive11Example1)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/get11conn_ex1.rb, line 24</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">conn</span> = <span class="ruby-identifier">get_connection</span>() <span class="ruby-comment cmt"># Use helper method to obtain a Stomp#connection</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unexpected protocol level&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">protocol</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">SPL_11</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># To start receiving messages, you must first subscribe.  This is similar</span>
+    <span class="ruby-comment cmt"># to using Stomp 1.0.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># However, with Stomp 1.1:</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># * for subscribe, the 'id' header is now _required_</span>
+    <span class="ruby-comment cmt"># * for unsubscribe, the 'id' header is now _required_</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># The 'id' header specifies a 'subscription id' that _must_ be unique for</span>
+    <span class="ruby-comment cmt"># the current session.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">qname</span> = <span class="ruby-value str">&quot;/queue/nodea.nodeb.nodec&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Here is an example of allowed functionality in 1.0 that is not allowed in 1.1:</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">subscribe</span> <span class="ruby-identifier">qname</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">RuntimeError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sre</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Rescue: #{sre}, #{sre.message}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># So, you must specify an 'id' header.  And it must be unique within the</span>
+    <span class="ruby-comment cmt"># current session.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># You can build your own unique ids of course.  That is a valid option.</span>
+    <span class="ruby-comment cmt"># In order to provide you with some assistance in generating unique ids,</span>
+    <span class="ruby-comment cmt"># two convenience methods are provided with the connection:</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># * sha1 - generate a sha1 hash of some data you supply.  This may be sufficient for many purposes.</span>
+    <span class="ruby-comment cmt"># * uuid - generate a type 4 UUID.  This would be sufficient in all cases.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Get a sha1:</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">sha1</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">sha1</span>(<span class="ruby-identifier">qname</span>) <span class="ruby-comment cmt"># sha1 of the queue name perhaps</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Queue name: #{qname}, sha1: #{sha1}&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Or perhaps a different sha1:</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">tn</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment cmt"># Maybe unique itself.</span>
+    <span class="ruby-identifier">sha1</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">sha1</span>(<span class="ruby-identifier">tn</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Time now: #{tn}, sha1: #{sha1}&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Or a Type 4 UUID:</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">uuid</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">uuid</span>()
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Type 4 UUID: #{uuid}&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># You can specify the 'id' in the subscribe call in one of two ways:</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># a) In the headers parameter</span>
+    <span class="ruby-comment cmt"># b) In the third positional parameter, the subId</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># So, using the 'uuid', either:</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># a) conn.subscribe qname, {'id' =&gt; uuid}</span>
+    <span class="ruby-comment cmt"># b) conn.subscribe qname, {}, uuid</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">subscribe</span> <span class="ruby-identifier">qname</span>, {<span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uuid</span>} <span class="ruby-comment cmt"># First style</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Within a session, you may not subscribe to the same subscription id.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">subscribe</span> <span class="ruby-identifier">qname</span>, {<span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uuid</span>} <span class="ruby-comment cmt"># Second time</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">RuntimeError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sre</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Rescue: #{sre}, #{sre.message}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Once you have subscribed, you may receive as usual</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-value">1</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">nmsgs</span>()) <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">received</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">receive</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Received data: #{received.body}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># For unsubscribe, you must use the 'id' you used on subscribe.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># You have the same options for placing this id in the headers or in the 3rd</span>
+    <span class="ruby-comment cmt"># positional parameter.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">unsubscribe</span> <span class="ruby-identifier">qname</span>, {}, <span class="ruby-identifier">uuid</span> <span class="ruby-comment cmt"># Second style</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># And finally, disconnect.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">disconnect</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

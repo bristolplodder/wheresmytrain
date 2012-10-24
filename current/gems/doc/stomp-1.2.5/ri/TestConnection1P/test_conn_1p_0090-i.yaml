@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test only receiving heartbeats.
+full_name: TestConnection1P#test_conn_1p_0090
+is_singleton: false
+name: test_conn_1p_0090
+params: ()
+visibility: public

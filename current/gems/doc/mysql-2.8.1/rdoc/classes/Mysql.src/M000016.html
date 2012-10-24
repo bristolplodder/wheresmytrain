@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>options (Mysql)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      options(opt, value=nil)      */
+static VALUE options(int argc, VALUE* argv, VALUE obj)
+{
+    VALUE opt, val;
+    int n;
+    my_bool b;
+    char* v;
+    MYSQL* m = GetHandler(obj);
+
+    rb_scan_args(argc, argv, &quot;11&quot;, &amp;opt, &amp;val);
+    switch(NUM2INT(opt)) {
+    case MYSQL_OPT_CONNECT_TIMEOUT:
+#if MYSQL_VERSION_ID &gt;= 40100
+    case MYSQL_OPT_PROTOCOL:
+#endif
+#if MYSQL_VERSION_ID &gt;= 40101
+    case MYSQL_OPT_READ_TIMEOUT:
+    case MYSQL_OPT_WRITE_TIMEOUT:
+#endif
+        if (val == Qnil)
+            rb_raise(rb_eArgError, &quot;wrong # of arguments(1 for 2)&quot;);
+        n = NUM2INT(val);
+        v = (char*)&amp;n;
+        break;
+    case MYSQL_INIT_COMMAND:
+    case MYSQL_READ_DEFAULT_FILE:
+    case MYSQL_READ_DEFAULT_GROUP:
+#if MYSQL_VERSION_ID &gt;= 32349
+    case MYSQL_SET_CHARSET_DIR:
+    case MYSQL_SET_CHARSET_NAME:
+#endif
+#if MYSQL_VERSION_ID &gt;= 40100
+    case MYSQL_SHARED_MEMORY_BASE_NAME:
+#endif
+#if MYSQL_VERSION_ID &gt;= 40101
+    case MYSQL_SET_CLIENT_IP:
+#endif
+        if (val == Qnil)
+            rb_raise(rb_eArgError, &quot;wrong # of arguments(1 for 2)&quot;);
+        v = StringValuePtr(val);
+        break;
+#if MYSQL_VERSION_ID &gt;= 40101
+    case MYSQL_SECURE_AUTH:
+        if (val == Qnil || val == Qfalse)
+            b = 1;
+        else
+            b = 0;
+        v = (char*)&amp;b;
+        break;
+#endif
+#if MYSQL_VERSION_ID &gt;= 32349
+    case MYSQL_OPT_LOCAL_INFILE:
+        if (val == Qnil || val == Qfalse)
+            v = NULL;
+        else {
+            n = 1;
+            v = (char*)&amp;n;
+        }
+        break;
+#endif
+    default:
+        v = NULL;
+    }
+
+    if (mysql_options(m, NUM2INT(opt), v) != 0)
+        rb_raise(eMysql, &quot;unknown option: %d&quot;, NUM2INT(opt));
+    return obj;
+}</pre>
+</body>
+</html>

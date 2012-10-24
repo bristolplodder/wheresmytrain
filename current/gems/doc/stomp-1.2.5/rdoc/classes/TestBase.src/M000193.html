@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>make_destination (TestBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_helper.rb, line 121</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_destination</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">caller_method_name</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">name</span>
+    <span class="ruby-identifier">qname</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'STOMP_DOTQUEUE'</span>] <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/queue/test.ruby.stomp.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;/queue/test/ruby/stomp/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

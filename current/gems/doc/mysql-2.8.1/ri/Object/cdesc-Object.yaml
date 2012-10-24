@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MysqlRes
+  value: cMysqlRes
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MysqlField
+  value: cMysqlField
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MysqlError
+  value: eMysql
+full_name: Object
+includes: []
+
+instance_methods: []
+
+name: Object
+superclass: 

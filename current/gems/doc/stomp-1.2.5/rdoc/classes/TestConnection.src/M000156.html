@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_conn10_simple (TestConnection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_connection.rb, line 419</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_conn10_simple</span>
+    <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">disconnect</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">hash</span> = { <span class="ruby-identifier">:hosts</span> =<span class="ruby-operator">&gt;</span> [ 
+      {<span class="ruby-identifier">:login</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">:passcode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">passcode</span>, <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">host</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">port</span>, <span class="ruby-identifier">:ssl</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>},
+      ],
+      <span class="ruby-identifier">:connect_headers</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value str">&quot;accept-version&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.0&quot;</span>, <span class="ruby-value str">&quot;host&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">host</span>},
+      <span class="ruby-identifier">:reliable</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+    }
+    <span class="ruby-identifier">c</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">assert_nothing_raised</span> {
+      <span class="ruby-identifier">c</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>)
+    }
+    <span class="ruby-identifier">c</span>.<span class="ruby-identifier">disconnect</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">hash</span> = { <span class="ruby-identifier">:hosts</span> =<span class="ruby-operator">&gt;</span> [ 
+      {<span class="ruby-identifier">:login</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">:passcode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">passcode</span>, <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">host</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">port</span>, <span class="ruby-identifier">:ssl</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>},
+      ],
+      <span class="ruby-identifier">:connect_headers</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value str">&quot;accept-version&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;3.14159,1.0,12.0&quot;</span>, <span class="ruby-value str">&quot;host&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">host</span>},
+      <span class="ruby-identifier">:reliable</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+    }
+    <span class="ruby-identifier">c</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">assert_nothing_raised</span> {
+      <span class="ruby-identifier">c</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>)
+    }
+    <span class="ruby-identifier">c</span>.<span class="ruby-identifier">disconnect</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: uuid returns a type 4 UUID.
+full_name: Stomp::Connection#uuid
+is_singleton: false
+name: uuid
+params: ()
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test direct / explicit receive.
+full_name: TestConnection#test_explicit_receive
+is_singleton: false
+name: test_explicit_receive
+params: ()
+visibility: public

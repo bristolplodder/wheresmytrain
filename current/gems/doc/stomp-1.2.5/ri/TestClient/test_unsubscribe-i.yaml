@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test basic unsubscribe.
+full_name: TestClient#test_unsubscribe
+is_singleton: false
+name: test_unsubscribe
+params: ()
+visibility: public

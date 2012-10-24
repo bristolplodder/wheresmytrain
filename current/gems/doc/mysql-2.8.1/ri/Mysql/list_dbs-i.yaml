@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: list_dbs(db=nil)
+full_name: Mysql#list_dbs
+is_singleton: false
+name: list_dbs
+params: (...)
+visibility: public

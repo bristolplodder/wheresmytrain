@@ -1,0 +1,234 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Autoflush forces a flush on each transmit. This may be changed dynamically by calling code.
+  name: autoflush
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Autoflush forces a flush on each transmit. This may be changed dynamically by calling code.
+  name: autoflush
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The CONNECTED frame from the broker.
+  name: connection_frame
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The CONNECTED frame from the broker.
+  name: connection_frame
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Any disconnect RECEIPT frame if requested.
+  name: disconnect_receipt
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Any disconnect RECEIPT frame if requested.
+  name: disconnect_receipt
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Heartbeat receive has been on time.
+  name: hb_received
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Heartbeat receive has been on time.
+  name: hb_received
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Heartbeat send has been successful.
+  name: hb_sent
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Heartbeat send has been successful.
+  name: hb_sent
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The Stomp Protocol version.
+  name: protocol
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The Stomp Protocol version.
+  name: protocol
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A unique session ID, assigned by the broker.
+  name: session
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A unique session ID, assigned by the broker.
+  name: session
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: default_port
+- !ruby/object:RI::MethodSummary 
+  name: default_port
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: open
+- !ruby/object:RI::MethodSummary 
+  name: open
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Low level connection which maps commands and supports synchronous receives
+constants: []
+
+full_name: Stomp::Connection
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: __old_receive
+- !ruby/object:RI::MethodSummary 
+  name: __old_receive
+- !ruby/object:RI::MethodSummary 
+  name: abort
+- !ruby/object:RI::MethodSummary 
+  name: abort
+- !ruby/object:RI::MethodSummary 
+  name: ack
+- !ruby/object:RI::MethodSummary 
+  name: ack
+- !ruby/object:RI::MethodSummary 
+  name: begin
+- !ruby/object:RI::MethodSummary 
+  name: begin
+- !ruby/object:RI::MethodSummary 
+  name: change_host
+- !ruby/object:RI::MethodSummary 
+  name: change_host
+- !ruby/object:RI::MethodSummary 
+  name: client_ack?
+- !ruby/object:RI::MethodSummary 
+  name: client_ack?
+- !ruby/object:RI::MethodSummary 
+  name: closed?
+- !ruby/object:RI::MethodSummary 
+  name: closed?
+- !ruby/object:RI::MethodSummary 
+  name: commit
+- !ruby/object:RI::MethodSummary 
+  name: commit
+- !ruby/object:RI::MethodSummary 
+  name: disconnect
+- !ruby/object:RI::MethodSummary 
+  name: disconnect
+- !ruby/object:RI::MethodSummary 
+  name: hashed_initialize
+- !ruby/object:RI::MethodSummary 
+  name: hashed_initialize
+- !ruby/object:RI::MethodSummary 
+  name: hbrecv_count
+- !ruby/object:RI::MethodSummary 
+  name: hbrecv_count
+- !ruby/object:RI::MethodSummary 
+  name: hbrecv_interval
+- !ruby/object:RI::MethodSummary 
+  name: hbrecv_interval
+- !ruby/object:RI::MethodSummary 
+  name: hbsend_count
+- !ruby/object:RI::MethodSummary 
+  name: hbsend_count
+- !ruby/object:RI::MethodSummary 
+  name: hbsend_interval
+- !ruby/object:RI::MethodSummary 
+  name: hbsend_interval
+- !ruby/object:RI::MethodSummary 
+  name: increase_reconnect_delay
+- !ruby/object:RI::MethodSummary 
+  name: increase_reconnect_delay
+- !ruby/object:RI::MethodSummary 
+  name: max_reconnect_attempts?
+- !ruby/object:RI::MethodSummary 
+  name: max_reconnect_attempts?
+- !ruby/object:RI::MethodSummary 
+  name: nack
+- !ruby/object:RI::MethodSummary 
+  name: nack
+- !ruby/object:RI::MethodSummary 
+  name: obj_send
+- !ruby/object:RI::MethodSummary 
+  name: obj_send
+- !ruby/object:RI::MethodSummary 
+  name: open?
+- !ruby/object:RI::MethodSummary 
+  name: open?
+- !ruby/object:RI::MethodSummary 
+  name: poll
+- !ruby/object:RI::MethodSummary 
+  name: poll
+- !ruby/object:RI::MethodSummary 
+  name: publish
+- !ruby/object:RI::MethodSummary 
+  name: publish
+- !ruby/object:RI::MethodSummary 
+  name: receive
+- !ruby/object:RI::MethodSummary 
+  name: receive
+- !ruby/object:RI::MethodSummary 
+  name: refine_params
+- !ruby/object:RI::MethodSummary 
+  name: refine_params
+- !ruby/object:RI::MethodSummary 
+  name: set_logger
+- !ruby/object:RI::MethodSummary 
+  name: set_logger
+- !ruby/object:RI::MethodSummary 
+  name: sha1
+- !ruby/object:RI::MethodSummary 
+  name: sha1
+- !ruby/object:RI::MethodSummary 
+  name: socket
+- !ruby/object:RI::MethodSummary 
+  name: socket
+- !ruby/object:RI::MethodSummary 
+  name: subscribe
+- !ruby/object:RI::MethodSummary 
+  name: subscribe
+- !ruby/object:RI::MethodSummary 
+  name: unreceive
+- !ruby/object:RI::MethodSummary 
+  name: unreceive
+- !ruby/object:RI::MethodSummary 
+  name: unsubscribe
+- !ruby/object:RI::MethodSummary 
+  name: unsubscribe
+- !ruby/object:RI::MethodSummary 
+  name: uuid
+- !ruby/object:RI::MethodSummary 
+  name: uuid
+- !ruby/object:RI::MethodSummary 
+  name: valid_utf8?
+- !ruby/object:RI::MethodSummary 
+  name: valid_utf8?
+name: Connection
+superclass: Object

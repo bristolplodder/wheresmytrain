@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get_ssl_connection (TestBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_helper.rb, line 72</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_ssl_connection</span>()
+    <span class="ruby-identifier">ch</span> = <span class="ruby-identifier">get_conn_headers</span>()
+    <span class="ruby-identifier">ssl_params</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLParams</span>.<span class="ruby-identifier">new</span> <span class="ruby-comment cmt"># S/B safe for all Ruby versions tested</span>
+    <span class="ruby-identifier">hash</span> = { <span class="ruby-identifier">:hosts</span> =<span class="ruby-operator">&gt;</span> [ 
+      {<span class="ruby-identifier">:login</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">:passcode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">passcode</span>, <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">host</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ssl_port</span>, <span class="ruby-identifier">:ssl</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ssl_params</span>},
+      ],
+      <span class="ruby-identifier">:connect_headers</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ch</span>
+    }
+    <span class="ruby-identifier">conn</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-identifier">conn</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: query_with_result=(flag)
+full_name: Mysql#query_with_result=
+is_singleton: false
+name: query_with_result=
+params: (p1)
+visibility: public

@@ -1,0 +1,40 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: TestBase
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: caller_method_name
+- !ruby/object:RI::MethodSummary 
+  name: conn_subscribe
+- !ruby/object:RI::MethodSummary 
+  name: get_client
+- !ruby/object:RI::MethodSummary 
+  name: get_conn_headers
+- !ruby/object:RI::MethodSummary 
+  name: get_connection
+- !ruby/object:RI::MethodSummary 
+  name: get_ssl_connection
+- !ruby/object:RI::MethodSummary 
+  name: host
+- !ruby/object:RI::MethodSummary 
+  name: make_destination
+- !ruby/object:RI::MethodSummary 
+  name: parse_caller
+- !ruby/object:RI::MethodSummary 
+  name: passcode
+- !ruby/object:RI::MethodSummary 
+  name: port
+- !ruby/object:RI::MethodSummary 
+  name: ssl_port
+- !ruby/object:RI::MethodSummary 
+  name: user
+name: TestBase
+superclass: 

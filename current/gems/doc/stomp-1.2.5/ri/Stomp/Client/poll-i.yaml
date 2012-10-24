@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Poll for asynchronous messages issued by broker. Return nil of no message available, else the message
+full_name: Stomp::Client#poll
+is_singleton: false
+name: poll
+params: ()
+visibility: public

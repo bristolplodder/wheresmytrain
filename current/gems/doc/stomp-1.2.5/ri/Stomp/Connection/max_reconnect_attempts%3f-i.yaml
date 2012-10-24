@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: max_reconnect_attempts? returns nil or the number of maximum reconnect attempts. <b>NOTE</b> This method will be made private in the next release.
+full_name: Stomp::Connection#max_reconnect_attempts?
+is_singleton: false
+name: max_reconnect_attempts?
+params: ()
+visibility: public

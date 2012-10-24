@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test asking for a receipt.
+full_name: TestConnection#test_receipt
+is_singleton: false
+name: test_receipt
+params: ()
+visibility: public

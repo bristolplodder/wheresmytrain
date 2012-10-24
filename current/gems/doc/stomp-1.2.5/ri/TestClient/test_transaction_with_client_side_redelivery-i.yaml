@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test transaction with client side redilivery.
+full_name: TestClient#test_transaction_with_client_side_redelivery
+is_singleton: false
+name: test_transaction_with_client_side_redelivery
+params: ()
+visibility: public

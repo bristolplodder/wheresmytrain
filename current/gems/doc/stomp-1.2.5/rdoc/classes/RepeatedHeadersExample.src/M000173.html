@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (RepeatedHeadersExample)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/putget11_rh1.rb, line 31</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">conn</span> = <span class="ruby-identifier">get_connection</span>() <span class="ruby-comment cmt"># Use helper method to obtain a Stomp#connection</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unexpected protocol level&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">protocol</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">SPL_11</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># The gem supports repeated headers by allowing the 'value' part of a header</span>
+    <span class="ruby-comment cmt"># to be an Array instance.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># On 'publish', all values in the Array are placed on the wire and sent to the</span>
+    <span class="ruby-comment cmt"># broker in order.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># On 'receive', if repeated headers are detected, an Array instance is created</span>
+    <span class="ruby-comment cmt"># to hold the repeated values.  This is presented the the calling client to</span>
+    <span class="ruby-comment cmt"># be processed per client requirements.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">qname</span> = <span class="ruby-value str">&quot;/queue/nodea.nodeb.nodec&quot;</span>
+    <span class="ruby-identifier">data</span> = <span class="ruby-node">&quot;message payload: #{Time.now.to_f}&quot;</span>
+    <span class="ruby-identifier">key2_repeats</span> = [<span class="ruby-value str">&quot;key2val3&quot;</span>, <span class="ruby-value str">&quot;key2val2&quot;</span>, <span class="ruby-value str">&quot;key2val1&quot;</span> ]
+    <span class="ruby-identifier">headers</span> = {<span class="ruby-value str">&quot;key1&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;value1&quot;</span>,  <span class="ruby-comment cmt"># A normal header</span>
+      <span class="ruby-value str">&quot;key2&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">key2_repeats</span>,       <span class="ruby-comment cmt"># A repeated header</span>
+      <span class="ruby-value str">&quot;key3&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;value3&quot;</span>,           <span class="ruby-comment cmt"># Another normal header</span>
+    }
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Ship it.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">publish</span> <span class="ruby-identifier">qname</span>, <span class="ruby-identifier">data</span> , <span class="ruby-identifier">headers</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Sent data: #{data}&quot;</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Receive phase.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">uuid</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">uuid</span>()
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">subscribe</span> <span class="ruby-identifier">qname</span>, {<span class="ruby-value str">&quot;id&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uuid</span>}
+    <span class="ruby-identifier">received</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">receive</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">unsubscribe</span> <span class="ruby-identifier">qname</span>, {<span class="ruby-value str">&quot;id&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uuid</span>}
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Check that we received what we sent.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unexpected payload&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">data</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">received</span>.<span class="ruby-identifier">body</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Missing key&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">received</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-value str">&quot;key2&quot;</span>]
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Repeats not present&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">received</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">key2_repeats</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unexpected repeat values&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key2_repeats</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">received</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-value str">&quot;key2&quot;</span>]
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Demonstrate how to process repeated headers received by display of those</span>
+    <span class="ruby-comment cmt"># received headers for a visual check.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">received</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+        <span class="ruby-identifier">v</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{k}:#{e}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{k}:#{v}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># And finally, disconnect.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">disconnect</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

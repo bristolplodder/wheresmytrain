@@ -1,0 +1,328 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Client side
+  name: CMD_CONNECT
+  value: "\"CONNECT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_STOMP
+  value: "\"STOMP\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_DISCONNECT
+  value: "\"DISCONNECT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_SEND
+  value: "\"SEND\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_SUBSCRIBE
+  value: "\"SUBSCRIBE\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_UNSUBSCRIBE
+  value: "\"UNSUBSCRIBE\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_ACK
+  value: "\"ACK\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_NACK
+  value: "\"NACK\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_BEGIN
+  value: "\"BEGIN\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_COMMIT
+  value: "\"COMMIT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_ABORT
+  value: "\"ABORT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Server side
+  name: CMD_CONNECTED
+  value: "\"CONNECTED\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_MESSAGE
+  value: "\"MESSAGE\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_RECEIPT
+  value: "\"RECEIPT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_ERROR
+  value: "\"ERROR\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Protocols
+  name: SPL_10
+  value: "\"1.0\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SPL_11
+  value: "\"1.1\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Stomp 1.0 and 1.1
+  name: SUPPORTED
+  value: "[SPL_10, SPL_11]"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: 1.9 Encoding Name
+  name: UTF8
+  value: "\"UTF-8\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Octet 0
+  name: "NULL"
+  value: "\"\\0\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: New line
+  name: NL
+  value: "\"\\n\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NL_ASCII
+  value: "0x0a"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Back Slash
+  name: BACK_SLASH
+  value: "\"\\\\\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: BACK_SLASH_ASCII
+  value: "0x5c"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Literal colon
+  name: LITERAL_COLON
+  value: "\":\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: COLON_ASCII
+  value: "0x3a"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Literal letter c
+  name: LITERAL_C
+  value: "\"c\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: C_ASCII
+  value: "0x63"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Literal letter n
+  name: LITERAL_N
+  value: "\"n\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: N_ASCII
+  value: "0x6e"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Codec from/to values.
+  name: ENCODE_VALUES
+  value: "[     \"\\\\\\\\\", \"\\\\\", # encoded, decoded     \"\\\\\" + \"n\", \"\\n\",     \"\\\\c\", \":\",   ]"
+- !ruby/object:RI::Constant 
+  comment: []
+
+  name: DECODE_VALUES
+  value: "[     \"\\\\\\\\\\\\\\\\\", \"\\\\\", # encoded, decoded     \"\\\\\" + \"n\", \"\\n\",     \"\\\\c\", \":\",   ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DEFAULT_CIPHERS
+  value: "[     [\"DHE-RSA-AES256-SHA\", \"TLSv1/SSLv3\", 256, 256],      [\"DHE-DSS-AES256-SHA\", \"TLSv1/SSLv3\", 256, 256],      [\"AES256-SHA\", \"TLSv1/SSLv3\", 256, 256],      [\"EDH-RSA-DES-CBC3-SHA\", \"TLSv1/SSLv3\", 168, 168],      [\"EDH-DSS-DES-CBC3-SHA\", \"TLSv1/SSLv3\", 168, 168],      [\"DES-CBC3-SHA\", \"TLSv1/SSLv3\", 168, 168],      [\"DHE-RSA-AES128-SHA\", \"TLSv1/SSLv3\", 128, 128],      [\"DHE-DSS-AES128-SHA\", \"TLSv1/SSLv3\", 128, 128],      [\"AES128-SHA\", \"TLSv1/SSLv3\", 128, 128],      [\"RC4-SHA\", \"TLSv1/SSLv3\", 128, 128],      [\"RC4-MD5\", \"TLSv1/SSLv3\", 128, 128],      [\"EDH-RSA-DES-CBC-SHA\", \"TLSv1/SSLv3\", 56, 56],      [\"EDH-DSS-DES-CBC-SHA\", \"TLSv1/SSLv3\", 56, 56],     [\"DES-CBC-SHA\", \"TLSv1/SSLv3\", 56, 56],      [\"EXP-EDH-RSA-DES-CBC-SHA\", \"TLSv1/SSLv3\", 40, 56],      [\"EXP-EDH-DSS-DES-CBC-SHA\", \"TLSv1/SSLv3\", 40, 56],      [\"EXP-DES-CBC-SHA\", \"TLSv1/SSLv3\", 40, 56],      [\"EXP-RC2-CBC-MD5\", \"TLSv1/SSLv3\", 40, 128],      [\"EXP-RC4-MD5\", \"TLSv1/SSLv3\", 40, 128],   ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Client side
+  name: CMD_CONNECT
+  value: "\"CONNECT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_STOMP
+  value: "\"STOMP\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_DISCONNECT
+  value: "\"DISCONNECT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_SEND
+  value: "\"SEND\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_SUBSCRIBE
+  value: "\"SUBSCRIBE\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_UNSUBSCRIBE
+  value: "\"UNSUBSCRIBE\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_ACK
+  value: "\"ACK\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_NACK
+  value: "\"NACK\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_BEGIN
+  value: "\"BEGIN\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_COMMIT
+  value: "\"COMMIT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_ABORT
+  value: "\"ABORT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Server side
+  name: CMD_CONNECTED
+  value: "\"CONNECTED\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_MESSAGE
+  value: "\"MESSAGE\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_RECEIPT
+  value: "\"RECEIPT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CMD_ERROR
+  value: "\"ERROR\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Protocols
+  name: SPL_10
+  value: "\"1.0\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SPL_11
+  value: "\"1.1\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Stomp 1.0 and 1.1
+  name: SUPPORTED
+  value: "[SPL_10, SPL_11]"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: 1.9 Encoding Name
+  name: UTF8
+  value: "\"UTF-8\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Octet 0
+  name: "NULL"
+  value: "\"\\0\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: New line
+  name: NL
+  value: "\"\\n\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NL_ASCII
+  value: "0x0a"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Back Slash
+  name: BACK_SLASH
+  value: "\"\\\\\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: BACK_SLASH_ASCII
+  value: "0x5c"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Literal colon
+  name: LITERAL_COLON
+  value: "\":\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: COLON_ASCII
+  value: "0x3a"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Literal letter c
+  name: LITERAL_C
+  value: "\"c\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: C_ASCII
+  value: "0x63"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Literal letter n
+  name: LITERAL_N
+  value: "\"n\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: N_ASCII
+  value: "0x6e"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Codec from/to values.
+  name: ENCODE_VALUES
+  value: "[     \"\\\\\\\\\", \"\\\\\", # encoded, decoded     \"\\\\\" + \"n\", \"\\n\",     \"\\\\c\", \":\",   ]"
+- !ruby/object:RI::Constant 
+  comment: []
+
+  name: DECODE_VALUES
+  value: "[     \"\\\\\\\\\\\\\\\\\", \"\\\\\", # encoded, decoded     \"\\\\\" + \"n\", \"\\n\",     \"\\\\c\", \":\",   ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DEFAULT_CIPHERS
+  value: "[     [\"DHE-RSA-AES256-SHA\", \"TLSv1/SSLv3\", 256, 256],      [\"DHE-DSS-AES256-SHA\", \"TLSv1/SSLv3\", 256, 256],      [\"AES256-SHA\", \"TLSv1/SSLv3\", 256, 256],      [\"EDH-RSA-DES-CBC3-SHA\", \"TLSv1/SSLv3\", 168, 168],      [\"EDH-DSS-DES-CBC3-SHA\", \"TLSv1/SSLv3\", 168, 168],      [\"DES-CBC3-SHA\", \"TLSv1/SSLv3\", 168, 168],      [\"DHE-RSA-AES128-SHA\", \"TLSv1/SSLv3\", 128, 128],      [\"DHE-DSS-AES128-SHA\", \"TLSv1/SSLv3\", 128, 128],      [\"AES128-SHA\", \"TLSv1/SSLv3\", 128, 128],      [\"RC4-SHA\", \"TLSv1/SSLv3\", 128, 128],      [\"RC4-MD5\", \"TLSv1/SSLv3\", 128, 128],      [\"EDH-RSA-DES-CBC-SHA\", \"TLSv1/SSLv3\", 56, 56],      [\"EDH-DSS-DES-CBC-SHA\", \"TLSv1/SSLv3\", 56, 56],     [\"DES-CBC-SHA\", \"TLSv1/SSLv3\", 56, 56],      [\"EXP-EDH-RSA-DES-CBC-SHA\", \"TLSv1/SSLv3\", 40, 56],      [\"EXP-EDH-DSS-DES-CBC-SHA\", \"TLSv1/SSLv3\", 40, 56],      [\"EXP-DES-CBC-SHA\", \"TLSv1/SSLv3\", 40, 56],      [\"EXP-RC2-CBC-MD5\", \"TLSv1/SSLv3\", 40, 128],      [\"EXP-RC4-MD5\", \"TLSv1/SSLv3\", 40, 128],   ]"
+full_name: Stomp
+includes: []
+
+instance_methods: []
+
+name: Stomp
+superclass: 

@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Mysql</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Mysql</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/mysql_rb.html">
+                lib/mysql.rb
+                </a>
+        <br />
+                <a href="../files/ext/mysql_api/mysql_c.html">
+                ext/mysql_api/mysql.c
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <hr size="10"></hr><pre>
+      Initialize
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000024">affected_rows</a>&nbsp;&nbsp;
+      <a href="#M000065">autocommit</a>&nbsp;&nbsp;
+      <a href="#M000025">change_user</a>&nbsp;&nbsp;
+      <a href="#M000026">character_set_name</a>&nbsp;&nbsp;
+      <a href="#M000022">client_info</a>&nbsp;&nbsp;
+      <a href="#M000009">client_info</a>&nbsp;&nbsp;
+      <a href="#M000013">client_version</a>&nbsp;&nbsp;
+      <a href="#M000035">client_version</a>&nbsp;&nbsp;
+      <a href="#M000027">close</a>&nbsp;&nbsp;
+      <a href="#M000063">commit</a>&nbsp;&nbsp;
+      <a href="#M000015">connect</a>&nbsp;&nbsp;
+      <a href="#M000005">connect</a>&nbsp;&nbsp;
+      <a href="#M000028">create_db</a>&nbsp;&nbsp;
+      <a href="#M000011">debug</a>&nbsp;&nbsp;
+      <a href="#M000029">drop_db</a>&nbsp;&nbsp;
+      <a href="#M000030">dump_debug_info</a>&nbsp;&nbsp;
+      <a href="#M000031">errno</a>&nbsp;&nbsp;
+      <a href="#M000032">error</a>&nbsp;&nbsp;
+      <a href="#M000007">escape_string</a>&nbsp;&nbsp;
+      <a href="#M000020">escape_string</a>&nbsp;&nbsp;
+      <a href="#M000018">escape_string</a>&nbsp;&nbsp;
+      <a href="#M000033">field_count</a>&nbsp;&nbsp;
+      <a href="#M000010">get_client_info</a>&nbsp;&nbsp;
+      <a href="#M000023">get_client_info</a>&nbsp;&nbsp;
+      <a href="#M000034">get_client_version</a>&nbsp;&nbsp;
+      <a href="#M000012">get_client_version</a>&nbsp;&nbsp;
+      <a href="#M000036">get_host_info</a>&nbsp;&nbsp;
+      <a href="#M000038">get_proto_info</a>&nbsp;&nbsp;
+      <a href="#M000040">get_server_info</a>&nbsp;&nbsp;
+      <a href="#M000060">get_server_version</a>&nbsp;&nbsp;
+      <a href="#M000037">host_info</a>&nbsp;&nbsp;
+      <a href="#M000042">info</a>&nbsp;&nbsp;
+      <a href="#M000003">init</a>&nbsp;&nbsp;
+      <a href="#M000043">insert_id</a>&nbsp;&nbsp;
+      <a href="#M000044">kill</a>&nbsp;&nbsp;
+      <a href="#M000045">list_dbs</a>&nbsp;&nbsp;
+      <a href="#M000046">list_fields</a>&nbsp;&nbsp;
+      <a href="#M000047">list_processes</a>&nbsp;&nbsp;
+      <a href="#M000048">list_tables</a>&nbsp;&nbsp;
+      <a href="#M000069">more_results</a>&nbsp;&nbsp;
+      <a href="#M000070">more_results?</a>&nbsp;&nbsp;
+      <a href="#M000017">new</a>&nbsp;&nbsp;
+      <a href="#M000006">new</a>&nbsp;&nbsp;
+      <a href="#M000016">options</a>&nbsp;&nbsp;
+      <a href="#M000049">ping</a>&nbsp;&nbsp;
+      <a href="#M000068">prepare</a>&nbsp;&nbsp;
+      <a href="#M000039">proto_info</a>&nbsp;&nbsp;
+      <a href="#M000050">query</a>&nbsp;&nbsp;
+      <a href="#M000073">query_with_result</a>&nbsp;&nbsp;
+      <a href="#M000074">query_with_result=</a>&nbsp;&nbsp;
+      <a href="#M000019">quote</a>&nbsp;&nbsp;
+      <a href="#M000008">quote</a>&nbsp;&nbsp;
+      <a href="#M000021">quote</a>&nbsp;&nbsp;
+      <a href="#M000014">real_connect</a>&nbsp;&nbsp;
+      <a href="#M000004">real_connect</a>&nbsp;&nbsp;
+      <a href="#M000051">real_query</a>&nbsp;&nbsp;
+      <a href="#M000075">reconnect</a>&nbsp;&nbsp;
+      <a href="#M000076">reconnect=</a>&nbsp;&nbsp;
+      <a href="#M000052">refresh</a>&nbsp;&nbsp;
+      <a href="#M000053">reload</a>&nbsp;&nbsp;
+      <a href="#M000064">rollback</a>&nbsp;&nbsp;
+      <a href="#M000054">select_db</a>&nbsp;&nbsp;
+      <a href="#M000041">server_info</a>&nbsp;&nbsp;
+      <a href="#M000061">server_version</a>&nbsp;&nbsp;
+      <a href="#M000071">set_server_option</a>&nbsp;&nbsp;
+      <a href="#M000055">shutdown</a>&nbsp;&nbsp;
+      <a href="#M000072">sqlstate</a>&nbsp;&nbsp;
+      <a href="#M000066">ssl_set</a>&nbsp;&nbsp;
+      <a href="#M000056">stat</a>&nbsp;&nbsp;
+      <a href="#M000067">stmt_init</a>&nbsp;&nbsp;
+      <a href="#M000057">store_result</a>&nbsp;&nbsp;
+      <a href="#M000058">thread_id</a>&nbsp;&nbsp;
+      <a href="#M000059">use_result</a>&nbsp;&nbsp;
+      <a href="#M000062">warning_count</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Mysql/GemVersion.html" class="link">Mysql::GemVersion</a><br />
+Class <a href="Mysql/Error.html" class="link">Mysql::Error</a><br />
+Class <a href="Mysql/Field.html" class="link">Mysql::Field</a><br />
+Class <a href="Mysql/Result.html" class="link">Mysql::Result</a><br />
+Class <a href="Mysql/RowOffset.html" class="link">Mysql::RowOffset</a><br />
+Class <a href="Mysql/Stmt.html" class="link">Mysql::Stmt</a><br />
+Class <a href="Mysql/Time.html" class="link">Mysql::Time</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">VERSION</td>
+          <td>=</td>
+          <td class="context-item-value">INT2FIX(MYSQL_RUBY_VERSION)</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+<a href="Mysql.html">Mysql</a> constant
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_CONNECT_TIMEOUT</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_CONNECT_TIMEOUT)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_COMPRESS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_COMPRESS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_NAMED_PIPE</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_NAMED_PIPE)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">INIT_COMMAND</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_INIT_COMMAND)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">READ_DEFAULT_FILE</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_READ_DEFAULT_FILE)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">READ_DEFAULT_GROUP</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_READ_DEFAULT_GROUP)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SET_CHARSET_DIR</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_SET_CHARSET_DIR)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SET_CHARSET_NAME</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_SET_CHARSET_NAME)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_LOCAL_INFILE</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_LOCAL_INFILE)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_PROTOCOL</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_PROTOCOL)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SHARED_MEMORY_BASE_NAME</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_SHARED_MEMORY_BASE_NAME)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_READ_TIMEOUT</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_READ_TIMEOUT)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_WRITE_TIMEOUT</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_WRITE_TIMEOUT)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SECURE_AUTH</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_SECURE_AUTH)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_GUESS_CONNECTION</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_GUESS_CONNECTION)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_USE_EMBEDDED_CONNECTION</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_USE_EMBEDDED_CONNECTION)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPT_USE_REMOTE_CONNECTION</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPT_USE_REMOTE_CONNECTION)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SET_CLIENT_IP</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_SET_CLIENT_IP)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">REFRESH_GRANT</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(REFRESH_GRANT)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">REFRESH_LOG</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(REFRESH_LOG)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">REFRESH_TABLES</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(REFRESH_TABLES)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">REFRESH_HOSTS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(REFRESH_HOSTS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">REFRESH_STATUS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(REFRESH_STATUS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">REFRESH_THREADS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(REFRESH_THREADS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">REFRESH_SLAVE</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(REFRESH_SLAVE)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">REFRESH_MASTER</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(REFRESH_MASTER)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_FOUND_ROWS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_FOUND_ROWS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_NO_SCHEMA</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_NO_SCHEMA)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_COMPRESS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_COMPRESS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_ODBC</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_ODBC)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_LOCAL_FILES</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_LOCAL_FILES)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_IGNORE_SPACE</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_IGNORE_SPACE)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_CHANGE_USER</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_CHANGE_USER)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_INTERACTIVE</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_INTERACTIVE)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_SSL</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_SSL)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_IGNORE_SIGPIPE</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_IGNORE_SIGPIPE)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_TRANSACTIONS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_TRANSACTIONS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_MULTI_STATEMENTS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_MULTI_STATEMENTS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLIENT_MULTI_RESULTS</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(CLIENT_MULTI_RESULTS)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPTION_MULTI_STATEMENTS_ON</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPTION_MULTI_STATEMENTS_ON)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">OPTION_MULTI_STATEMENTS_OFF</td>
+          <td>=</td>
+          <td class="context-item-value">INT2NUM(MYSQL_OPTION_MULTI_STATEMENTS_OFF)</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000009.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000009.html');return false;">
+          <span class="method-name">client_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000009">client_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000013.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000013.html');return false;">
+          <span class="method-name">client_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000013">client_version</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000005.html');return false;">
+          <span class="method-name">connect</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000004">real_connect</a>(host=nil, user=nil,
+passwd=nil, db=nil, port=nil, sock=nil, flag=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000011.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000011.html');return false;">
+          <span class="method-name">debug</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+my_debug(string)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000007.html');return false;">
+          <span class="method-name">escape_string</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000007">escape_string</a>(string)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000010.html');return false;">
+          <span class="method-name">get_client_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000009">client_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000012.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000012.html');return false;">
+          <span class="method-name">get_client_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000013">client_version</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000003.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000003.html');return false;">
+          <span class="method-name">init</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000003">init</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000017.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000017.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+initialize()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000006.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000006.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000004">real_connect</a>(host=nil, user=nil,
+passwd=nil, db=nil, port=nil, sock=nil, flag=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000008.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000008.html');return false;">
+          <span class="method-name">quote</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000007">escape_string</a>(string)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000004.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000004.html');return false;">
+          <span class="method-name">real_connect</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000004">real_connect</a>(host=nil, user=nil,
+passwd=nil, db=nil, port=nil, sock=nil, flag=nil)
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000024.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000024.html');return false;">
+          <span class="method-name">affected_rows</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000024">affected_rows</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000065.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000065.html');return false;">
+          <span class="method-name">autocommit</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000065">autocommit</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000025.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000025.html');return false;">
+          <span class="method-name">change_user</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000025">change_user</a>(user=nil, passwd=nil, db=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000026.html');return false;">
+          <span class="method-name">character_set_name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000026">character_set_name</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000022.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000022.html');return false;">
+          <span class="method-name">client_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000009">client_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000035.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000035.html');return false;">
+          <span class="method-name">client_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000013">client_version</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000027.html');return false;">
+          <span class="method-name">close</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000027">close</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000063.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000063.html');return false;">
+          <span class="method-name">commit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000063">commit</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000015.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000015.html');return false;">
+          <span class="method-name">connect</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000004">real_connect</a>(host=nil, user=nil,
+passwd=nil, db=nil, port=nil, sock=nil, flag=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000028.html');return false;">
+          <span class="method-name">create_db</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000028">create_db</a>(db)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000029.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000029.html');return false;">
+          <span class="method-name">drop_db</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000029">drop_db</a>(db)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000030.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000030.html');return false;">
+          <span class="method-name">dump_debug_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000030">dump_debug_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000031.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000031.html');return false;">
+          <span class="method-name">errno</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000031">errno</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000032.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000032.html');return false;">
+          <span class="method-name">error</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000032">error</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000020.html');return false;">
+          <span class="method-name">escape_string</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000007">escape_string</a>(string)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000018.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000018.html');return false;">
+          <span class="method-name">escape_string</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+real_escape_string(string)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000033.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000033.html');return false;">
+          <span class="method-name">field_count</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000033">field_count</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000023.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000023.html');return false;">
+          <span class="method-name">get_client_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000009">client_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000034.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000034.html');return false;">
+          <span class="method-name">get_client_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000013">client_version</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000036.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000036.html');return false;">
+          <span class="method-name">get_host_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000037">host_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000038.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000038.html');return false;">
+          <span class="method-name">get_proto_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000039">proto_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000040.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000040.html');return false;">
+          <span class="method-name">get_server_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000041">server_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000060.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000060.html');return false;">
+          <span class="method-name">get_server_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000061">server_version</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000037.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000037.html');return false;">
+          <span class="method-name">host_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000037">host_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000042.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000042.html');return false;">
+          <span class="method-name">info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000042">info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000043.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000043.html');return false;">
+          <span class="method-name">insert_id</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000043">insert_id</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000044.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000044.html');return false;">
+          <span class="method-name">kill</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000044">kill</a>(pid)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000045.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000045.html');return false;">
+          <span class="method-name">list_dbs</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000045">list_dbs</a>(db=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000046.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000046.html');return false;">
+          <span class="method-name">list_fields</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000046">list_fields</a>(table, field=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000047.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000047.html');return false;">
+          <span class="method-name">list_processes</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000047">list_processes</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000048.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000048.html');return false;">
+          <span class="method-name">list_tables</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000048">list_tables</a>(table=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000069.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000069.html');return false;">
+          <span class="method-name">more_results</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000069">more_results</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000070.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000070.html');return false;">
+          <span class="method-name">more_results?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000069">more_results</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000016.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000016.html');return false;">
+          <span class="method-name">options</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000016">options</a>(opt, value=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000049.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000049.html');return false;">
+          <span class="method-name">ping</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000049">ping</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000068.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000068.html');return false;">
+          <span class="method-name">prepare</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000068">prepare</a>(<a
+href="Mysql.html#M000050">query</a>)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000039.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000039.html');return false;">
+          <span class="method-name">proto_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000039">proto_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000050.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000050.html');return false;">
+          <span class="method-name">query</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000050">query</a>(sql)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000073.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000073.html');return false;">
+          <span class="method-name">query_with_result</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000073">query_with_result</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000074.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000074.html');return false;">
+          <span class="method-name">query_with_result=</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000074">query_with_result=</a>(flag)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000019.html');return false;">
+          <span class="method-name">quote</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+real_escape_string(string)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000021.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000021.html');return false;">
+          <span class="method-name">quote</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000007">escape_string</a>(string)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000014.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000014.html');return false;">
+          <span class="method-name">real_connect</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000004">real_connect</a>(host=nil, user=nil,
+passwd=nil, db=nil, port=nil, sock=nil, flag=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000051.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000051.html');return false;">
+          <span class="method-name">real_query</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000050">query</a>(sql)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000075.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000075.html');return false;">
+          <span class="method-name">reconnect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000075">reconnect</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000076.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000076.html');return false;">
+          <span class="method-name">reconnect=</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000076">reconnect=</a>(flag)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000052.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000052.html');return false;">
+          <span class="method-name">refresh</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000052">refresh</a>(r)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000053.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000053.html');return false;">
+          <span class="method-name">reload</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000053">reload</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000064.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000064.html');return false;">
+          <span class="method-name">rollback</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000064">rollback</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000054" class="method-detail">
+        <a name="M000054"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000054.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000054.html');return false;">
+          <span class="method-name">select_db</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000054">select_db</a>(db)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000041.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000041.html');return false;">
+          <span class="method-name">server_info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000041">server_info</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000061.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000061.html');return false;">
+          <span class="method-name">server_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000061">server_version</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000071.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000071.html');return false;">
+          <span class="method-name">set_server_option</span><span class="method-args">(p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000071">set_server_option</a>(option)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000055" class="method-detail">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000055.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000055.html');return false;">
+          <span class="method-name">shutdown</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000055">shutdown</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000072.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000072.html');return false;">
+          <span class="method-name">sqlstate</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000072">sqlstate</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000066.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000066.html');return false;">
+          <span class="method-name">ssl_set</span><span class="method-args">(...)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000066">ssl_set</a>(key=nil, cert=nil, ca=nil,
+capath=nil, cipher=nil)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000056" class="method-detail">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000056.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000056.html');return false;">
+          <span class="method-name">stat</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000056">stat</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000067.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000067.html');return false;">
+          <span class="method-name">stmt_init</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000067">stmt_init</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000057" class="method-detail">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000057.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000057.html');return false;">
+          <span class="method-name">store_result</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000057">store_result</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000058.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000058.html');return false;">
+          <span class="method-name">thread_id</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000058">thread_id</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000059.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000059.html');return false;">
+          <span class="method-name">use_result</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000059">use_result</a>()
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="Mysql.src/M000062.html" target="Code" class="method-signature"
+            onclick="popupCode('Mysql.src/M000062.html');return false;">
+          <span class="method-name">warning_count</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Mysql.html#M000062">warning_count</a>()
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The client certificate file.
+  name: cert_file
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The client certificate file.
+  name: cert_file
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Optional list of SSL ciphers to be used. In the format documented for Ruby's OpenSSL.
+  name: ciphers
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Optional list of SSL ciphers to be used. In the format documented for Ruby's OpenSSL.
+  name: ciphers
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Back reference to the OpenSSL::SSL::SSLContext instance, gem sets before connect.
+  name: ctx
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Back reference to the OpenSSL::SSL::SSLContext instance, gem sets before connect.
+  name: ctx
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Client wants file existance check on initialize. true/value or false/nil.
+  name: fsck
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Client wants file existance check on initialize. true/value or false/nil.
+  name: fsck
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The client private key file.
+  name: key_file
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The client private key file.
+  name: key_file
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The client private key password.
+  name: key_password
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The client private key password.
+  name: key_password
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The certificate of the connection peer (the server), received during the handshake.
+  name: peer_cert
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The certificate of the connection peer (the server), received during the handshake.
+  name: peer_cert
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The trust store files. Normally the certificate of the CA that signed the server's certificate. One file name, or a CSV list of file names.
+  name: ts_files
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The trust store files. Normally the certificate of the CA that signed the server's certificate. One file name, or a CSV list of file names.
+  name: ts_files
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Absolute command to use Ruby default ciphers.
+  name: use_ruby_ciphers
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Absolute command to use Ruby default ciphers.
+  name: use_ruby_ciphers
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: SSL Connect Verify Result. The result of the handshake.
+  name: verify_result
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: SSL Connect Verify Result. The result of the handshake.
+  name: verify_result
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Purpose
+- !ruby/struct:SM::Flow::P 
+  body: Parameters for STOMP ssl connections.
+constants: []
+
+full_name: Stomp::SSLParams
+includes: []
+
+instance_methods: []
+
+name: SSLParams
+superclass: Object

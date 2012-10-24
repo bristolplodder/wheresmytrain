@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: TestCodec
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: TestBase
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: setup
+- !ruby/object:RI::MethodSummary 
+  name: teardown
+- !ruby/object:RI::MethodSummary 
+  name: test_1000_check_notneeded
+- !ruby/object:RI::MethodSummary 
+  name: test_1010_basic_encode_decode
+- !ruby/object:RI::MethodSummary 
+  name: test_1020_fancier
+name: TestCodec
+superclass: Test::Unit::TestCase

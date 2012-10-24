@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Stomp::SSLParams)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/stomp/sslparams.rb, line 45</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">opts</span>={})
+
+   <span class="ruby-comment cmt"># Server authentication parameters</span>
+   <span class="ruby-ivar">@ts_files</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:ts_files</span>]   <span class="ruby-comment cmt"># A trust store file, normally a CA's cert</span>
+   <span class="ruby-comment cmt"># or a CSV list of cert file names</span>
+
+   <span class="ruby-comment cmt"># Client authentication parameters</span>
+   <span class="ruby-ivar">@cert_file</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:cert_file</span>]         <span class="ruby-comment cmt"># Client cert</span>
+   <span class="ruby-ivar">@key_file</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:key_file</span>]           <span class="ruby-comment cmt"># Client key</span>
+   <span class="ruby-ivar">@key_password</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:key_password</span>]           <span class="ruby-comment cmt"># Client key password</span>
+   <span class="ruby-comment cmt">#</span>
+   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLClientParamsError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@cert_file</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@key_file</span>.<span class="ruby-identifier">nil?</span>
+   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLClientParamsError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@cert_file</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@key_file</span>.<span class="ruby-identifier">nil?</span>
+   <span class="ruby-comment cmt">#</span>
+   <span class="ruby-ivar">@ciphers</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:ciphers</span>]
+   <span class="ruby-ivar">@use_ruby_ciphers</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:use_ruby_ciphers</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:use_ruby_ciphers</span>] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+   <span class="ruby-comment cmt">#</span>
+   <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:fsck</span>]
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@cert_file</span>
+     <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLNoCertFileError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">exists?</span>(<span class="ruby-ivar">@cert_file</span>)
+     <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLUnreadableCertFileError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">readable?</span>(<span class="ruby-ivar">@cert_file</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@key_file</span>
+     <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLNoKeyFileError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">exists?</span>(<span class="ruby-ivar">@key_file</span>)
+     <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLUnreadableKeyFileError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">readable?</span>(<span class="ruby-ivar">@key_file</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@ts_files</span>
+     <span class="ruby-identifier">tsa</span> = <span class="ruby-ivar">@ts_files</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+     <span class="ruby-identifier">tsa</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLNoTruststoreFileError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">fn</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLUnreadableTruststoreFileError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">fn</span>)
+     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+   <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

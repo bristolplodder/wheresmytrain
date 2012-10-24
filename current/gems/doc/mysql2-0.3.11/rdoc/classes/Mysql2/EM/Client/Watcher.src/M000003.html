@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>notify_readable (Mysql2::EM::Client::Watcher)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/mysql2/em.rb, line 15</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">notify_readable</span>
+          <span class="ruby-identifier">detach</span>
+          <span class="ruby-keyword kw">begin</span>
+            <span class="ruby-ivar">@deferable</span>.<span class="ruby-identifier">succeed</span>(<span class="ruby-ivar">@client</span>.<span class="ruby-identifier">async_result</span>)
+          <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+            <span class="ruby-ivar">@deferable</span>.<span class="ruby-identifier">fail</span>(<span class="ruby-identifier">e</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

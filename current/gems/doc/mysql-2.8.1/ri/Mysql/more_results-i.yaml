@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: more_results()
+full_name: Mysql#more_results
+is_singleton: false
+name: more_results
+params: ()
+visibility: public

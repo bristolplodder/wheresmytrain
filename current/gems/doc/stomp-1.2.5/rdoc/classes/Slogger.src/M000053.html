@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_hbfire (Slogger)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/slogger.rb, line 191</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_hbfire</span>(<span class="ruby-identifier">parms</span>, <span class="ruby-identifier">srind</span>, <span class="ruby-identifier">curt</span>)
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;HeartBeat Fire Parms #{info(parms)}&quot;</span>
+      <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;HeartBeat Fire Send/Receive #{srind}&quot;</span>
+    <span class="ruby-keyword kw">rescue</span>
+      <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;HeartBeat Fire oops&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

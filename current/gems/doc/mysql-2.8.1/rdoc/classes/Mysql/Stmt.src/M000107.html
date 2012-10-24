@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>execute (Mysql::Stmt)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      execute(arg,...)     */
+static VALUE stmt_execute(int argc, VALUE *argv, VALUE obj)
+{
+    struct mysql_stmt *s = DATA_PTR(obj);
+    MYSQL_STMT *stmt = s-&gt;stmt;
+    int i;
+
+    check_stmt_closed(obj);
+    free_execute_memory(s);
+    if (s-&gt;param.n != argc)
+        rb_raise(eMysql, &quot;execute: param_count(%d) != number of argument(%d)&quot;, s-&gt;param.n, argc);
+    if (argc &gt; 0) {
+        memset(s-&gt;param.bind, 0, sizeof(*(s-&gt;param.bind))*argc);
+        for (i = 0; i &lt; argc; i++) {
+            switch (TYPE(argv[i])) {
+            case T_NIL:
+                s-&gt;param.bind[i].buffer_type = MYSQL_TYPE_NULL;
+                break;
+            case T_FIXNUM:
+#if SIZEOF_INT &lt; SIZEOF_LONG
+                s-&gt;param.bind[i].buffer_type = MYSQL_TYPE_LONGLONG;
+                s-&gt;param.bind[i].buffer = &amp;(s-&gt;param.buffer[i]);
+                *(LONG_LONG*)(s-&gt;param.bind[i].buffer) = FIX2LONG(argv[i]);
+#else
+                s-&gt;param.bind[i].buffer_type = MYSQL_TYPE_LONG;
+                s-&gt;param.bind[i].buffer = &amp;(s-&gt;param.buffer[i]);
+                *(int*)(s-&gt;param.bind[i].buffer) = FIX2INT(argv[i]);
+#endif
+                break;
+            case T_BIGNUM:
+                s-&gt;param.bind[i].buffer_type = MYSQL_TYPE_LONGLONG;
+                s-&gt;param.bind[i].buffer = &amp;(s-&gt;param.buffer[i]);
+                *(LONG_LONG*)(s-&gt;param.bind[i].buffer) = rb_big2ll(argv[i]);
+                break;
+            case T_FLOAT:
+                s-&gt;param.bind[i].buffer_type = MYSQL_TYPE_DOUBLE;
+                s-&gt;param.bind[i].buffer = &amp;(s-&gt;param.buffer[i]);
+                *(double*)(s-&gt;param.bind[i].buffer) = NUM2DBL(argv[i]);
+                break;
+            case T_STRING:
+                s-&gt;param.bind[i].buffer_type = MYSQL_TYPE_STRING;
+                s-&gt;param.bind[i].buffer = RSTRING_PTR(argv[i]);
+                s-&gt;param.bind[i].buffer_length = RSTRING_LEN(argv[i]);
+                s-&gt;param.length[i] = RSTRING_LEN(argv[i]);
+                s-&gt;param.bind[i].length = &amp;(s-&gt;param.length[i]);
+                break;
+            default:
+                if (CLASS_OF(argv[i]) == rb_cTime) {
+                    MYSQL_TIME t;
+                    VALUE a = rb_funcall(argv[i], rb_intern(&quot;to_a&quot;), 0);
+                    s-&gt;param.bind[i].buffer_type = MYSQL_TYPE_DATETIME;
+                    s-&gt;param.bind[i].buffer = &amp;(s-&gt;param.buffer[i]);
+                    memset(&amp;t, 0, sizeof(t));    /* avoid warning */
+                    t.second_part = 0;
+                    t.neg = 0;
+                    t.second = FIX2INT(RARRAY_PTR(a)[0]);
+                    t.minute = FIX2INT(RARRAY_PTR(a)[1]);
+                    t.hour = FIX2INT(RARRAY_PTR(a)[2]);
+                    t.day = FIX2INT(RARRAY_PTR(a)[3]);
+                    t.month = FIX2INT(RARRAY_PTR(a)[4]);
+                    t.year = FIX2INT(RARRAY_PTR(a)[5]);
+                    *(MYSQL_TIME*)&amp;(s-&gt;param.buffer[i]) = t;
+                } else if (CLASS_OF(argv[i]) == cMysqlTime) {
+                    MYSQL_TIME t;
+                    s-&gt;param.bind[i].buffer_type = MYSQL_TYPE_DATETIME;
+                    s-&gt;param.bind[i].buffer = &amp;(s-&gt;param.buffer[i]);
+                    memset(&amp;t, 0, sizeof(t));    /* avoid warning */
+                    t.second_part = 0;
+                    t.neg = 0;
+                    t.second = NUM2INT(rb_iv_get(argv[i], &quot;second&quot;));
+                    t.minute = NUM2INT(rb_iv_get(argv[i], &quot;minute&quot;));
+                    t.hour = NUM2INT(rb_iv_get(argv[i], &quot;hour&quot;));
+                    t.day = NUM2INT(rb_iv_get(argv[i], &quot;day&quot;));
+                    t.month = NUM2INT(rb_iv_get(argv[i], &quot;month&quot;));
+                    t.year = NUM2INT(rb_iv_get(argv[i], &quot;year&quot;));
+                    *(MYSQL_TIME*)&amp;(s-&gt;param.buffer[i]) = t;
+                } else
+                    rb_raise(rb_eTypeError, &quot;unsupported type: %d&quot;, TYPE(argv[i]));
+            }
+        }
+        if (mysql_stmt_bind_param(stmt, s-&gt;param.bind))
+            mysql_stmt_raise(stmt);
+    }
+
+    if (mysql_stmt_execute(stmt))
+        mysql_stmt_raise(stmt);
+    if (s-&gt;res) {
+        MYSQL_FIELD *field;
+        if (mysql_stmt_store_result(stmt))
+            mysql_stmt_raise(stmt);
+        field = mysql_fetch_fields(s-&gt;res);
+        for (i = 0; i &lt; s-&gt;result.n; i++) {
+            switch(s-&gt;result.bind[i].buffer_type) {
+            case MYSQL_TYPE_NULL:
+                break;
+            case MYSQL_TYPE_TINY:
+            case MYSQL_TYPE_SHORT:
+            case MYSQL_TYPE_YEAR:
+            case MYSQL_TYPE_INT24:
+            case MYSQL_TYPE_LONG:
+            case MYSQL_TYPE_LONGLONG:
+            case MYSQL_TYPE_FLOAT:
+            case MYSQL_TYPE_DOUBLE:
+                s-&gt;result.bind[i].buffer = xmalloc(8);
+                s-&gt;result.bind[i].buffer_length = 8;
+                memset(s-&gt;result.bind[i].buffer, 0, 8);
+                break;
+            case MYSQL_TYPE_DECIMAL:
+            case MYSQL_TYPE_STRING:
+            case MYSQL_TYPE_VAR_STRING:
+            case MYSQL_TYPE_TINY_BLOB:
+            case MYSQL_TYPE_BLOB:
+            case MYSQL_TYPE_MEDIUM_BLOB:
+            case MYSQL_TYPE_LONG_BLOB:
+#if MYSQL_VERSION_ID &gt;= 50003
+            case MYSQL_TYPE_NEWDECIMAL:
+            case MYSQL_TYPE_BIT:
+#endif
+                s-&gt;result.bind[i].buffer = xmalloc(field[i].max_length);
+                memset(s-&gt;result.bind[i].buffer, 0, field[i].max_length);
+                s-&gt;result.bind[i].buffer_length = field[i].max_length;
+                break;
+            case MYSQL_TYPE_TIME:
+            case MYSQL_TYPE_DATE:
+            case MYSQL_TYPE_DATETIME:
+            case MYSQL_TYPE_TIMESTAMP:
+                s-&gt;result.bind[i].buffer = xmalloc(sizeof(MYSQL_TIME));
+                s-&gt;result.bind[i].buffer_length = sizeof(MYSQL_TIME);
+                memset(s-&gt;result.bind[i].buffer, 0, sizeof(MYSQL_TIME));
+                break;
+            default:
+                rb_raise(rb_eTypeError, &quot;unknown buffer_type: %d&quot;, s-&gt;result.bind[i].buffer_type);
+            }
+        }
+        if (mysql_stmt_bind_result(s-&gt;stmt, s-&gt;result.bind))
+            mysql_stmt_raise(s-&gt;stmt);
+    }
+    return obj;
+}</pre>
+</body>
+</html>

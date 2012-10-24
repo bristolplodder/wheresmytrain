@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>setup (TestMessage)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_message.rb, line 23</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span>
+                <span class="ruby-identifier">$KCODE</span> = <span class="ruby-value str">'U'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">RUBY_VERSION</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/1\.8/</span>
+    <span class="ruby-ivar">@conn</span> = <span class="ruby-identifier">get_connection</span>()
+    <span class="ruby-comment cmt"># Message body data</span>
+                <span class="ruby-ivar">@messages</span> = [
+                        <span class="ruby-value str">&quot;normal text message&quot;</span>,
+                        <span class="ruby-value str">&quot;bad byte: \372&quot;</span>,
+                        <span class="ruby-value str">&quot;\004\b{\f:\tbody\&quot;\001\207\004\b{\b:\016statusmsg\&quot;\aOK:\017statuscodei\000:\tdata{\t:\voutput\&quot;3Enabled, not running, last run 693 seconds ago:\frunningi\000:\fenabledi\006:\flastrunl+\aE\021\022M:\rsenderid\&quot;\032xx.xx.xx.xx:\016requestid\&quot;%849d647bbe3e421ea19ac9f947bbdde4:\020senderagent\&quot;\fpuppetd:\016msgtarget\&quot;%/topic/mcollective.puppetd.reply:\thash\&quot;\001\257ZdQqtaDmmdD0jZinnEcpN+YbkxQDn8uuCnwsQdvGHau6d+gxnnfPLUddWRSb\nZNMs+sQUXgJNfcV1eVBn1H+Z8QQmzYXVDMqz7J43jmgloz5PsLVbN9K3PmX/\ngszqV/WpvIyAqm98ennWqSzpwMuiCC4q2Jr3s3Gm6bUJ6UkKXnY=\n:\fmsgtimel+\a\372\023\022M&quot;</span>
+                ]
+                <span class="ruby-comment cmt">#</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

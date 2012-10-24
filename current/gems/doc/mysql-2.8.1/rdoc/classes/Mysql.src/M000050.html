@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>query (Mysql)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      query(sql)   */
+static VALUE query(VALUE obj, VALUE sql)
+{
+    int loop = 0;
+    MYSQL* m = GetHandler(obj);
+    Check_Type(sql, T_STRING);
+    if (GetMysqlStruct(obj)-&gt;connection == Qfalse) {
+        rb_raise(eMysql, &quot;query: not connected&quot;);
+    }
+    if (rb_block_given_p()) {
+        if (mysql_real_query(m, RSTRING_PTR(sql), RSTRING_LEN(sql)) != 0)
+            mysql_raise(m);
+        do {
+            MYSQL_RES* res = mysql_store_result(m);
+            if (res == NULL) {
+                if (mysql_field_count(m) != 0)
+                    mysql_raise(m);
+            } else {
+                VALUE robj = mysqlres2obj(res);
+                rb_ensure(rb_yield, robj, res_free, robj);
+            }
+#if MYSQL_VERSION_ID &gt;= 40101
+            if ((loop = mysql_next_result(m)) &gt; 0)
+                mysql_raise(m);
+        } while (loop == 0);
+#else
+        } while (0);
+#endif
+        return obj;
+    }
+    if (mysql_real_query(m, RSTRING_PTR(sql), RSTRING_LEN(sql)) != 0)
+        mysql_raise(m);
+    if (GetMysqlStruct(obj)-&gt;query_with_result == Qfalse)
+        return obj;
+    if (mysql_field_count(m) == 0)
+        return Qnil;
+    return store_result(obj);
+}</pre>
+</body>
+</html>

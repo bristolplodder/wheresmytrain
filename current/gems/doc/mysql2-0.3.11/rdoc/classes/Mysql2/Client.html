@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Mysql2::Client</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Mysql2::Client</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/mysql2/client_rb.html">
+                lib/mysql2/client.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000005">default_query_options</a>&nbsp;&nbsp;
+      <a href="#M000006">encoding_from_charset</a>&nbsp;&nbsp;
+      <a href="#M000007">encoding_from_charset_code</a>&nbsp;&nbsp;
+      <a href="#M000004">new</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CHARSET_MAP</td>
+          <td>=</td>
+          <td class="context-item-value">{         &quot;armscii8&quot; =&gt; nil,         &quot;ascii&quot;    =&gt; Encoding::US_ASCII,         &quot;big5&quot;     =&gt; Encoding::Big5,         &quot;binary&quot;   =&gt; Encoding::ASCII_8BIT,         &quot;cp1250&quot;   =&gt; Encoding::Windows_1250,         &quot;cp1251&quot;   =&gt; Encoding::Windows_1251,         &quot;cp1256&quot;   =&gt; Encoding::Windows_1256,         &quot;cp1257&quot;   =&gt; Encoding::Windows_1257,         &quot;cp850&quot;    =&gt; Encoding::CP850,         &quot;cp852&quot;    =&gt; Encoding::CP852,         &quot;cp866&quot;    =&gt; Encoding::IBM866,         &quot;cp932&quot;    =&gt; Encoding::Windows_31J,         &quot;dec8&quot;     =&gt; nil,         &quot;eucjpms&quot;  =&gt; Encoding::EucJP_ms,         &quot;euckr&quot;    =&gt; Encoding::EUC_KR,         &quot;gb2312&quot;   =&gt; Encoding::EUC_CN,         &quot;gbk&quot;      =&gt; Encoding::GBK,         &quot;geostd8&quot;  =&gt; nil,         &quot;greek&quot;    =&gt; Encoding::ISO_8859_7,         &quot;hebrew&quot;   =&gt; Encoding::ISO_8859_8,         &quot;hp8&quot;      =&gt; nil,         &quot;keybcs2&quot;  =&gt; nil,         &quot;koi8r&quot;    =&gt; Encoding::KOI8_R,         &quot;koi8u&quot;    =&gt; Encoding::KOI8_U,         &quot;latin1&quot;   =&gt; Encoding::ISO_8859_1,         &quot;latin2&quot;   =&gt; Encoding::ISO_8859_2,         &quot;latin5&quot;   =&gt; Encoding::ISO_8859_9,         &quot;latin7&quot;   =&gt; Encoding::ISO_8859_13,         &quot;macce&quot;    =&gt; Encoding::MacCentEuro,         &quot;macroman&quot; =&gt; Encoding::MacRoman,         &quot;sjis&quot;     =&gt; Encoding::SHIFT_JIS,         &quot;swe7&quot;     =&gt; nil,         &quot;tis620&quot;   =&gt; Encoding::TIS_620,         &quot;ucs2&quot;     =&gt; Encoding::UTF_16BE,         &quot;ujis&quot;     =&gt; Encoding::EucJP_ms,         &quot;utf8&quot;     =&gt; Encoding::UTF_8,       }</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">MYSQL_CHARSET_MAP</td>
+          <td>=</td>
+          <td class="context-item-value">{         1 =&gt; {:name =&gt; &quot;big5&quot;,      :collation =&gt; &quot;big5_chinese_ci&quot;},         2 =&gt; {:name =&gt; &quot;latin2&quot;,    :collation =&gt; &quot;latin2_czech_cs&quot;},         3 =&gt; {:name =&gt; &quot;dec8&quot;,      :collation =&gt; &quot;dec8_swedish_ci&quot;},         4 =&gt; {:name =&gt; &quot;cp850&quot;,     :collation =&gt; &quot;cp850_general_ci&quot;},         5 =&gt; {:name =&gt; &quot;latin1&quot;,    :collation =&gt; &quot;latin1_german1_ci&quot;},         6 =&gt; {:name =&gt; &quot;hp8&quot;,       :collation =&gt; &quot;hp8_english_ci&quot;},         7 =&gt; {:name =&gt; &quot;koi8r&quot;,     :collation =&gt; &quot;koi8r_general_ci&quot;},         8 =&gt; {:name =&gt; &quot;latin1&quot;,    :collation =&gt; &quot;latin1_swedish_ci&quot;},         9 =&gt; {:name =&gt; &quot;latin2&quot;,    :collation =&gt; &quot;latin2_general_ci&quot;},         10 =&gt; {:name =&gt; &quot;swe7&quot;,     :collation =&gt; &quot;swe7_swedish_ci&quot;},         11 =&gt; {:name =&gt; &quot;ascii&quot;,    :collation =&gt; &quot;ascii_general_ci&quot;},         12 =&gt; {:name =&gt; &quot;ujis&quot;,     :collation =&gt; &quot;ujis_japanese_ci&quot;},         13 =&gt; {:name =&gt; &quot;sjis&quot;,     :collation =&gt; &quot;sjis_japanese_ci&quot;},         14 =&gt; {:name =&gt; &quot;cp1251&quot;,   :collation =&gt; &quot;cp1251_bulgarian_ci&quot;},         15 =&gt; {:name =&gt; &quot;latin1&quot;,   :collation =&gt; &quot;latin1_danish_ci&quot;},         16 =&gt; {:name =&gt; &quot;hebrew&quot;,   :collation =&gt; &quot;hebrew_general_ci&quot;},         17 =&gt; {:name =&gt; &quot;filename&quot;, :collation =&gt; &quot;filename&quot;},         18 =&gt; {:name =&gt; &quot;tis620&quot;,   :collation =&gt; &quot;tis620_thai_ci&quot;},         19 =&gt; {:name =&gt; &quot;euckr&quot;,    :collation =&gt; &quot;euckr_korean_ci&quot;},         20 =&gt; {:name =&gt; &quot;latin7&quot;,   :collation =&gt; &quot;latin7_estonian_cs&quot;},         21 =&gt; {:name =&gt; &quot;latin2&quot;,   :collation =&gt; &quot;latin2_hungarian_ci&quot;},         22 =&gt; {:name =&gt; &quot;koi8u&quot;,    :collation =&gt; &quot;koi8u_general_ci&quot;},         23 =&gt; {:name =&gt; &quot;cp1251&quot;,   :collation =&gt; &quot;cp1251_ukrainian_ci&quot;},         24 =&gt; {:name =&gt; &quot;gb2312&quot;,   :collation =&gt; &quot;gb2312_chinese_ci&quot;},         25 =&gt; {:name =&gt; &quot;greek&quot;,    :collation =&gt; &quot;greek_general_ci&quot;},         26 =&gt; {:name =&gt; &quot;cp1250&quot;,   :collation =&gt; &quot;cp1250_general_ci&quot;},         27 =&gt; {:name =&gt; &quot;latin2&quot;,   :collation =&gt; &quot;latin2_croatian_ci&quot;},         28 =&gt; {:name =&gt; &quot;gbk&quot;,      :collation =&gt; &quot;gbk_chinese_ci&quot;},         29 =&gt; {:name =&gt; &quot;cp1257&quot;,   :collation =&gt; &quot;cp1257_lithuanian_ci&quot;},         30 =&gt; {:name =&gt; &quot;latin5&quot;,   :collation =&gt; &quot;latin5_turkish_ci&quot;},         31 =&gt; {:name =&gt; &quot;latin1&quot;,   :collation =&gt; &quot;latin1_german2_ci&quot;},         32 =&gt; {:name =&gt; &quot;armscii8&quot;, :collation =&gt; &quot;armscii8_general_ci&quot;},         33 =&gt; {:name =&gt; &quot;utf8&quot;,     :collation =&gt; &quot;utf8_general_ci&quot;},         34 =&gt; {:name =&gt; &quot;cp1250&quot;,   :collation =&gt; &quot;cp1250_czech_cs&quot;},         35 =&gt; {:name =&gt; &quot;ucs2&quot;,     :collation =&gt; &quot;ucs2_general_ci&quot;},         36 =&gt; {:name =&gt; &quot;cp866&quot;,    :collation =&gt; &quot;cp866_general_ci&quot;},         37 =&gt; {:name =&gt; &quot;keybcs2&quot;,  :collation =&gt; &quot;keybcs2_general_ci&quot;},         38 =&gt; {:name =&gt; &quot;macce&quot;,    :collation =&gt; &quot;macce_general_ci&quot;},         39 =&gt; {:name =&gt; &quot;macroman&quot;, :collation =&gt; &quot;macroman_general_ci&quot;},         40 =&gt; {:name =&gt; &quot;cp852&quot;,    :collation =&gt; &quot;cp852_general_ci&quot;},         41 =&gt; {:name =&gt; &quot;latin7&quot;,   :collation =&gt; &quot;latin7_general_ci&quot;},         42 =&gt; {:name =&gt; &quot;latin7&quot;,   :collation =&gt; &quot;latin7_general_cs&quot;},         43 =&gt; {:name =&gt; &quot;macce&quot;,    :collation =&gt; &quot;macce_bin&quot;},         44 =&gt; {:name =&gt; &quot;cp1250&quot;,   :collation =&gt; &quot;cp1250_croatian_ci&quot;},         47 =&gt; {:name =&gt; &quot;latin1&quot;,   :collation =&gt; &quot;latin1_bin&quot;},         48 =&gt; {:name =&gt; &quot;latin1&quot;,   :collation =&gt; &quot;latin1_general_ci&quot;},         49 =&gt; {:name =&gt; &quot;latin1&quot;,   :collation =&gt; &quot;latin1_general_cs&quot;},         50 =&gt; {:name =&gt; &quot;cp1251&quot;,   :collation =&gt; &quot;cp1251_bin&quot;},         51 =&gt; {:name =&gt; &quot;cp1251&quot;,   :collation =&gt; &quot;cp1251_general_ci&quot;},         52 =&gt; {:name =&gt; &quot;cp1251&quot;,   :collation =&gt; &quot;cp1251_general_cs&quot;},         53 =&gt; {:name =&gt; &quot;macroman&quot;, :collation =&gt; &quot;macroman_bin&quot;},         57 =&gt; {:name =&gt; &quot;cp1256&quot;,   :collation =&gt; &quot;cp1256_general_ci&quot;},         58 =&gt; {:name =&gt; &quot;cp1257&quot;,   :collation =&gt; &quot;cp1257_bin&quot;},         59 =&gt; {:name =&gt; &quot;cp1257&quot;,   :collation =&gt; &quot;cp1257_general_ci&quot;},         63 =&gt; {:name =&gt; &quot;binary&quot;,   :collation =&gt; &quot;binary&quot;},         64 =&gt; {:name =&gt; &quot;armscii8&quot;, :collation =&gt; &quot;armscii8_bin&quot;},         65 =&gt; {:name =&gt; &quot;ascii&quot;,    :collation =&gt; &quot;ascii_bin&quot;},         66 =&gt; {:name =&gt; &quot;cp1250&quot;,   :collation =&gt; &quot;cp1250_bin&quot;},         67 =&gt; {:name =&gt; &quot;cp1256&quot;,   :collation =&gt; &quot;cp1256_bin&quot;},         68 =&gt; {:name =&gt; &quot;cp866&quot;,    :collation =&gt; &quot;cp866_bin&quot;},         69 =&gt; {:name =&gt; &quot;dec8&quot;,     :collation =&gt; &quot;dec8_bin&quot;},         70 =&gt; {:name =&gt; &quot;greek&quot;,    :collation =&gt; &quot;greek_bin&quot;},         71 =&gt; {:name =&gt; &quot;hebrew&quot;,   :collation =&gt; &quot;hebrew_bin&quot;},         72 =&gt; {:name =&gt; &quot;hp8&quot;,      :collation =&gt; &quot;hp8_bin&quot;},         73 =&gt; {:name =&gt; &quot;keybcs2&quot;,  :collation =&gt; &quot;keybcs2_bin&quot;},         74 =&gt; {:name =&gt; &quot;koi8r&quot;,    :collation =&gt; &quot;koi8r_bin&quot;},         75 =&gt; {:name =&gt; &quot;koi8u&quot;,    :collation =&gt; &quot;koi8u_bin&quot;},         77 =&gt; {:name =&gt; &quot;latin2&quot;,   :collation =&gt; &quot;latin2_bin&quot;},         78 =&gt; {:name =&gt; &quot;latin5&quot;,   :collation =&gt; &quot;latin5_bin&quot;},         79 =&gt; {:name =&gt; &quot;latin7&quot;,   :collation =&gt; &quot;latin7_bin&quot;},         80 =&gt; {:name =&gt; &quot;cp850&quot;,    :collation =&gt; &quot;cp850_bin&quot;},         81 =&gt; {:name =&gt; &quot;cp852&quot;,    :collation =&gt; &quot;cp852_bin&quot;},         82 =&gt; {:name =&gt; &quot;swe7&quot;,     :collation =&gt; &quot;swe7_bin&quot;},         83 =&gt; {:name =&gt; &quot;utf8&quot;,     :collation =&gt; &quot;utf8_bin&quot;},         84 =&gt; {:name =&gt; &quot;big5&quot;,     :collation =&gt; &quot;big5_bin&quot;},         85 =&gt; {:name =&gt; &quot;euckr&quot;,    :collation =&gt; &quot;euckr_bin&quot;},         86 =&gt; {:name =&gt; &quot;gb2312&quot;,   :collation =&gt; &quot;gb2312_bin&quot;},         87 =&gt; {:name =&gt; &quot;gbk&quot;,      :collation =&gt; &quot;gbk_bin&quot;},         88 =&gt; {:name =&gt; &quot;sjis&quot;,     :collation =&gt; &quot;sjis_bin&quot;},         89 =&gt; {:name =&gt; &quot;tis620&quot;,   :collation =&gt; &quot;tis620_bin&quot;},         90 =&gt; {:name =&gt; &quot;ucs2&quot;,     :collation =&gt; &quot;ucs2_bin&quot;},         91 =&gt; {:name =&gt; &quot;ujis&quot;,     :collation =&gt; &quot;ujis_bin&quot;},         92 =&gt; {:name =&gt; &quot;geostd8&quot;,  :collation =&gt; &quot;geostd8_general_ci&quot;},         93 =&gt; {:name =&gt; &quot;geostd8&quot;,  :collation =&gt; &quot;geostd8_bin&quot;},         94 =&gt; {:name =&gt; &quot;latin1&quot;,   :collation =&gt; &quot;latin1_spanish_ci&quot;},         95 =&gt; {:name =&gt; &quot;cp932&quot;,    :collation =&gt; &quot;cp932_japanese_ci&quot;},         96 =&gt; {:name =&gt; &quot;cp932&quot;,    :collation =&gt; &quot;cp932_bin&quot;},         97 =&gt; {:name =&gt; &quot;eucjpms&quot;,  :collation =&gt; &quot;eucjpms_japanese_ci&quot;},         98 =&gt; {:name =&gt; &quot;eucjpms&quot;,  :collation =&gt; &quot;eucjpms_bin&quot;},         99 =&gt; {:name =&gt; &quot;cp1250&quot;,   :collation =&gt; &quot;cp1250_polish_ci&quot;},         128 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_unicode_ci&quot;},         129 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_icelandic_ci&quot;},         130 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_latvian_ci&quot;},         131 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_romanian_ci&quot;},         132 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_slovenian_ci&quot;},         133 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_polish_ci&quot;},         134 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_estonian_ci&quot;},         135 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_spanish_ci&quot;},         136 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_swedish_ci&quot;},         137 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_turkish_ci&quot;},         138 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_czech_ci&quot;},         139 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_danish_ci&quot;},         140 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_lithuanian_ci&quot;},         141 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_slovak_ci&quot;},         142 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_spanish2_ci&quot;},         143 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_roman_ci&quot;},         144 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_persian_ci&quot;},         145 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_esperanto_ci&quot;},         146 =&gt; {:name =&gt; &quot;ucs2&quot;,    :collation =&gt; &quot;ucs2_hungarian_ci&quot;},         192 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_unicode_ci&quot;},         193 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_icelandic_ci&quot;},         194 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_latvian_ci&quot;},         195 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_romanian_ci&quot;},         196 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_slovenian_ci&quot;},         197 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_polish_ci&quot;},         198 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_estonian_ci&quot;},         199 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_spanish_ci&quot;},         200 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_swedish_ci&quot;},         201 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_turkish_ci&quot;},         202 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_czech_ci&quot;},         203 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_danish_ci&quot;},         204 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_lithuanian_ci&quot;},         205 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_slovak_ci&quot;},         206 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_spanish2_ci&quot;},         207 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_roman_ci&quot;},         208 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_persian_ci&quot;},         209 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_esperanto_ci&quot;},         210 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_hungarian_ci&quot;},         254 =&gt; {:name =&gt; &quot;utf8&quot;,    :collation =&gt; &quot;utf8_general_cs&quot;}</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">query_options</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="Client.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('Client.src/M000005.html');return false;">
+          <span class="method-name">default_query_options</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="Client.src/M000006.html" target="Code" class="method-signature"
+            onclick="popupCode('Client.src/M000006.html');return false;">
+          <span class="method-name">encoding_from_charset</span><span class="method-args">(charset)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="Client.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('Client.src/M000007.html');return false;">
+          <span class="method-name">encoding_from_charset_code</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="Client.src/M000004.html" target="Code" class="method-signature"
+            onclick="popupCode('Client.src/M000004.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(opts = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

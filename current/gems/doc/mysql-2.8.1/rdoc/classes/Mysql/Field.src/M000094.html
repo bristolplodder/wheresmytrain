@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>hash (Mysql::Field)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      hash */
+static VALUE field_hash(VALUE obj)
+{
+    VALUE h = rb_hash_new();
+    rb_hash_aset(h, rb_str_new2(&quot;name&quot;), rb_iv_get(obj, &quot;name&quot;));
+    rb_hash_aset(h, rb_str_new2(&quot;table&quot;), rb_iv_get(obj, &quot;table&quot;));
+    rb_hash_aset(h, rb_str_new2(&quot;def&quot;), rb_iv_get(obj, &quot;def&quot;));
+    rb_hash_aset(h, rb_str_new2(&quot;type&quot;), rb_iv_get(obj, &quot;type&quot;));
+    rb_hash_aset(h, rb_str_new2(&quot;length&quot;), rb_iv_get(obj, &quot;length&quot;));
+    rb_hash_aset(h, rb_str_new2(&quot;max_length&quot;), rb_iv_get(obj, &quot;max_length&quot;));
+    rb_hash_aset(h, rb_str_new2(&quot;flags&quot;), rb_iv_get(obj, &quot;flags&quot;));
+    rb_hash_aset(h, rb_str_new2(&quot;decimals&quot;), rb_iv_get(obj, &quot;decimals&quot;));
+    return h;
+}</pre>
+</body>
+</html>

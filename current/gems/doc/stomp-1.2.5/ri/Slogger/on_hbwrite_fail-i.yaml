@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Stomp 1.1+ - heart beat send (transmit) failed.
+full_name: Slogger#on_hbwrite_fail
+is_singleton: false
+name: on_hbwrite_fail
+params: (parms, ticker_data)
+visibility: public

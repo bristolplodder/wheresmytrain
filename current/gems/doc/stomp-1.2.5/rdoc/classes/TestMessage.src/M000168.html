@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_0040_msg_create (TestMessage)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/test_message.rb, line 96</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_0040_msg_create</span>
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_raise</span>(<span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidFormat</span>) {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;junk&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_raise</span>(<span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidFormat</span>) {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;command\njunk&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_raise</span>(<span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidFormat</span>) {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;command\nheaders\n\njunk&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_raise</span>(<span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidServerCommand</span>) {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;junkcommand\nheaders\n\njunk\0\n\n&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_raise</span>(<span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidFormat</span>) {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;ERROR\nbadheaders\n\njunk\0\n\n&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_nothing_raised</span> {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;CONNECTED\nh1:val1\n\njunk\0\n&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_nothing_raised</span> {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;MESSAGE\nh1:val1\n\njunk\0\n&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_nothing_raised</span> {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;MESSAGE\nh2:val2\n\n\0&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_nothing_raised</span> {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;RECEIPT\nh1:val1\n\njunk\0\n&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+                <span class="ruby-comment cmt">#</span>
+                <span class="ruby-identifier">assert_nothing_raised</span> {
+                        <span class="ruby-identifier">aframe</span> = <span class="ruby-constant">Stomp</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;ERROR\nh1:val1\n\njunk\0\n&quot;</span>, <span class="ruby-keyword kw">false</span>)
+                }
+
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Send a message back to the source or to the dead letter queue. Accepts a dead letter queue option ( :dead_letter_queue =&gt; &quot;/queue/DLQ&quot; ). Accepts a limit number of redeliveries option ( :max_redeliveries =&gt; 6 ). Accepts a force client acknowledgement option (:force_client_ack =&gt; true).
+full_name: Stomp::Connection#unreceive
+is_singleton: false
+name: unreceive
+params: (message, options = {})
+visibility: public

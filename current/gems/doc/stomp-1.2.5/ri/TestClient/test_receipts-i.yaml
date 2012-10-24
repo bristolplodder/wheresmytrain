@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test obtaining a RECEIPT via a listener.
+full_name: TestClient#test_receipts
+is_singleton: false
+name: test_receipts
+params: ()
+visibility: public

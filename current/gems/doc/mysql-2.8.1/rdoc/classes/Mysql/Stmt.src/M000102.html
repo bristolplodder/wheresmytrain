@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>attr_set (Mysql::Stmt)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      attr_set(option, arg)        */
+static VALUE stmt_attr_set(VALUE obj, VALUE opt, VALUE val)
+{
+    struct mysql_stmt* s = DATA_PTR(obj);
+    check_stmt_closed(obj);
+    if (NUM2INT(opt) == STMT_ATTR_UPDATE_MAX_LENGTH) {
+        my_bool arg;
+        arg = (val == Qnil || val == Qfalse) ? 0 : 1;
+        mysql_stmt_attr_set(s-&gt;stmt, STMT_ATTR_UPDATE_MAX_LENGTH, &amp;arg);
+        return obj;
+    }
+    rb_raise(eMysql, &quot;unknown option: %d&quot;, NUM2INT(opt));
+}</pre>
+</body>
+</html>

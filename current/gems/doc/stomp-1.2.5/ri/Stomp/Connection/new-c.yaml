@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "A new Connection object can be initialized using two forms:"
+- !ruby/struct:SM::Flow::P 
+  body: "Hash (this is the recommended Connection initialization method:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  hash = {\n    :hosts =&gt; [\n      {:login =&gt; &quot;login1&quot;, :passcode =&gt; &quot;passcode1&quot;, :host =&gt; &quot;localhost&quot;, :port =&gt; 61616, :ssl =&gt; false},\n      {:login =&gt; &quot;login2&quot;, :passcode =&gt; &quot;passcode2&quot;, :host =&gt; &quot;remotehost&quot;, :port =&gt; 61617, :ssl =&gt; false}\n    ],\n    :reliable =&gt; true,\n    :initial_reconnect_delay =&gt; 0.01,\n    :max_reconnect_delay =&gt; 30.0,\n    :use_exponential_back_off =&gt; true,\n    :back_off_multiplier =&gt; 2,\n    :max_reconnect_attempts =&gt; 0,\n    :randomize =&gt; false,\n    :backup =&gt; false,\n    :connect_timeout =&gt; 0,\n    :connect_headers =&gt; {},\n    :parse_timeout =&gt; 5,\n    :logger =&gt; nil,\n  }\n\n  e.g. c = Stomp::Connection.new(hash)\n"
+- !ruby/struct:SM::Flow::P 
+  body: "Positional parameters:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  login             (String,  default : '')\n  passcode          (String,  default : '')\n  host              (String,  default : 'localhost')\n  port              (Integer, default : 61613)\n  reliable          (Boolean, default : false)\n  reconnect_delay   (Integer, default : 5)\n\n  e.g. c = Stomp::Connection.new(&quot;username&quot;, &quot;password&quot;, &quot;localhost&quot;, 61613, true)\n"
+full_name: Stomp::Connection::new
+is_singleton: true
+name: new
+params: (login = '', passcode = '', host = 'localhost', port = 61613, reliable = false, reconnect_delay = 5, connect_headers = {})
+visibility: public

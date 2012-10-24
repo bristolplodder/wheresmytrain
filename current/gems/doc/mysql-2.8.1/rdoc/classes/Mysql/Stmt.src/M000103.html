@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>bind_result (Mysql::Stmt)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      bind_result(bind,...)        */
+static VALUE stmt_bind_result(int argc, VALUE *argv, VALUE obj)
+{
+    struct mysql_stmt* s = DATA_PTR(obj);
+    int i;
+    MYSQL_FIELD *field;
+
+    check_stmt_closed(obj);
+    if (argc != s-&gt;result.n)
+        rb_raise(eMysql, &quot;bind_result: result value count(%d) != number of argument(%d)&quot;, s-&gt;result.n, argc);
+    for (i = 0; i &lt; argc; i++) {
+        if (argv[i] == Qnil || argv[i] == rb_cNilClass) {
+            field = mysql_fetch_fields(s-&gt;res);
+            s-&gt;result.bind[i].buffer_type = field[i].type;
+        }
+        else if (argv[i] == rb_cString)
+            s-&gt;result.bind[i].buffer_type = MYSQL_TYPE_STRING;
+        else if (argv[i] == rb_cNumeric || argv[i] == rb_cInteger || argv[i] == rb_cFixnum)
+            s-&gt;result.bind[i].buffer_type = MYSQL_TYPE_LONGLONG;
+        else if (argv[i] == rb_cFloat)
+            s-&gt;result.bind[i].buffer_type = MYSQL_TYPE_DOUBLE;
+        else if (argv[i] == cMysqlTime)
+            s-&gt;result.bind[i].buffer_type = MYSQL_TYPE_DATETIME;
+        else
+            rb_raise(rb_eTypeError, &quot;unrecognized class: %s&quot;, RSTRING_PTR(rb_inspect(argv[i])));
+        if (mysql_stmt_bind_result(s-&gt;stmt, s-&gt;result.bind))
+            mysql_stmt_raise(s-&gt;stmt);
+    }
+    return obj;
+}</pre>
+</body>
+</html>

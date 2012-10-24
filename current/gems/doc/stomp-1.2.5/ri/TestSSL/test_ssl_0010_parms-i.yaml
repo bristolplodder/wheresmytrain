@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test SSLParams basic.
+full_name: TestSSL#test_ssl_0010_parms
+is_singleton: false
+name: test_ssl_0010_parms
+params: ()
+visibility: public

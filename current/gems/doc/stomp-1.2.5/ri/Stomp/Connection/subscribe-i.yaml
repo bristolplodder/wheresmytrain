@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Subscribe subscribes to a destination. A subscription name is required. For Stomp 1.1 a session unique subscription ID is required.
+full_name: Stomp::Connection#subscribe
+is_singleton: false
+name: subscribe
+params: (name, headers = {}, subId = nil)
+visibility: public

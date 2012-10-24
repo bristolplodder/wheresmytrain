@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test wildcard subscribe with &gt;. Primarily for AMQ.
+full_name: TestClient#test_greater_than_wildcard_subscribe
+is_singleton: false
+name: test_greater_than_wildcard_subscribe
+params: ()
+visibility: public

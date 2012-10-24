@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test Client subscribe
+full_name: TestClient#test_asynch_subscribe
+is_singleton: false
+name: test_asynch_subscribe
+params: ()
+visibility: public

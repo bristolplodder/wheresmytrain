@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Mysql2::EM::Client#query
+is_singleton: false
+name: query
+params: (sql, opts={})
+visibility: public

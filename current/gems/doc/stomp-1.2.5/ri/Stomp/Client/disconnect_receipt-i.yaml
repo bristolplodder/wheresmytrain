@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return any RECEIPT frame received by DISCONNECT.
+full_name: Stomp::Client#disconnect_receipt
+is_singleton: false
+name: disconnect_receipt
+params: ()
+visibility: public

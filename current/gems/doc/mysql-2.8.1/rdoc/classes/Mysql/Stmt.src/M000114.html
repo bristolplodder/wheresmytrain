@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>prepare (Mysql::Stmt)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      prepare(query)       */
+static VALUE stmt_prepare(VALUE obj, VALUE query)
+{
+    struct mysql_stmt* s = DATA_PTR(obj);
+    int n;
+    int i;
+    MYSQL_FIELD *field;
+
+    free_mysqlstmt_memory(s);
+    check_stmt_closed(obj);
+    Check_Type(query, T_STRING);
+    if (mysql_stmt_prepare(s-&gt;stmt, RSTRING_PTR(query), RSTRING_LEN(query)))
+        mysql_stmt_raise(s-&gt;stmt);
+
+    n = mysql_stmt_param_count(s-&gt;stmt);
+    s-&gt;param.n = n;
+    s-&gt;param.bind = xmalloc(sizeof(s-&gt;param.bind[0]) * n);
+    s-&gt;param.length = xmalloc(sizeof(s-&gt;param.length[0]) * n);
+    s-&gt;param.buffer = xmalloc(sizeof(s-&gt;param.buffer[0]) * n);
+
+    s-&gt;res = mysql_stmt_result_metadata(s-&gt;stmt);
+    if (s-&gt;res) {
+        n = s-&gt;result.n = mysql_num_fields(s-&gt;res);
+        s-&gt;result.bind = xmalloc(sizeof(s-&gt;result.bind[0]) * n);
+        s-&gt;result.is_null = xmalloc(sizeof(s-&gt;result.is_null[0]) * n);
+        s-&gt;result.length = xmalloc(sizeof(s-&gt;result.length[0]) * n);
+        field = mysql_fetch_fields(s-&gt;res);
+        memset(s-&gt;result.bind, 0, sizeof(s-&gt;result.bind[0]) * n);
+        for (i = 0; i &lt; n; i++) {
+            s-&gt;result.bind[i].buffer_type = field[i].type;
+#if MYSQL_VERSION_ID &lt; 50003
+            if (field[i].type == MYSQL_TYPE_DECIMAL)
+                s-&gt;result.bind[i].buffer_type = MYSQL_TYPE_STRING;
+#endif
+            s-&gt;result.bind[i].is_null = &amp;(s-&gt;result.is_null[i]);
+            s-&gt;result.bind[i].length = &amp;(s-&gt;result.length[i]);
+            s-&gt;result.bind[i].is_unsigned = ((field[i].flags &amp; UNSIGNED_FLAG) != 0);
+        }
+    } else {
+        if (mysql_stmt_errno(s-&gt;stmt))
+            mysql_stmt_raise(s-&gt;stmt);
+    }
+
+    return obj;
+}</pre>
+</body>
+</html>

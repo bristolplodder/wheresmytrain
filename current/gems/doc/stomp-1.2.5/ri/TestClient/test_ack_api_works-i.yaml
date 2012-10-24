@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test ACKs.
+full_name: TestClient#test_ack_api_works
+is_singleton: false
+name: test_ack_api_works
+params: ()
+visibility: public

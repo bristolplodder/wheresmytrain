@@ -1,0 +1,55 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: TestConnection1P
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: TestBase
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: setup
+- !ruby/object:RI::MethodSummary 
+  name: teardown
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_11h_0060
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0000
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0010
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0020
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0030
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0040
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0050
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0070
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0080
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0090
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0100
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0110
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0120
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0120
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0120
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0130
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0130
+- !ruby/object:RI::MethodSummary 
+  name: test_conn_1p_0140
+name: TestConnection1P
+superclass: Test::Unit::TestCase

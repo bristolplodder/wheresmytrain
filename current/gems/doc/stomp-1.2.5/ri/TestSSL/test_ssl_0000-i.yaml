@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: TestSSL#test_ssl_0000
+is_singleton: false
+name: test_ssl_0000
+params: ()
+visibility: public

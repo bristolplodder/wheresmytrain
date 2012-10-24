@@ -1,0 +1,146 @@
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+
+    Methods
+
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Methods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="rdoc-style.css" type="text/css" />
+  <base target="docwin" />
+</head>
+<body>
+<div id="index">
+  <h1 class="section-bar">Methods</h1>
+  <div id="index-entries">
+    <a href="classes/Mysql.html#M000024">affected_rows (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000100">affected_rows (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000101">attr_get (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000102">attr_set (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000065">autocommit (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000103">bind_result (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000025">change_user (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000026">character_set_name (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000009">client_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000022">client_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000035">client_version (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000013">client_version (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000027">close (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000104">close (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000063">commit (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000015">connect (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000005">connect (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000028">create_db (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000105">data_seek (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Result.html#M000078">data_seek (Mysql::Result)</a><br />
+    <a href="classes/Mysql.html#M000011">debug (Mysql)</a><br />
+    <a href="files/ext/mysql_api/extconf_rb.html#M000002">default_mysql_config_path (ext/mysql_api/extconf.rb)</a><br />
+    <a href="classes/Mysql.html#M000029">drop_db (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000030">dump_debug_info (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000106">each (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Result.html#M000092">each (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Result.html#M000093">each_hash (Mysql::Result)</a><br />
+    <a href="classes/Mysql.html#M000031">errno (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000032">error (Mysql)</a><br />
+    <a href="classes/Mysql/Error.html#M000099">error (Mysql::Error)</a><br />
+    <a href="classes/Mysql.html#M000007">escape_string (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000020">escape_string (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000018">escape_string (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000107">execute (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000108">fetch (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Result.html#M000079">fetch_field (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Result.html#M000081">fetch_field_direct (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Result.html#M000080">fetch_fields (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Result.html#M000084">fetch_hash (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Result.html#M000082">fetch_lengths (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Result.html#M000083">fetch_row (Mysql::Result)</a><br />
+    <a href="classes/Mysql.html#M000033">field_count (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000109">field_count (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Result.html#M000085">field_seek (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Result.html#M000086">field_tell (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Result.html#M000087">free (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000110">free_result (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000023">get_client_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000010">get_client_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000012">get_client_version (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000034">get_client_version (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000036">get_host_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000038">get_proto_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000040">get_server_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000060">get_server_version (Mysql)</a><br />
+    <a href="classes/Mysql/Field.html#M000094">hash (Mysql::Field)</a><br />
+    <a href="classes/Mysql.html#M000037">host_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000042">info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000003">init (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000043">insert_id (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000111">insert_id (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Field.html#M000095">inspect (Mysql::Field)</a><br />
+    <a href="classes/Mysql/Field.html#M000097">is_not_null? (Mysql::Field)</a><br />
+    <a href="classes/Mysql/Field.html#M000096">is_num? (Mysql::Field)</a><br />
+    <a href="classes/Mysql/Field.html#M000098">is_pri_key? (Mysql::Field)</a><br />
+    <a href="classes/Mysql.html#M000044">kill (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000045">list_dbs (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000046">list_fields (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000047">list_processes (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000048">list_tables (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000069">more_results (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000070">more_results? (Mysql)</a><br />
+    <a href="files/ext/mysql_api/extconf_rb.html#M000001">mysql_config_paths (ext/mysql_api/extconf.rb)</a><br />
+    <a href="classes/Mysql.html#M000017">new (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000006">new (Mysql)</a><br />
+    <a href="classes/Mysql/Time.html#M000077">new (Mysql::Time)</a><br />
+    <a href="classes/Mysql/Result.html#M000088">num_fields (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000112">num_rows (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Result.html#M000089">num_rows (Mysql::Result)</a><br />
+    <a href="classes/Mysql.html#M000016">options (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000113">param_count (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000049">ping (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000114">prepare (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000068">prepare (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000039">proto_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000050">query (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000073">query_with_result (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000074">query_with_result= (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000019">quote (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000021">quote (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000008">quote (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000004">real_connect (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000014">real_connect (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000051">real_query (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000075">reconnect (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000076">reconnect= (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000052">refresh (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000053">reload (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000115">reset (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000116">result_metadata (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000064">rollback (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000117">row_seek (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Result.html#M000090">row_seek (Mysql::Result)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000118">row_tell (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql/Result.html#M000091">row_tell (Mysql::Result)</a><br />
+    <a href="classes/Mysql.html#M000054">select_db (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000119">send_long_data (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000041">server_info (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000061">server_version (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000071">set_server_option (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000055">shutdown (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000072">sqlstate (Mysql)</a><br />
+    <a href="classes/Mysql/Stmt.html#M000120">sqlstate (Mysql::Stmt)</a><br />
+    <a href="classes/Mysql.html#M000066">ssl_set (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000056">stat (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000067">stmt_init (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000057">store_result (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000058">thread_id (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000059">use_result (Mysql)</a><br />
+    <a href="classes/Mysql.html#M000062">warning_count (Mysql)</a><br />
+  </div>
+</div>
+</body>
+</html>

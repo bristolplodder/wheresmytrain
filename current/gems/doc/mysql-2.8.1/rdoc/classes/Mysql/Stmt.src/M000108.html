@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>fetch (Mysql::Stmt)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*      fetch()              */
+static VALUE stmt_fetch(VALUE obj)
+{
+    struct mysql_stmt* s = DATA_PTR(obj);
+    VALUE ret;
+    int i;
+    int r;
+
+    check_stmt_closed(obj);
+    r = mysql_stmt_fetch(s-&gt;stmt);
+    if (r == MYSQL_NO_DATA)
+        return Qnil;
+#ifdef MYSQL_DATA_TRUNCATED
+    if (r == MYSQL_DATA_TRUNCATED)
+        rb_raise(rb_eRuntimeError, &quot;unexpectedly data truncated&quot;);
+#endif
+    if (r == 1)
+        mysql_stmt_raise(s-&gt;stmt);
+
+    ret = rb_ary_new2(s-&gt;result.n);
+    for (i = 0; i &lt; s-&gt;result.n; i++) {
+        if (s-&gt;result.is_null[i])
+            rb_ary_push(ret, Qnil);
+        else {
+            VALUE v;
+            MYSQL_TIME *t;
+            switch (s-&gt;result.bind[i].buffer_type) {
+            case MYSQL_TYPE_TINY:
+                if (s-&gt;result.bind[i].is_unsigned)
+                    v = UINT2NUM(*(unsigned char *)s-&gt;result.bind[i].buffer);
+                else
+                    v = INT2NUM(*(signed char *)s-&gt;result.bind[i].buffer);
+                break;
+            case MYSQL_TYPE_SHORT:
+            case MYSQL_TYPE_YEAR:
+                if (s-&gt;result.bind[i].is_unsigned)
+                    v = UINT2NUM(*(unsigned short *)s-&gt;result.bind[i].buffer);
+                else
+                    v = INT2NUM(*(short *)s-&gt;result.bind[i].buffer);
+                break;
+            case MYSQL_TYPE_INT24:
+            case MYSQL_TYPE_LONG:
+                if (s-&gt;result.bind[i].is_unsigned)
+                    v = UINT2NUM(*(unsigned int *)s-&gt;result.bind[i].buffer);
+                else
+                    v = INT2NUM(*(int *)s-&gt;result.bind[i].buffer);
+                break;
+            case MYSQL_TYPE_LONGLONG:
+                if (s-&gt;result.bind[i].is_unsigned)
+                    v = ULL2NUM(*(unsigned long long *)s-&gt;result.bind[i].buffer);
+                else
+                    v = LL2NUM(*(long long *)s-&gt;result.bind[i].buffer);
+                break;
+            case MYSQL_TYPE_FLOAT:
+                v = rb_float_new((double)(*(float *)s-&gt;result.bind[i].buffer));
+                break;
+            case MYSQL_TYPE_DOUBLE:
+                v = rb_float_new(*(double *)s-&gt;result.bind[i].buffer);
+                break;
+            case MYSQL_TYPE_TIME:
+            case MYSQL_TYPE_DATE:
+            case MYSQL_TYPE_DATETIME:
+            case MYSQL_TYPE_TIMESTAMP:
+                t = (MYSQL_TIME *)s-&gt;result.bind[i].buffer;
+                v = rb_obj_alloc(cMysqlTime);
+                rb_funcall(v, rb_intern(&quot;initialize&quot;), 8,
+                           INT2FIX(t-&gt;year), INT2FIX(t-&gt;month),
+                           INT2FIX(t-&gt;day), INT2FIX(t-&gt;hour),
+                           INT2FIX(t-&gt;minute), INT2FIX(t-&gt;second),
+                           (t-&gt;neg ? Qtrue : Qfalse),
+                           INT2FIX(t-&gt;second_part));
+                break;
+            case MYSQL_TYPE_DECIMAL:
+            case MYSQL_TYPE_STRING:
+            case MYSQL_TYPE_VAR_STRING:
+            case MYSQL_TYPE_TINY_BLOB:
+            case MYSQL_TYPE_BLOB:
+            case MYSQL_TYPE_MEDIUM_BLOB:
+            case MYSQL_TYPE_LONG_BLOB:
+#if MYSQL_VERSION_ID &gt;= 50003
+            case MYSQL_TYPE_NEWDECIMAL:
+            case MYSQL_TYPE_BIT:
+#endif
+                v = rb_tainted_str_new(s-&gt;result.bind[i].buffer, s-&gt;result.length[i]);
+                break;
+            default:
+                rb_raise(rb_eTypeError, &quot;unknown buffer_type: %d&quot;, s-&gt;result.bind[i].buffer_type);
+            }
+            rb_ary_push(ret, v);
+        }
+    }
+    return ret;
+}</pre>
+</body>
+</html>

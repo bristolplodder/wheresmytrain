@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Helper for minitest on 1.9
+full_name: TestBase#caller_method_name
+is_singleton: false
+name: caller_method_name
+params: ()
+visibility: public

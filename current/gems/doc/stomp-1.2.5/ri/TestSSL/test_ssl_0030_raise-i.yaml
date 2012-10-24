@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test using incorrect / incomplete parameters.
+full_name: TestSSL#test_ssl_0030_raise
+is_singleton: false
+name: test_ssl_0030_raise
+params: ()
+visibility: public

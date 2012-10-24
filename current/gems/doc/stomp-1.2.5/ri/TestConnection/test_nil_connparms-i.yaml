@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Test nil 1.1 connection parameters.
+full_name: TestConnection#test_nil_connparms
+is_singleton: false
+name: test_nil_connparms
+params: ()
+visibility: public
