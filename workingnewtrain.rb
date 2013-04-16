@@ -4,7 +4,7 @@ begin
 @port = 61618
 @host = "datafeeds.networkrail.co.uk"
 @user = "matthew.cockburn@blueyonder.co.uk"
-@password = "Tr@1nd@t@"
+@password = "XXXX"
 @destination = "/topic/TRAIN_MVT_EF_TOC"
 $stderr.print "Connecting to stomp://#{@host}:#{@port} as #{@user}\n"
 @conn = Stomp::Connection.open @user, @password, @host, @port, true
