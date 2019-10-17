@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.17'
 gem 'rake', '0.9.2'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
